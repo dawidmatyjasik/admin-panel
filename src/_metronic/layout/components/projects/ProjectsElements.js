@@ -3,11 +3,14 @@ import styled from "styled-components";
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   width: 100%;
   margin: 20px 0 0 0;
   padding: 0;
+  @media (max-width: 700px) {
+    justify-content: space-around;
+  }
   & a {
     color: rgba(0, 0, 0, 0.7);
     &:hover {
@@ -25,15 +28,11 @@ export const ListElement = styled.li`
 `;
 
 export const BasicContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 25% 1fr;
-  height: 100%;
   margin: 3% 0;
 `;
 export const BasicList = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   width: 100%;
   padding: 0;
@@ -97,15 +96,44 @@ export const BasicFormLabel = styled.label`
   display: grid;
   grid-template-columns: 3fr 7fr;
   grid-template-rows: 1fr;
+  @media (max-width: 500px) {
+    grid-template-columns: 5fr 5fr;
+  }
   /* width: 30%; */
 `;
 
 export const BasicFormInput = styled.input`
   margin-left: 10px;
   width: 30%;
-  /* background-color: inherit; */
   background-color: #eef0f8;
   border: #8a8b90 1px solid;
   border-radius: 5px;
   padding-left: 5px;
+  @media (max-width: 1000px) {
+    width: 50%;
+    @media (max-width: 500px) {
+      width: 70%;
+    }
+  }
+`;
+
+export const BasicFormSelect = styled.select`
+  margin-left: 10px;
+  width: 30%;
+  background-color: #eef0f8;
+  border: #8a8b90 1px solid;
+  border-radius: 5px;
+  padding-left: 5px;
+  @media (max-width: 1000px) {
+    width: 50%;
+  }
+  @media (max-width: 500px) {
+    width: 70%;
+  }
+`;
+
+export const BasicFormOption = styled.option`
+  /* border: #8a8b90 1px solid; */
+  border-radius: 5px;
+  background-color: white;
 `;

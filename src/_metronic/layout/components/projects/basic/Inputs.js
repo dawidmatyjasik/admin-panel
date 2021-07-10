@@ -6,6 +6,7 @@ import {
   BasicFormOption,
   BasicFormSelect,
 } from "../ProjectsElements";
+import Insurence from "./Insurence";
 
 const data = {
   education: [
@@ -23,6 +24,15 @@ const data = {
     "Odmowa podania informacji",
   ],
   choose: ["Nie", "Tak", "Odmowa podania informacji"],
+  enterprise: [
+    "Administracja rządowa",
+    "Administracja samorządowa",
+    "Duże przedsiębiorstwo",
+    "MMŚP",
+    "Organizacja pozarządowa",
+    "Własna",
+    "Inne",
+  ],
 };
 
 export default function Inputs() {
@@ -131,7 +141,11 @@ export default function Inputs() {
           <BasicFormOption>Nie dotyczny</BasicFormOption>
         </BasicFormSelect>
       </BasicFormLabel>
-      {insurance === "Tak" ? <h1>Hej</h1> : <></>}
+      {insurance === "Tak" ? (
+        <Insurence enterprise={data.enterprise}></Insurence>
+      ) : (
+        <></>
+      )}
     </BasicForm>
   );
 }

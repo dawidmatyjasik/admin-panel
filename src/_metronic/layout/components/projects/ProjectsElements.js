@@ -137,3 +137,12 @@ export const BasicFormOption = styled.option`
   border-radius: 5px;
   background-color: white;
 `;
+
+export const InsurenceHeader = styled.h2`
+  font-size: 1rem;
+  margin-top: 2%;
+  font-weight: 700;
+  @media (max-width: 700px) {
+    font-size: 0.85rem;
+  }
+`;

@@ -10,8 +10,6 @@ import {
 
 const Insurence = ({ enterprise }) => {
   const [business, setBusiness] = useState("");
-  console.log(business);
-
   return (
     <>
       <InsurenceHeader>Dane pracodawcy:</InsurenceHeader>

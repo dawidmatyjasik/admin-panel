@@ -1,3 +1,4 @@
+import { Button, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import {
   BasicForm,
@@ -7,6 +8,15 @@ import {
   BasicFormSelect,
 } from "../ProjectsElements";
 import Insurence from "./Insurence";
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    marginTop: "3%",
+    width: "20%",
+    fontWeight: 700,
+    border: "1px solid rgba(0,0,0,.8)",
+  },
+}));
 
 const data = {
   education: [
@@ -37,7 +47,7 @@ const data = {
 
 export default function Inputs() {
   const [insurance, setInsurance] = useState(false);
-
+  const classes = useStyles();
   return (
     <BasicForm>
       <BasicFormLabel>
@@ -146,6 +156,9 @@ export default function Inputs() {
       ) : (
         <></>
       )}
+      <Button variant="outlined" className={classes.button}>
+        Zapisz
+      </Button>
     </BasicForm>
   );
 }

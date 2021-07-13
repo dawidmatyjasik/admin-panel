@@ -84,14 +84,14 @@ export const BasicListSpan = styled.span`
   }
 `;
 
-export const BasicForm = styled.form`
+export const Form = styled.form`
   margin-left: 10px;
   margin-top: 3%;
   display: flex;
   flex-direction: column;
 `;
 
-export const BasicFormLabel = styled.label`
+export const FormLabel = styled.label`
   font-size: 1rem;
   display: grid;
   grid-template-columns: 3fr 7fr;
@@ -102,43 +102,42 @@ export const BasicFormLabel = styled.label`
   /* width: 30%; */
 `;
 
-export const BasicFormInput = styled.input`
+export const FormInput = styled.input`
   margin-left: 10px;
-  width: 30%;
+  width: 35%;
   background-color: #eef0f8;
   border: #8a8b90 1px solid;
   border-radius: 5px;
   padding-left: 5px;
   @media (max-width: 1000px) {
-    width: 50%;
+    width: 45%;
     @media (max-width: 500px) {
-      width: 70%;
+      width: 75%;
     }
   }
 `;
 
-export const BasicFormSelect = styled.select`
+export const FormSelect = styled.select`
   margin-left: 10px;
-  width: 30%;
+  width: 35%;
   background-color: #eef0f8;
   border: #8a8b90 1px solid;
   border-radius: 5px;
   padding-left: 5px;
   @media (max-width: 1000px) {
-    width: 50%;
+    width: 45%;
   }
   @media (max-width: 500px) {
-    width: 70%;
+    width: 75%;
   }
 `;
 
-export const BasicFormOption = styled.option`
-  /* border: #8a8b90 1px solid; */
+export const FormOption = styled.option`
   border-radius: 5px;
   background-color: white;
 `;
 
-export const InsurenceHeader = styled.h2`
+export const FormHeader = styled.h2`
   font-size: 1rem;
   margin-top: 2%;
   font-weight: 700;

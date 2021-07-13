@@ -1,11 +1,11 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import {
-  BasicForm,
-  BasicFormInput,
-  BasicFormLabel,
-  BasicFormOption,
-  BasicFormSelect,
+  Form,
+  FormInput,
+  FormLabel,
+  FormOption,
+  FormSelect,
 } from "../ProjectsElements";
 import Insurence from "./Insurence";
 
@@ -47,110 +47,116 @@ const data = {
 
 export default function Inputs() {
   const [insurance, setInsurance] = useState(false);
+  const [agreement, setAgreement] = useState("");
+
   const classes = useStyles();
   return (
-    <BasicForm>
-      <BasicFormLabel>
+    <Form>
+      <FormLabel>
         Data złożenia formularza zgłoszeniowego:
-        <BasicFormInput type="date"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Data podpisania umowy w projekcie:
-        <BasicFormInput type="date"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput
+          type="date"
+          value={agreement}
+          onChange={(e) => setAgreement(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
         Wiek w momencie przystąpienia:
-        <BasicFormInput type="number"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="number"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Wykształecnie deklarowane w projekcie:
-        <BasicFormSelect>
+        <FormSelect>
           {data.education.map((item) => (
-            <BasicFormOption key={item}>{item}</BasicFormOption>
+            <FormOption key={item}>{item}</FormOption>
           ))}
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Niepełnosprawność:
-        <BasicFormSelect>
+        <FormSelect>
           {data.disability.map((item) => (
-            <BasicFormOption key={item}>{item}</BasicFormOption>
+            <ormOption key={item}>{item}</ormOption>
           ))}
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Status na rynku pracy:
-        <BasicFormSelect>
-          <BasicFormOption>Osoba pracująca</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Osoba pracująca</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Liczba miesięcy bezrobocia:
-        <BasicFormInput type="number"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="number"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Numer konta bankowego:
-        <BasicFormInput type="tel"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="tel"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Należy do mniejszości narodowej, etnicznej, migrant, osoba obcego
         pochodzenia:
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Osoba bezdomna lub dotknięta wykluczeniem dostępu do mieszkań
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Znajduje się w innej niekorzystnej sytuacji społecznej:
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Były uczestnik w ramach CT 9:
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Osoba odbywająca karę pozbawiena wolności:
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Osoba odchodząca z rolnictwa:
-        <BasicFormSelect>
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Czy uczestnik ma inny tytuł do ubezpieczeń społecznych:
-        <BasicFormSelect
+        <FormSelect
           onChange={(e) => setInsurance(e.target.value)}
           value={insurance}
         >
-          <BasicFormOption>Nie</BasicFormOption>
-          <BasicFormOption>Tak</BasicFormOption>
-          <BasicFormOption>Nie dotyczny</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
       {insurance === "Tak" ? (
         <Insurence enterprise={data.enterprise}></Insurence>
       ) : (
@@ -159,6 +165,6 @@ export default function Inputs() {
       <Button variant="outlined" className={classes.button}>
         Zapisz
       </Button>
-    </BasicForm>
+    </Form>
   );
 }

@@ -1,69 +1,69 @@
 import React from "react";
 import { useState } from "react";
 import {
-  BasicFormInput,
-  BasicFormLabel,
-  BasicFormOption,
-  BasicFormSelect,
-  InsurenceHeader,
+  FormInput,
+  FormLabel,
+  FormOption,
+  FormSelect,
+  FormHeader,
 } from "../ProjectsElements";
 
 const Insurence = ({ enterprise }) => {
   const [business, setBusiness] = useState("");
   return (
     <>
-      <InsurenceHeader>Dane pracodawcy:</InsurenceHeader>
-      <BasicFormLabel>
+      <FormHeader>Dane pracodawcy:</FormHeader>
+      <FormLabel>
         Nazwa firmy:
-        <BasicFormInput type="text"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="text"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Adres firmy:
-        <BasicFormInput type="text"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="text"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Stanowisko pracy u pracodawcy:
-        <BasicFormInput type="text"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="text"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Klasyfikacja zawodów:
-        <BasicFormSelect>
-          <BasicFormOption>Brak</BasicFormOption>
-        </BasicFormSelect>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormSelect>
+          <FormOption>Brak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Okres zatrudnienia od:
-        <BasicFormInput type="date"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Okres zatrudnienia do:
-        <BasicFormInput type="date"></BasicFormInput>
-      </BasicFormLabel>
-      <BasicFormLabel>
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Rodzaj przedsiębiorstwa:
-        <BasicFormSelect
+        <FormSelect
           onChange={(e) => setBusiness(e.target.value)}
           value={business}
         >
           {enterprise.map((item) => (
-            <BasicFormOption key={item}>{item}</BasicFormOption>
+            <FormOption key={item}>{item}</FormOption>
           ))}
-        </BasicFormSelect>
-      </BasicFormLabel>
+        </FormSelect>
+      </FormLabel>
       {(() => {
         if (business === "Własna") {
           return (
-            <BasicFormLabel>
+            <FormLabel>
               NIP:
-              <BasicFormInput type="tel"></BasicFormInput>
-            </BasicFormLabel>
+              <FormInput type="tel"></FormInput>
+            </FormLabel>
           );
         } else if (business === "Inne") {
           return (
-            <BasicFormLabel>
+            <FormLabel>
               Jakie:
-              <BasicFormInput type="text"></BasicFormInput>
-            </BasicFormLabel>
+              <FormInput type="text"></FormInput>
+            </FormLabel>
           );
         } else {
           return <></>;

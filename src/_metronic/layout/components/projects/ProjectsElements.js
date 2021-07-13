@@ -145,3 +145,7 @@ export const FormHeader = styled.h2`
     font-size: 0.85rem;
   }
 `;
+
+export const FormSpan = styled.span`
+  margin-left: 10px;
+`;

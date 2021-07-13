@@ -7,6 +7,7 @@ import {
   FormLabel,
   FormOption,
   FormSelect,
+  FormSpan,
 } from "../ProjectsElements";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,15 +45,19 @@ const Consulting = () => {
       <FormLabel style={{ alignItems: "center" }}>
         Godziny spotkania:
         <div>
-          <span style={{ marginLeft: "10px" }}>od:</span>
+          <FormSpan>od:</FormSpan>
           <FormInput type="time"></FormInput>
           <br />
-          <span style={{ marginLeft: "10px" }}>do:</span>
+          <FormSpan>do:</FormSpan>
           <FormInput type="time"></FormInput>
         </div>
       </FormLabel>
       <div style={{ display: "flex" }}>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          style={{ marginRight: "10px" }}
+        >
           Dodaj kolejną sesję
         </Button>
         <Button variant="outlined" className={classes.button}>

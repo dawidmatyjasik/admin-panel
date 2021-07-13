@@ -154,10 +154,21 @@ export const FormFlexContainer = styled.div`
 `;
 
 export const FormDateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FromDateWrapper = styled.div`
   display: grid;
   grid-template-columns: 30px 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr;
   & > input {
     width: calc(35% - 20px);
+    @media (max-width: 1000px) {
+      width: calc(45% - 20px);
+    }
+    @media (max-width: 500px) {
+      width: calc(75% - 10px);
+    }
   }
 `;

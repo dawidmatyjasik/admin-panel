@@ -10,6 +10,7 @@ import {
   FormOption,
   FormSelect,
   FormSpan,
+  FromDateWrapper,
 } from "../ProjectsElements";
 
 const useStyles = makeStyles((theme) => ({
@@ -50,10 +51,14 @@ const Consulting = () => {
       <FormLabel style={{ alignItems: "center" }}>
         Godziny spotkania:
         <FormDateContainer>
-          <FormSpan>od:</FormSpan>
-          <FormInput type="time"></FormInput>
-          <FormSpan>do:</FormSpan>
-          <FormInput type="time"></FormInput>
+          <FromDateWrapper>
+            <FormSpan>od:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
+          <FromDateWrapper>
+            <FormSpan>do:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
         </FormDateContainer>
       </FormLabel>
       <FormLabel>

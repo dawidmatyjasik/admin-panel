@@ -6,6 +6,7 @@ import { Switch } from "react-router-dom";
 import { ContentRoute } from "../../../layout";
 import Basic from "./basic/Basic";
 import Consulting from "./consulting/Consulting";
+import Training from "./training/Traning";
 const Projects = () => {
   return (
     <>
@@ -18,6 +19,10 @@ const Projects = () => {
         <ContentRoute
           path="/edytuj/dane-projektowe/doradztwo"
           component={Consulting}
+        />
+        <ContentRoute
+          path="/edytuj/dane-projektowe/szkolenie"
+          component={Training}
         />
       </Switch>
     </>

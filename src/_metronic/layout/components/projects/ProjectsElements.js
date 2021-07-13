@@ -149,3 +149,15 @@ export const FormHeader = styled.h2`
 export const FormSpan = styled.span`
   margin-left: 10px;
 `;
+export const FormFlexContainer = styled.div`
+  display: flex;
+`;
+
+export const FormDateContainer = styled.div`
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: 1fr 1fr;
+  & > input {
+    width: calc(35% - 20px);
+  }
+`;

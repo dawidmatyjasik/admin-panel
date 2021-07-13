@@ -2,6 +2,8 @@ import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
 import {
   Form,
+  FormDateContainer,
+  FormFlexContainer,
   FormHeader,
   FormInput,
   FormLabel,
@@ -16,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
+    "&:nth-child(1)": {
+      marginRight: "2%",
+    },
   },
 }));
 
@@ -44,26 +49,25 @@ const Consulting = () => {
       </FormLabel>
       <FormLabel style={{ alignItems: "center" }}>
         Godziny spotkania:
-        <div>
+        <FormDateContainer>
           <FormSpan>od:</FormSpan>
           <FormInput type="time"></FormInput>
-          <br />
           <FormSpan>do:</FormSpan>
           <FormInput type="time"></FormInput>
-        </div>
+        </FormDateContainer>
       </FormLabel>
-      <div style={{ display: "flex" }}>
-        <Button
-          variant="outlined"
-          className={classes.button}
-          style={{ marginRight: "10px" }}
-        >
+      <FormLabel>
+        Czas trwania spotkania:
+        <FormInput type="number"></FormInput>
+      </FormLabel>
+      <FormFlexContainer>
+        <Button variant="outlined" className={classes.button}>
           Dodaj kolejną sesję
         </Button>
         <Button variant="outlined" className={classes.button}>
           Zapisz
         </Button>
-      </div>
+      </FormFlexContainer>
     </Form>
   );
 };

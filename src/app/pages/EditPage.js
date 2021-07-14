@@ -5,6 +5,7 @@ import Personal from "../../_metronic/layout/components/personal/Personal";
 import Projects from "../../_metronic/layout/components/projects/Projects";
 import { Redirect, Switch } from "react-router-dom";
 import { ContentRoute } from "../../_metronic/layout";
+import Checks from "../../_metronic/layout/components/checks/Checks";
 
 const Test = () => {
   return <h1>Hej</h1>;
@@ -34,7 +35,7 @@ export const EditPage = () => {
             to="/edytuj/kontrola/szkolenia"
           />
         }
-        <ContentRoute path="/edytuj/kontrola" component={Test} />
+        <ContentRoute path="/edytuj/kontrola" component={Checks} />
       </Switch>
     </>
   );

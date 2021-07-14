@@ -9,6 +9,7 @@ import Consulting from "./consulting/Consulting";
 import Training from "./training/Traning";
 import Mediation from "./mediation/Mediation";
 import Internship from "./internship/Internship";
+import Employment from "./employment/Employment";
 const Projects = () => {
   return (
     <>
@@ -33,6 +34,10 @@ const Projects = () => {
         <ContentRoute
           path="/edytuj/dane-projektowe/staz"
           component={Internship}
+        />
+        <ContentRoute
+          path="/edytuj/dane-projektowe/zatrudnienie"
+          component={Employment}
         />
       </Switch>
     </>

@@ -138,6 +138,15 @@ export const FormOption = styled.option`
 `;
 
 export const FormHeader = styled.h2`
+  font-size: 1.1rem;
+  margin-top: 2%;
+  font-weight: 700;
+  margin-bottom: 1%;
+  @media (max-width: 700px) {
+    font-size: 0.95rem;
+  }
+`;
+export const FormSubHeader = styled.h3`
   font-size: 1rem;
   margin-top: 2%;
   font-weight: 700;

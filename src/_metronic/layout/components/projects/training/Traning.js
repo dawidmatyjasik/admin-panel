@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   Form,
   FormDateContainer,
-  FormFlexContainer,
   FormHeader,
   FormInput,
   FormLabel,
@@ -29,7 +28,6 @@ const data = {
   training: ["Szkolenie 1", "Szkoelnie 2", "Szkoelnie 3"],
   id: ["Numer 1", "Numer 2", "Numer 3"],
 };
-// scholarship, access, care
 const Traning = () => {
   const [scholarship, setScholarship] = useState("");
   const [access, setAccess] = useState("");

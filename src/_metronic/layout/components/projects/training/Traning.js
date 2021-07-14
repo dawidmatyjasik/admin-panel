@@ -1,3 +1,4 @@
+import { Button, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import {
   Form,
@@ -12,6 +13,18 @@ import {
   FromDateWrapper,
 } from "../ProjectsElements";
 
+const useStyles = makeStyles((theme) => ({
+  button: {
+    marginTop: "3%",
+    width: "20%",
+    fontWeight: 700,
+    border: "1px solid rgba(0,0,0,.8)",
+    "&:nth-child(1)": {
+      marginRight: "2%",
+    },
+  },
+}));
+
 const data = {
   training: ["Szkolenie 1", "Szkoelnie 2", "Szkoelnie 3"],
   id: ["Numer 1", "Numer 2", "Numer 3"],
@@ -21,6 +34,7 @@ const Traning = () => {
   const [scholarship, setScholarship] = useState("");
   const [access, setAccess] = useState("");
   const [care, setCare] = useState("");
+  const classes = useStyles();
   return (
     <Form>
       <FormLabel>
@@ -238,6 +252,9 @@ const Traning = () => {
       ) : (
         <></>
       )}
+      <Button type="submit" variant="outlined" className={classes.button}>
+        Zapisz
+      </Button>
     </Form>
   );
 };

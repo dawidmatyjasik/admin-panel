@@ -69,7 +69,7 @@ const Consulting = () => {
         <Button variant="outlined" className={classes.button}>
           Dodaj kolejną sesję
         </Button>
-        <Button variant="outlined" className={classes.button}>
+        <Button type="submit" variant="outlined" className={classes.button}>
           Zapisz
         </Button>
       </FormFlexContainer>

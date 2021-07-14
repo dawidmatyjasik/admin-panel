@@ -162,7 +162,7 @@ export default function Inputs() {
       ) : (
         <></>
       )}
-      <Button variant="outlined" className={classes.button}>
+      <Button type="submit" variant="outlined" className={classes.button}>
         Zapisz
       </Button>
     </Form>

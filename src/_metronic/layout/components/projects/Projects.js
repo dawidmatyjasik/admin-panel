@@ -7,6 +7,7 @@ import { ContentRoute } from "../../../layout";
 import Basic from "./basic/Basic";
 import Consulting from "./consulting/Consulting";
 import Training from "./training/Traning";
+import Mediation from "./mediation/Mediation";
 const Projects = () => {
   return (
     <>
@@ -23,6 +24,10 @@ const Projects = () => {
         <ContentRoute
           path="/edytuj/dane-projektowe/szkolenie"
           component={Training}
+        />
+        <ContentRoute
+          path="/edytuj/dane-projektowe/posrednictwo"
+          component={Mediation}
         />
       </Switch>
     </>

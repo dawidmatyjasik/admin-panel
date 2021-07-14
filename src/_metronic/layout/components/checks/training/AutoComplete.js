@@ -1,4 +1,4 @@
-import { TextField } from "@material-ui/core";
+import { makeStyles, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import React from "react";
 
@@ -41,28 +41,57 @@ const data = {
   group: ["Juniorzy", "Seniorzy", "Emeryci", "Doświadczeni"],
 };
 
+const useStyles = makeStyles((theme) => ({
+  input: {
+    width: "calc(30% + 24.5% + 10px)",
+    marginBottom: "1%",
+    "@media (max-width: 1000px)": {
+      width: "calc(30% + 38.5% + 10px)",
+    },
+    "@media (max-width: 500px)": {
+      width: "calc(30% + 52.5% + 10px)",
+    },
+  },
+}));
+
 const AutoComplete = () => {
+  const classes = useStyles();
   return (
     <>
       <Autocomplete
         options={data.projects}
-        style={{ width: 300 }}
+        style={{ width: "100%" }}
         renderInput={(params) => (
-          <TextField {...params} label="Projekt" variant="outlined" />
+          <TextField
+            {...params}
+            label="Projekt"
+            variant="outlined"
+            className={classes.input}
+          />
         )}
       />
       <Autocomplete
         options={data.training}
-        style={{ width: 300 }}
+        style={{ width: "100%" }}
         renderInput={(params) => (
-          <TextField {...params} label="Szkolenie" variant="outlined" />
+          <TextField
+            {...params}
+            label="Szkolenie"
+            variant="outlined"
+            className={classes.input}
+          />
         )}
       />
       <Autocomplete
         options={data.group}
-        style={{ width: 300 }}
+        style={{ width: "100%" }}
         renderInput={(params) => (
-          <TextField {...params} label="Grupa" variant="outlined" />
+          <TextField
+            {...params}
+            label="Grupa"
+            variant="outlined"
+            className={classes.input}
+          />
         )}
       />
     </>

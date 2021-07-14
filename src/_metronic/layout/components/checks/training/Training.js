@@ -31,6 +31,14 @@ const Training = () => {
   return (
     <Form>
       <AutoComplete />
+      <FormLabel>
+        Data szkolenia:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Data szkolenia:
+        <FormInput></FormInput>
+      </FormLabel>
     </Form>
   );
 };

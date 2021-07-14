@@ -1,16 +1,12 @@
 import { Button, makeStyles } from "@material-ui/core";
 import React from "react";
+import { useState } from "react";
 import {
   Form,
-  FormDateContainer,
-  FormFlexContainer,
-  FormHeader,
   FormInput,
   FormLabel,
   FormOption,
   FormSelect,
-  FormSpan,
-  FromDateWrapper,
 } from "../ProjectsElements";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,13 +22,61 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Termination = () => {
+  const [finish, setFinish] = useState("Nie");
   const classes = useStyles();
+
   return (
     <Form>
       <FormLabel>
         Data zakończenia udziału w projekcie:
         <FormInput type="date"></FormInput>
       </FormLabel>
+      <FormLabel>
+        Czy UP zakończył zgodnie ze ścieżką:
+        <FormSelect value={finish} onChange={(e) => setFinish(e.target.value)}>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczny</FormOption>
+        </FormSelect>
+      </FormLabel>
+      {finish === "Nie" ? (
+        <FormLabel>
+          Powód zakończenia niezgodnie ze ścieżką:
+          <FormSelect>
+            <FormOption>Podjęcie zatrudnienia</FormOption>
+            <FormOption>Rezygnacja UP</FormOption>
+            <FormOption>
+              Skreślenie za nieobecności powyżej 20% na szkoleniu
+            </FormOption>
+            <FormOption>
+              Skreślenie za nieobecności powyżej 20% na stażu
+            </FormOption>
+            <FormOption>
+              Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
+            </FormOption>
+            <FormOption>Nieusprawiedliwona </FormOption>
+            <FormOption>
+              Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
+            </FormOption>
+            <FormOption>
+              Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
+            </FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
+      <FormLabel>
+        Dokument potwierdzający zakończenie udziału w projekcie:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Data dokumentu:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <Button type="submit" variant="outlined" className={classes.button}>
+        Zakończ udział
+      </Button>
     </Form>
   );
 };

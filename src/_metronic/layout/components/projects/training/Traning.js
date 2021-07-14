@@ -39,7 +39,7 @@ const Traning = () => {
         Nazwa szkolenia:
         <FormSelect>
           {data.training.map((item) => (
-            <ormOption key={item}>{item}</ormOption>
+            <FormOption key={item}>{item}</FormOption>
           ))}
         </FormSelect>
       </FormLabel>
@@ -47,7 +47,7 @@ const Traning = () => {
         Numer grupy:
         <FormSelect>
           {data.id.map((item) => (
-            <ormOption key={item}>{item}</ormOption>
+            <FormOption key={item}>{item}</FormOption>
           ))}
         </FormSelect>
       </FormLabel>

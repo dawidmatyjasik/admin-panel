@@ -80,7 +80,7 @@ export default function Inputs() {
         Niepełnosprawność:
         <FormSelect>
           {data.disability.map((item) => (
-            <ormOption key={item}>{item}</ormOption>
+            <FormOption key={item}>{item}</FormOption>
           ))}
         </FormSelect>
       </FormLabel>

@@ -25,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = { agreement: ["Doradca 1", "Doradca 2", "Doradca 3"] };
-
 const Employment = () => {
   const classes = useStyles();
   return (
@@ -56,6 +54,10 @@ const Employment = () => {
           </FormOption>
           <FormOption>Zmiana pracy na wyżej wynagradzaną</FormOption>
         </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Uwagi:
+        <FormInput></FormInput>
       </FormLabel>
       <FormHeader>Zatrudnienie:</FormHeader>
       <FormLabel>

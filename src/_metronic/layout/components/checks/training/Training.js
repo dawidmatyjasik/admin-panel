@@ -1,4 +1,4 @@
-import { Button, makeStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import React from "react";
 import {
   Form,
@@ -25,8 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-const data = { consulting: ["Doradca 1", "Doradca 2", "Doradca 3"] };
 
 const Training = () => {
   const classes = useStyles();

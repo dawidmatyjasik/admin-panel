@@ -25,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const data = { mediation: ["Pośrednik 1", "Pośrednik 2", "Pośrednik 3"] };
+
 const Mediation = () => {
   const classes = useStyles();
   return (
@@ -34,6 +36,51 @@ const Mediation = () => {
         Data zakończenia szkoleina:
         <FormInput type="date"></FormInput>
       </FormLabel>
+      <FormLabel>
+        Pośrednik pracy:
+        <FormSelect>
+          {data.mediation.map((item) => (
+            <FormOption key={item}>{item}</FormOption>
+          ))}
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Pełny adress miejsca pośrednictwa:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Data spotkania:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel style={{ alignItems: "center" }}>
+        Godziny spotkania:
+        <FormDateContainer>
+          <FromDateWrapper>
+            <FormSpan>od:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
+          <FromDateWrapper>
+            <FormSpan>do:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
+        </FormDateContainer>
+      </FormLabel>
+      <FormLabel>
+        Czas trwania spotkania:
+        <FormInput type="number"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Uwagi*:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormFlexContainer>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj sesję pośrednictwa
+        </Button>
+        <Button type="submit" variant="outlined" className={classes.button}>
+          Zapisz
+        </Button>
+      </FormFlexContainer>
     </Form>
   );
 };

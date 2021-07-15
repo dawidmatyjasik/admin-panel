@@ -16,16 +16,21 @@ export const EditPage = () => {
 
   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) =>
-      setUsers(snapshot.docs.map((doc) => doc.data()))
+      // setUsers(snapshot.docs.map((doc) => doc.data()))
+      setUsers(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      )
     );
   }, []);
-
   return (
     <>
       <Nav />
       <Switch>
         <ContentRoute path="/edytuj/dane-osobowe">
-          <Personal osobowe={users[0]?.osobowe} />
+          <Personal osobowe={users[0]?.data?.osobowe} id={users[0]?.id} />
         </ContentRoute>
         {
           <Redirect

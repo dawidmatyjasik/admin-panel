@@ -10,6 +10,8 @@ import { FormLabel } from "@material-ui/core";
 import { Switch } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { useState } from "react";
+import db from "../../../../firebase";
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -59,11 +61,8 @@ const project = [
   },
 ];
 
-export default function Personal({ osobowe }) {
+export default function Personal({ osobowe, id }) {
   const classes = useStyles();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
   const [nazwisko, setNazwisko] = useState("");
   const [imie, setImie] = useState("");
   const [pesel, setPesel] = useState("");
@@ -76,7 +75,27 @@ export default function Personal({ osobowe }) {
   const [czarnaLista, setCzarnaLista] = useState(false);
   const [projekt, setProjekt] = useState("");
 
-  console.log(nazwisko, dataUrodzenia, czarnaLista, projekt);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(id)
+      .collection("osobowe")
+      .doc("dane")
+      .update({
+        nazwisko,
+        imie,
+        pesel,
+        dataUrodzenia,
+        miejsceUrodzenia,
+        plec,
+        telefon,
+        mail,
+        adres,
+        czarnaLista,
+        projekt,
+      });
+    console.log("dodano");
+  };
 
   return (
     <form className={classes.container} noValidate autoComplete="off">

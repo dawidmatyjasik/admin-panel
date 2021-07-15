@@ -4,12 +4,9 @@ import React from "react";
 
 const data = {
   projects: ["Projekt komercyjny", "Ćwiczenie integracyjne", "Zadanie domowe"],
-  training: [
-    "Szkolenie indywidualne",
-    "Ćwiczenie grupowe",
-    "Trening integracyjny",
-  ],
-  group: ["Juniorzy", "Seniorzy", "Emeryci", "Doświadczeni"],
+  place: ["Szkoła", "Szpital", "Urząd"],
+  city: ["Warsaw", "Kraków", "Gdańsk", "Osiek"],
+  street: ["Kulturowa", "Plebańska", "Ogrodowa", "Zamkowa"],
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -42,7 +39,7 @@ const AutoComplete = () => {
         )}
       />
       <Autocomplete
-        options={data.training}
+        options={data.place}
         style={{ width: "100%" }}
         renderInput={(params) => (
           <TextField
@@ -54,12 +51,24 @@ const AutoComplete = () => {
         )}
       />
       <Autocomplete
-        options={data.group}
+        options={data.city}
         style={{ width: "100%" }}
         renderInput={(params) => (
           <TextField
             {...params}
             label="Miasto"
+            variant="outlined"
+            className={classes.input}
+          />
+        )}
+      />
+      <Autocomplete
+        options={data.street}
+        style={{ width: "100%" }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Ulica"
             variant="outlined"
             className={classes.input}
           />

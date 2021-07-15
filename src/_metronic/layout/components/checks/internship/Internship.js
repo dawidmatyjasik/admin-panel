@@ -28,19 +28,110 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = {
-  control: [
-    "Jacek Nowak",
-    "Andrzej Brońka",
-    "Zbigniew Wodecki",
-    "Krzysztof Liszka",
-  ],
-};
-
 const Internship = () => {
+  const classes = useStyles();
   return (
     <Form>
       <AutoComplete />
+      <FormLabel style={{ alignItems: "center" }}>
+        Okres
+        <FormDateContainer>
+          <FromDateWrapper>
+            <FormSpan>od:</FormSpan>
+            <FormInput type="date"></FormInput>
+          </FromDateWrapper>
+          <FromDateWrapper>
+            <FormSpan>do:</FormSpan>
+            <FormInput type="date"></FormInput>
+          </FromDateWrapper>
+        </FormDateContainer>
+      </FormLabel>
+      <FormLabel>
+        Wymaga ponownej kontroli:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormHeader>Plan kontroli stażu:</FormHeader>
+      <FormLabel>
+        Data planowanej kontroli:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Dzień tygodnia:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Osoba kontrolująca
+        <FormSelect>
+          <FormOption>Adam Walczak</FormOption>
+          <FormOption>Wojtek Sala</FormOption>
+          <FormOption>Janusz Hillman</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormHeader>Kontrola:</FormHeader>
+      <FormLabel>
+        Obecny opiekun stażu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko opiekuna:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Imię opiekuna:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Czy stażysta był obecny w trakcie kontroli:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Wypełniona i podpisana lista obecności:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Plakat projektowy w widocznym miejscu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Ankieta z kontroli stażu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Wynik ankiety:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Czy wymagana ponowna kontrola:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Uwagi:
+        <FormInput></FormInput>
+      </FormLabel>
+      <Button type="submit" variant="outlined" className={classes.button}>
+        Zaplanuj ponowną kontrolę
+      </Button>
     </Form>
   );
 };

@@ -12,7 +12,7 @@ import { useState } from "react";
 export const EditPage = () => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Mój profil");
-  const [users, setUsers] = useState({});
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) =>
@@ -25,12 +25,13 @@ export const EditPage = () => {
       )
     );
   }, []);
+
   return (
     <>
       <Nav />
       <Switch>
         <ContentRoute path="/edytuj/dane-osobowe">
-          <Personal osobowe={users[0]?.data?.osobowe} id={users[0]?.id} />
+          <Personal osobowe={users[0]?.data} id={users[0]?.id} />
         </ContentRoute>
         {
           <Redirect

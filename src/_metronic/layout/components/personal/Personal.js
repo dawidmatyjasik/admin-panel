@@ -75,12 +75,10 @@ export default function Personal({ osobowe, id }) {
   const [czarnaLista, setCzarnaLista] = useState(false);
   const [projekt, setProjekt] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     db.collection("users")
-      .doc(id)
-      .collection("osobowe")
-      .doc("dane")
+      .doc("osobowe")
       .update({
         nazwisko,
         imie,
@@ -96,6 +94,22 @@ export default function Personal({ osobowe, id }) {
       });
     console.log("dodano");
   };
+
+  useEffect(() => {
+    if (osobowe) {
+      setNazwisko(osobowe.nazwisko);
+      setImie(osobowe.imie);
+      setPesel(osobowe.pesel);
+      setDataUrodzenia(osobowe.dataUrodzenia);
+      setMiejsceUrodzenia(osobowe.miejsceUrodzenia);
+      setPlec(osobowe.plec);
+      setTelefon(osobowe.telefon);
+      setMail(osobowe.mail);
+      setCzarnaLista(osobowe.czarnaLista);
+      setProjekt(osobowe.projekt);
+    }
+  }, [osobowe]);
+  console.log(czarnaLista);
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
@@ -162,12 +176,12 @@ export default function Personal({ osobowe, id }) {
           className={classes.group}
         >
           <FormControlLabel
-            value="female"
+            value="Kobieta"
             control={<Radio />}
             label="Kobieta"
           />
           <FormControlLabel
-            value="male"
+            value="Mężczyzna"
             control={<Radio />}
             label="Mężczyzna"
           />
@@ -204,8 +218,8 @@ export default function Personal({ osobowe, id }) {
         label="Czarna lista"
         labelPlacement="start"
         className={classes.switch}
-        value={czarnaLista}
-        onChange={(e) => setCzarnaLista(!czarnaLista)}
+        onChange={(e) => setCzarnaLista(e.target.checked)}
+        checked={czarnaLista}
       />
       <TextField
         id="project"

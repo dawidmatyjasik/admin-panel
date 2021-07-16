@@ -61,7 +61,7 @@ const project = [
   },
 ];
 
-export default function Personal({ osobowe, id }) {
+export default function Personal() {
   const classes = useStyles();
   const [nazwisko, setNazwisko] = useState("");
   const [imie, setImie] = useState("");
@@ -75,11 +75,66 @@ export default function Personal({ osobowe, id }) {
   const [czarnaLista, setCzarnaLista] = useState(false);
   const [projekt, setProjekt] = useState("");
 
+  const [users, setUsers] = useState([]);
+  const [osobowe, setOsobowe] = useState([]);
+
+  useEffect(() => {
+    db.collection("users").onSnapshot((snapshot) =>
+      setUsers(
+        snapshot.docs.map((doc) => ({
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []);
+  console.log(osobowe);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("osobowe")
+      .onSnapshot((snapshot) =>
+        setOsobowe(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
+  // console.log(users, "user");
+
+  /*   useEffect(() => {
+    db.collection("users").onSnapshot((snapshot) =>
+      setUsers(
+        snapshot.docs.map((doc) => ({
+          data: doc.data(),
+        }))
+      )
+    );
+  }, []); */
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    /*  db.collection("users").onSnapshot((snapshot) =>
+      setUsers(
+        snapshot.docs.map((doc) => ({
+          id: pesel,
+        }))
+      )
+    ); */
+    /*     db.collection("users").onSnapshot((snapshot) =>
+      setUsers(
+        snapshot.docs.map((doc) => ({
+          id: pesel,
+        }))
+      )
+    ); */
     db.collection("users")
+      .doc(`03262104439`)
+      .collection("osobowe")
       .doc("osobowe")
-      .update({
+      .set({
         nazwisko,
         imie,
         pesel,
@@ -97,31 +152,22 @@ export default function Personal({ osobowe, id }) {
 
   useEffect(() => {
     if (osobowe) {
-      setNazwisko(osobowe.nazwisko);
-      setImie(osobowe.imie);
-      setPesel(osobowe.pesel);
-      setDataUrodzenia(osobowe.dataUrodzenia);
-      setMiejsceUrodzenia(osobowe.miejsceUrodzenia);
-      setPlec(osobowe.plec);
-      setTelefon(osobowe.telefon);
-      setMail(osobowe.mail);
-      setCzarnaLista(osobowe.czarnaLista);
-      setProjekt(osobowe.projekt);
+      setImie(osobowe[0]?.data?.imie || "");
+      setNazwisko(osobowe[0]?.data?.nazwisko || "");
+      setPesel(osobowe[0]?.data?.pesel || "");
+      setDataUrodzenia(osobowe[0]?.data?.dataUrodzenia || "");
+      setMiejsceUrodzenia(osobowe[0]?.data?.miejsceUrodzenia || "");
+      setPlec(osobowe[0]?.data?.plec || "");
+      setTelefon(osobowe[0]?.data?.telefon || "");
+      setMail(osobowe[0]?.data?.mail || "");
+      setAdres(osobowe[0]?.data?.adres || "");
+      setCzarnaLista(osobowe[0]?.data?.czarnaLista || false);
+      setProjekt(osobowe[0]?.data?.projekt || "");
     }
   }, [osobowe]);
-  console.log(czarnaLista);
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
-      <TextField
-        required
-        id="surname"
-        label="Nazwisko"
-        className={classes.textField}
-        margin="normal"
-        value={nazwisko}
-        onChange={(e) => setNazwisko(e.target.value)}
-      />
       <TextField
         required
         id="name"
@@ -130,6 +176,15 @@ export default function Personal({ osobowe, id }) {
         margin="normal"
         value={imie}
         onChange={(e) => setImie(e.target.value)}
+      />
+      <TextField
+        required
+        id="surname"
+        label="Nazwisko"
+        className={classes.textField}
+        margin="normal"
+        value={nazwisko}
+        onChange={(e) => setNazwisko(e.target.value)}
       />
       <TextField
         required
@@ -162,18 +217,15 @@ export default function Personal({ osobowe, id }) {
         value={miejsceUrodzenia}
         onChange={(e) => setMiejsceUrodzenia(e.target.value)}
       />
-      <FormControl
-        component="fieldset"
-        className={classes.formControl}
-        required
-        value={plec}
-        onChange={(e) => setPlec(e.target.value)}
-      >
+      <FormControl component="fieldset" className={classes.formControl}>
         <FormLabel component="legend">Płeć</FormLabel>
         <RadioGroup
           aria-label="Gender"
           name="gender1"
           className={classes.group}
+          required
+          value={plec}
+          onChange={(e) => setPlec(e.target.value)}
         >
           <FormControlLabel
             value="Kobieta"

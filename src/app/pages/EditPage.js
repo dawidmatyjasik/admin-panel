@@ -12,9 +12,10 @@ import { useState } from "react";
 export const EditPage = () => {
   const suhbeader = useSubheader();
   suhbeader.setTitle("Mój profil");
-  const [users, setUsers] = useState([]);
+  /*   const [users, setUsers] = useState([]);
+  const [dane, setDane] = useState([]); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) =>
       // setUsers(snapshot.docs.map((doc) => doc.data()))
       setUsers(
@@ -24,14 +25,34 @@ export const EditPage = () => {
         }))
       )
     );
-  }, []);
-
+  }, []); */
+  /*   useEffect(() => {
+    db.collection("test")
+      .doc("1")
+      .collection("2")
+      .onSnapshot((snapshot) =>
+        setDane(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []); */
+  /*  useEffect(() => {
+    const ref = db.collection("test");
+    const snapshot = ref.get();
+    snapshot.forEach((doc) => {
+      setDane(doc.id, "=>", doc.data());
+    });
+  }, []); */
+  // console.log(dane);
   return (
     <>
       <Nav />
       <Switch>
         <ContentRoute path="/edytuj/dane-osobowe">
-          <Personal osobowe={users[0]?.data} id={users[0]?.id} />
+          <Personal />
         </ContentRoute>
         {
           <Redirect

@@ -11,7 +11,7 @@ const Checks = () => {
       <Nav />
       <Switch>
         <ContentRoute path="/edytuj/kontrola/szkolenia" component={Training} />
-        <ContentRoute path="/edytuj/kontrola/staz" component={Internship} />
+        <ContentRoute path="/edytuj/kontrola/stazu" component={Internship} />
       </Switch>
     </>
   );

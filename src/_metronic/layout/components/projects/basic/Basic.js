@@ -3,11 +3,11 @@ import { BasicContainer } from "../ProjectsElements";
 import List from "./List";
 import Inputs from "./Inputs";
 
-const Basic = () => {
+const Basic = ({ podstawowe }) => {
   return (
     <BasicContainer>
       <List />
-      <Inputs />
+      <Inputs podstawowe={podstawowe} />
     </BasicContainer>
   );
 };

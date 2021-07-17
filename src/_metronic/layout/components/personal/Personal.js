@@ -87,7 +87,6 @@ export default function Personal() {
       )
     );
   }, []);
-  console.log(osobowe);
 
   useEffect(() => {
     db.collection("users")

@@ -52,7 +52,6 @@ export function SubHeader() {
 
   // Do not remove this useEffect, need from update title/breadcrumbs outside (from the page)
   useEffect(() => {}, [subheader]);
-  console.log(now);
 
   return (
     <div

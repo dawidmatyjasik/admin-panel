@@ -15,6 +15,7 @@ import db from "../../../../firebase";
 const Projects = () => {
   const [users, setUsers] = useState([]);
   const [podstawowe, setPodstawowe] = useState([]);
+  const [doradztwo, setDoradztwo] = useState([]);
   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) =>
       setUsers(
@@ -38,6 +39,19 @@ const Projects = () => {
       );
   }, []);
 
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setDoradztwo(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
   return (
     <>
       <Nav />
@@ -45,10 +59,9 @@ const Projects = () => {
         <ContentRoute path="/edytuj/dane-projektowe/podstawowe">
           <Basic podstawowe={podstawowe} />
         </ContentRoute>
-        <ContentRoute
-          path="/edytuj/dane-projektowe/doradztwo"
-          component={Consulting}
-        />
+        <ContentRoute path="/edytuj/dane-projektowe/doradztwo">
+          <Consulting doradztwo={doradztwo} />
+        </ContentRoute>
         <ContentRoute
           path="/edytuj/dane-projektowe/szkolenie"
           component={Training}

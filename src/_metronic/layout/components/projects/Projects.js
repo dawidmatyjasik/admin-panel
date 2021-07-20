@@ -16,6 +16,11 @@ const Projects = () => {
   const [users, setUsers] = useState([]);
   const [podstawowe, setPodstawowe] = useState([]);
   const [doradztwo, setDoradztwo] = useState([]);
+  const [szkolenie, setSzkolenie] = useState([]);
+  const [posrednictwo, setPosrednictwo] = useState([]);
+  const [staz, setStaz] = useState([]);
+  const [zatrudnienie, setZatrudnienie] = useState([]);
+  const [udzial, setUdzial] = useState([]);
   useEffect(() => {
     db.collection("users").onSnapshot((snapshot) =>
       setUsers(
@@ -52,6 +57,71 @@ const Projects = () => {
       );
   }, []);
 
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setSzkolenie(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setPosrednictwo(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setStaz(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setZatrudnienie(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .onSnapshot((snapshot) =>
+        setUdzial(
+          snapshot.docs.map((doc) => ({
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
+
   return (
     <>
       <Nav />
@@ -62,26 +132,22 @@ const Projects = () => {
         <ContentRoute path="/edytuj/dane-projektowe/doradztwo">
           <Consulting doradztwo={doradztwo} />
         </ContentRoute>
-        <ContentRoute
-          path="/edytuj/dane-projektowe/szkolenie"
-          component={Training}
-        />
-        <ContentRoute
-          path="/edytuj/dane-projektowe/posrednictwo"
-          component={Mediation}
-        />
-        <ContentRoute
-          path="/edytuj/dane-projektowe/staz"
-          component={Internship}
-        />
-        <ContentRoute
-          path="/edytuj/dane-projektowe/zatrudnienie"
-          component={Employment}
-        />
-        <ContentRoute
-          path="/edytuj/dane-projektowe/udzial"
-          component={Termination}
-        />
+        <ContentRoute path="/edytuj/dane-projektowe/szkolenie">
+          <Training szkolenie={szkolenie} />
+        </ContentRoute>
+
+        <ContentRoute path="/edytuj/dane-projektowe/posrednictwo">
+          <Mediation posrednictwo={posrednictwo} />
+        </ContentRoute>
+        <ContentRoute path="/edytuj/dane-projektowe/staz">
+          <Internship staz={staz} />
+        </ContentRoute>
+        <ContentRoute path="/edytuj/dane-projektowe/zatrudnienie">
+          <Employment zatrudnienie={zatrudnienie} />
+        </ContentRoute>
+        <ContentRoute path="/edytuj/dane-projektowe/udzial">
+          <Termination udzial={udzial} />
+        </ContentRoute>
       </Switch>
     </>
   );

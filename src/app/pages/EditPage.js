@@ -66,7 +66,7 @@ export const EditPage = () => {
           <Redirect
             exact
             from="/edytuj/kontrola"
-            to="/edytuj/kontrola/szkolenia"
+            to="/edytuj/kontrola/szkolenie"
           />
         }
         <ContentRoute path="/edytuj/kontrola" component={Checks} />

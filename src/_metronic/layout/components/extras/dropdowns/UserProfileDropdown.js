@@ -21,7 +21,7 @@ export function UserProfileDropdown() {
   }, [uiService]);
 
   return (
-    <Dropdown drop="down" alignRight>
+    /*  <Dropdown drop="down" alignRight>
       <Dropdown.Toggle
         as={DropdownTopbarItemToggler}
         id="dropdown-toggle-user-profile"
@@ -46,7 +46,6 @@ export function UserProfileDropdown() {
       </Dropdown.Toggle>
       <Dropdown.Menu className="p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
         <>
-          {/** ClassName should be 'dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl' */}
           {layoutProps.light && (
             <>
               <div className="d-flex align-items-center p-8 rounded-top">
@@ -77,7 +76,7 @@ export function UserProfileDropdown() {
                 <span className="symbol-label text-success font-weight-bold font-size-h4">
                   {user.firstname[0]}
                 </span>
-                {/*<img alt="Pic" className="hidden" src={user.pic} />*/}
+                
               </div>
               <div className="text-white m-0 flex-grow-1 mr-3 font-size-h5">
                 {user.firstname} {user.lastname}
@@ -159,6 +158,11 @@ export function UserProfileDropdown() {
           </div>
         </div>
       </Dropdown.Menu>
-    </Dropdown>
+    </Dropdown> */
+    <div className="navi-footer  px-8 py-5">
+      <Link to="/logout" className="btn btn-light-primary font-weight-bold">
+        Wyloguj się
+      </Link>
+    </div>
   );
 }

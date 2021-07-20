@@ -52,6 +52,7 @@
         "clsx": "1.1.0",
         "cp-cli": "2.0.0",
         "css-mediaquery": "0.1.2",
+        "date-and-time": "^1.0.1",
         "date-fns": "2.8.1",
         "downshift": "3.4.2",
         "fg-loadcss": "2.1.0",

@@ -211,7 +211,7 @@ export function AsideMenuList({ layoutProps }) {
                 )}`}
                 aria-haspopup="true"
               >
-                <NavLink className="menu-link" to="/edytuj/kontrola/szkolenia">
+                <NavLink className="menu-link" to="/edytuj/kontrola/szkolenie">
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
                   </i>
@@ -224,7 +224,7 @@ export function AsideMenuList({ layoutProps }) {
                 )}`}
                 aria-haspopup="true"
               >
-                <NavLink className="menu-link" to="/edytuj/kontrola/stazu">
+                <NavLink className="menu-link" to="/edytuj/kontrola/staz">
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
                   </i>

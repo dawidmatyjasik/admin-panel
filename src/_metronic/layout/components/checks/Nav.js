@@ -6,7 +6,7 @@ const Nav = () => {
     <List style={{ justifyContent: "space-evenly" }}>
       <ListElement>
         <NavLink
-          to="/edytuj/kontrola/szkolenia"
+          to="/edytuj/kontrola/szkolenie"
           activeStyle={{ fontWeight: "bold" }}
         >
           Kontrola szkolenia

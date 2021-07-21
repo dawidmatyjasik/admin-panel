@@ -35,91 +35,126 @@ const Projects = () => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setPodstawowe(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("podstawowe")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setPodstawowe(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setDoradztwo(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("doradztwo")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDoradztwo(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setSzkolenie(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("szkolenie")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSzkolenie(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setPosrednictwo(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("posrednictwo")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setPosrednictwo(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setStaz(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("staz")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setStaz(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setZatrudnienie(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("zatrudnienie")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setZatrudnienie(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   useEffect(() => {
     db.collection("users")
       .doc(`03262104439`)
       .collection("projektowe")
-      .onSnapshot((snapshot) =>
-        setUdzial(
-          snapshot.docs.map((doc) => ({
-            data: doc.data(),
-          }))
-        )
-      );
+      .doc("udzial")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setUdzial(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
   }, []);
 
   return (

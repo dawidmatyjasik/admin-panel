@@ -57,12 +57,12 @@ const Consulting = ({ doradztwo }) => {
 
   useEffect(() => {
     if (doradztwo) {
-      setWyksztalcenie(doradztwo[0]?.data?.wyksztalcenie || "");
-      setAdresDoradztwa(doradztwo[0]?.data?.adresDoradztwa || "");
-      setDataSpotkania(doradztwo[0]?.data?.dataSpotkania || "");
-      setGodzinySpotkaniaOd(doradztwo[0]?.data?.godzinySpotkaniaOd || "");
-      setGodzinySpotkaniaDo(doradztwo[0]?.data?.godzinySpotkaniaDo || "");
-      setCzasTrwania(doradztwo[0]?.data?.czasTrwania || "");
+      setWyksztalcenie(doradztwo.wyksztalcenie || "");
+      setAdresDoradztwa(doradztwo.adresDoradztwa || "");
+      setDataSpotkania(doradztwo.dataSpotkania || "");
+      setGodzinySpotkaniaOd(doradztwo.godzinySpotkaniaOd || "");
+      setGodzinySpotkaniaDo(doradztwo.godzinySpotkaniaDo || "");
+      setCzasTrwania(doradztwo.czasTrwania || "");
     }
   }, [doradztwo]);
 

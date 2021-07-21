@@ -79,35 +79,34 @@ export default function Inputs({ podstawowe }) {
       });
     console.log("dodano");
   };
+  console.log(podstawowe);
 
   useEffect(() => {
     if (podstawowe) {
-      setDataZgloszenia(podstawowe[0]?.data?.dataZgloszenia || "");
-      setDataPodpisania(podstawowe[0]?.data?.dataPodpisania || "");
-      setWiek(podstawowe[0]?.data?.wiek || "");
-      setWyksztalcenie(podstawowe[0]?.data?.wyksztalcenie || "");
-      setNiepelnosprawnosc(podstawowe[0]?.data?.niepelnosprawnosc || "");
-      setStatus(podstawowe[0]?.data?.status || "");
-      setBezrobocie(podstawowe[0]?.data?.bezrobocie || "");
-      setNumerKonta(podstawowe[0]?.data?.numerKonta || "");
-      setMniejszoscNarodowa(podstawowe[0]?.data?.mniejszoscNarodowa || "");
-      setBezdomna(podstawowe[0]?.data?.bezdomna || "");
-      setNiekorzystna(podstawowe[0]?.data?.niekorzystna || "");
-      setCt9(podstawowe[0]?.data?.ct9 || "");
-      setPozbawienieWolnosci(podstawowe[0]?.data?.pozbawienieWolnosci || "");
-      setRolnictwo(podstawowe[0]?.data?.rolnictwo || "");
-      setUbezpieczenie(podstawowe[0]?.data?.ubezpieczenie || "");
-      setNazwaFirmy(podstawowe[0]?.data?.nazwaFirmy || "");
-      setAdresFirmy(podstawowe[0]?.data?.adresFirmy || "");
-      setStanowisko(podstawowe[0]?.data?.stanowisko || "");
-      setKlasyfikacja(podstawowe[0]?.data?.klasyfikacja || "");
-      setZatrudnienieOd(podstawowe[0]?.data?.zatrudnienieOd || "");
-      setZatrudnienieDo(podstawowe[0]?.data?.zatrudnienieDo || "");
-      setRodzajPrzedsiebiorstwa(
-        podstawowe[0]?.data?.rodzajPrzedsiebiorstwa || ""
-      );
-      setNip(podstawowe[0]?.data?.nip || "");
-      setInne(podstawowe[0]?.data?.inne || "");
+      setDataZgloszenia(podstawowe.dataZgloszenia || "");
+      setDataPodpisania(podstawowe.dataPodpisania || "");
+      setWiek(podstawowe.wiek || "");
+      setWyksztalcenie(podstawowe.wyksztalcenie || "");
+      setNiepelnosprawnosc(podstawowe.niepelnosprawnosc || "");
+      setStatus(podstawowe.status || "");
+      setBezrobocie(podstawowe.bezrobocie || "");
+      setNumerKonta(podstawowe.numerKonta || "");
+      setMniejszoscNarodowa(podstawowe.mniejszoscNarodowa || "");
+      setBezdomna(podstawowe.bezdomna || "");
+      setNiekorzystna(podstawowe.niekorzystna || "");
+      setCt9(podstawowe.ct9 || "");
+      setPozbawienieWolnosci(podstawowe.pozbawienieWolnosci || "");
+      setRolnictwo(podstawowe.rolnictwo || "");
+      setUbezpieczenie(podstawowe.ubezpieczenie || "");
+      setNazwaFirmy(podstawowe.nazwaFirmy || "");
+      setAdresFirmy(podstawowe.adresFirmy || "");
+      setStanowisko(podstawowe.stanowisko || "");
+      setKlasyfikacja(podstawowe.klasyfikacja || "");
+      setZatrudnienieOd(podstawowe.zatrudnienieOd || "");
+      setZatrudnienieDo(podstawowe.zatrudnienieDo || "");
+      setRodzajPrzedsiebiorstwa(podstawowe.rodzajPrzedsiebiorstwa || "");
+      setNip(podstawowe.nip || "");
+      setInne(podstawowe.inne || "");
     }
   }, [podstawowe]);
 

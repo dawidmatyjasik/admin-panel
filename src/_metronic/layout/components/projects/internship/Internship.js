@@ -91,6 +91,77 @@ const Internship = () => {
       });
   }, []);
 
+  const handleSubmitEmployer = (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("staz")
+      .set({
+        ubezbieczenieNnw,
+        dataPodpisaniaUmowy,
+        stazOd,
+        stazDo,
+        przedluzenieStazuDo,
+        medycynaPracy,
+        sanepid,
+        nazwaPracodawcy,
+        kodPocztowyPracodawcy,
+        miastoPracodawcy,
+        ulicaPracodawcy,
+        numerPracodawcy,
+        kodPocztowyStazu,
+        miastoStazu,
+        ulicaStazu,
+        numerStazu,
+        nipStazu,
+        stanowiskoStazu,
+        emailOpiekuna,
+        telefonOpiekuna,
+        wymiarGodzinPracyOpiekuna,
+        godzinyStazuOd,
+        godzinyStazuDo,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmitHoliday = (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("staz")
+      .set({
+        dniUrlopu,
+        pozostaleDniUrlopu,
+        urlopOd,
+        urlopDo,
+        wybraneDniUrlopu,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmitScholarship = (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("staz")
+      .set({
+        zgloszenieZus,
+        wygloszenieZus,
+        stypendiumOd,
+        stypendiumDo,
+        dniPrzepracowane,
+        dniWyliczeniaZus,
+        wyplaconoStypendium,
+        uwagi,
+      });
+    console.log("dodano");
+  };
+
+  /* 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     db.collection("users")
@@ -137,7 +208,7 @@ const Internship = () => {
       });
     console.log("dodano");
   };
-
+ */
   useEffect(() => {
     if (staz) {
       setUbezbieczenieNnw(staz.ubezbieczenieNnw || "");
@@ -396,7 +467,7 @@ const Internship = () => {
         <FormFlexContainer>
           <Button
             variant="outlined"
-            onClick={handleSubmit}
+            onClick={handleSubmitHoliday}
             className={classes.button}
           >
             Dodaj pracodawcę
@@ -455,7 +526,7 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <Button
-          onClick={handleSubmit}
+          onClick={handleSubmitHoliday}
           type="submit"
           variant="outlined"
           className={classes.button}
@@ -537,7 +608,7 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <Button
-          onClick={handleSubmit}
+          onClick={handleSubmitScholarship}
           variant="outlined"
           className={classes.button}
         >

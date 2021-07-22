@@ -255,8 +255,8 @@ const Employment = () => {
       <FormLabel>
         Nazwa firmy:
         <FormInput
-          value={wymiarEtatu}
-          onChange={(e) => setWymiarEtatu(e.target.value)}
+          value={nazwaFirmy}
+          onChange={(e) => setNazwaFirmy(e.target.value)}
         ></FormInput>
       </FormLabel>
       <FormLabel>

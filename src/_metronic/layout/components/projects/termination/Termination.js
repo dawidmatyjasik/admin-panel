@@ -24,7 +24,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Termination = () => {
   const [udzial, setUdzial] = useState([]);
-  const [finish, setFinish] = useState("Nie");
+  const [dataZakonczeniaUdzialu, setDataZakonczeniaUdzialu] = useState("");
+  const [zakonczylZgonieZeSciezka, setZakonczylZgonieZeSciezka] = useState(
+    "Tak"
+  );
+  const [powodNieukonczenia, setPowodNieukonczenia] = useState("");
+  const [dokumentPotwierdzajacy, setDokumentPotwierdzajacy] = useState("");
+  const [dataDokumentu, setDataDokumentu] = useState("");
   const classes = useStyles();
 
   useEffect(() => {
@@ -45,24 +51,60 @@ const Termination = () => {
       });
   }, []);
 
+  useEffect(() => {
+    if (udzial) {
+      setDataZakonczeniaUdzialu(udzial.dataZakonczeniaUdzialu || "");
+      setZakonczylZgonieZeSciezka(udzial.zakonczylZgonieZeSciezka || "");
+      setPowodNieukonczenia(udzial.powodNieukonczenia || "");
+      setDokumentPotwierdzajacy(udzial.dokumentPotwierdzajacy || "");
+      setDataDokumentu(udzial.dataDokumentu || "");
+    }
+  }, [udzial]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("udzial")
+      .set({
+        dataZakonczeniaUdzialu,
+        zakonczylZgonieZeSciezka,
+        powodNieukonczenia,
+        dokumentPotwierdzajacy,
+        dataDokumentu,
+      });
+    console.log("dodano");
+  };
+
   return (
     <Form>
       <FormLabel>
         Data zakończenia udziału w projekcie:
-        <FormInput type="date"></FormInput>
+        <FormInput
+          value={dataZakonczeniaUdzialu}
+          onChange={(e) => setDataZakonczeniaUdzialu(e.target.value)}
+          type="date"
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Czy UP zakończył zgodnie ze ścieżką:
-        <FormSelect value={finish} onChange={(e) => setFinish(e.target.value)}>
+        <FormSelect
+          value={zakonczylZgonieZeSciezka}
+          onChange={(e) => setZakonczylZgonieZeSciezka(e.target.value)}
+        >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
           <FormOption>Nie dotyczny</FormOption>
         </FormSelect>
       </FormLabel>
-      {finish === "Nie" ? (
+      {zakonczylZgonieZeSciezka === "Nie" ? (
         <FormLabel>
           Powód zakończenia niezgodnie ze ścieżką:
-          <FormSelect>
+          <FormSelect
+            value={powodNieukonczenia}
+            onChange={(e) => setPowodNieukonczenia(e.target.value)}
+          >
             <FormOption>Podjęcie zatrudnienia</FormOption>
             <FormOption>Rezygnacja UP</FormOption>
             <FormOption>
@@ -88,13 +130,25 @@ const Termination = () => {
       )}
       <FormLabel>
         Dokument potwierdzający zakończenie udziału w projekcie:
-        <FormInput></FormInput>
+        <FormInput
+          value={dokumentPotwierdzajacy}
+          onChange={(e) => setDokumentPotwierdzajacy(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Data dokumentu:
-        <FormInput type="date"></FormInput>
+        <FormInput
+          value={dataDokumentu}
+          onChange={(e) => setDataDokumentu(e.target.value)}
+          type="date"
+        ></FormInput>
       </FormLabel>
-      <Button type="submit" variant="outlined" className={classes.button}>
+      <Button
+        onClick={handleSubmit}
+        type="submit"
+        variant="outlined"
+        className={classes.button}
+      >
         Zakończ udział
       </Button>
     </Form>

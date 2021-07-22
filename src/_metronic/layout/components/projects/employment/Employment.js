@@ -16,36 +16,22 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    marginTop: "3%",
+    marginTop: "1%",
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
     "&:nth-child(1)": {
       marginRight: "2%",
     },
+    "@media (max-width: 1000px)": {
+      width: "30%",
+    },
+    "@media (max-width: 500px)": {
+      width: "35%",
+    },
   },
 }));
-
 const Employment = () => {
-  const [zatrudnienie, setZatrudnienie] = useState([]);
-
-  useEffect(() => {
-    db.collection("users")
-      .doc(`03262104439`)
-      .collection("projektowe")
-      .doc("zatrudnienie")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setZatrudnienie(doc.data());
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  }, []);
   const classes = useStyles();
   return (
     <Form>

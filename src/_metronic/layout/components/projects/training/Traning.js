@@ -165,6 +165,7 @@ const Traning = () => {
 
   return (
     <Form>
+      <FormHeader>Szkolenie:</FormHeader>
       <FormLabel>
         Nazwa szkolenia:
         <FormSelect

@@ -32,12 +32,105 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Employment = () => {
+  const [zatrudnienie, setZatrudnienie] = useState([]);
+  const [kontyunacjaZatrudnienia, setKontyunacjaZatrudnienia] = useState("");
+  const [zmianaFormyZatrudnienia, setZmianaFormyZatrudnienia] = useState("");
+  const [uwagi, setUwagi] = useState("");
+  const [dataOstatniejFormyWsparcia, setDataOstatniejFormyWsparcia] = useState(
+    ""
+  );
+  const [wskaznik4tygodni, setWskaznik4tygodni] = useState("");
+  const [wskaznik3miesiecy, setWskaznik3miesiecy] = useState("");
+  const [dataPodpisaniaUmowy, setDataPodpisaniaUmowy] = useState("");
+  const [czasTrwaniaOd, setCzasTrwaniaOd] = useState("");
+  const [czasTrwaniaDo, setCzasTrwaniaDo] = useState("");
+  const [rodzajUmowy, setRodzajUmowy] = useState("");
+  const [wymiarEtatu, setWymiarEtatu] = useState("");
+  const [umowaWskaznikowa, setUmowaWskaznikowa] = useState("");
+  const [nazwaFirmy, setNazwaFirmy] = useState("");
+  const [kodPocztowyFirmy, setKodPocztowyFirmy] = useState("");
+  const [miastoFirmy, setMiastoFirmy] = useState("");
+  const [ulicaFirmy, setUlicaFirmy] = useState("");
+  const [numerFirmy, setNumerFirmy] = useState("");
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("zatrudnienie")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setZatrudnienie(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (zatrudnienie) {
+      setKontyunacjaZatrudnienia(zatrudnienie.kontyunacjaZatrudnienia || "");
+      setZmianaFormyZatrudnienia(zatrudnienie.zmianaFormyZatrudnienia || "");
+      setUwagi(zatrudnienie.uwagi || "");
+      setDataOstatniejFormyWsparcia(
+        zatrudnienie.dataOstatniejFormyWsparcia || ""
+      );
+      setWskaznik4tygodni(zatrudnienie.wskaznik4tygodni || "");
+      setWskaznik3miesiecy(zatrudnienie.wskaznik3miesiecy || "");
+      setDataPodpisaniaUmowy(zatrudnienie.dataPodpisaniaUmowy || "");
+      setCzasTrwaniaOd(zatrudnienie.czasTrwaniaOd || "");
+      setCzasTrwaniaDo(zatrudnienie.czasTrwaniaDo || "");
+      setRodzajUmowy(zatrudnienie.rodzajUmowy || "");
+      setWymiarEtatu(zatrudnienie.wymiarEtatu || "");
+      setUmowaWskaznikowa(zatrudnienie.umowaWskaznikowa || "");
+      setNazwaFirmy(zatrudnienie.nazwaFirmy || "");
+      setKodPocztowyFirmy(zatrudnienie.kodPocztowyFirmy || "");
+      setMiastoFirmy(zatrudnienie.miastoFirmy || "");
+      setUlicaFirmy(zatrudnienie.ulicaFirmy || "");
+      setNumerFirmy(zatrudnienie.numerFirmy || "");
+    }
+  }, [zatrudnienie]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("zatrudnienie")
+      .set({
+        kontyunacjaZatrudnienia,
+        zmianaFormyZatrudnienia,
+        uwagi,
+        dataOstatniejFormyWsparcia,
+        wskaznik4tygodni,
+        wskaznik3miesiecy,
+        dataPodpisaniaUmowy,
+        czasTrwaniaOd,
+        czasTrwaniaDo,
+        rodzajUmowy,
+        wymiarEtatu,
+        umowaWskaznikowa,
+        nazwaFirmy,
+        kodPocztowyFirmy,
+        miastoFirmy,
+        ulicaFirmy,
+        numerFirmy,
+      });
+    console.log("dodano");
+  };
+
   const classes = useStyles();
   return (
     <Form>
       <FormLabel>
         Kontynuacja zatrudnienia u dotychczasowego pracodawcy:
-        <FormSelect>
+        <FormSelect
+          value={kontyunacjaZatrudnienia}
+          onChange={(e) => setKontyunacjaZatrudnienia(e.target.value)}
+        >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
           <FormOption>Nie dotyczny</FormOption>
@@ -45,7 +138,10 @@ const Employment = () => {
       </FormLabel>
       <FormLabel>
         Zmiana formy zatrudnienia:
-        <FormSelect>
+        <FormSelect
+          value={zmianaFormyZatrudnienia}
+          onChange={(e) => setZmianaFormyZatrudnienia(e.target.value)}
+        >
           <FormOption>Zwiększenie stawki (awans finansowy)</FormOption>
           <FormOption>Awans stanowiskowy</FormOption>
           <FormOption>
@@ -63,47 +159,75 @@ const Employment = () => {
       </FormLabel>
       <FormLabel>
         Uwagi:
-        <FormInput></FormInput>
+        <FormInput
+          value={uwagi}
+          onChange={(e) => setUwagi(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormHeader>Zatrudnienie:</FormHeader>
       <FormLabel>
         Data ostatniej formy wsparcia:
-        <FormInput type="date"></FormInput>
+        <FormInput
+          value={dataOstatniejFormyWsparcia}
+          onChange={(e) => setDataOstatniejFormyWsparcia(e.target.value)}
+          type="date"
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Wskaźnik do 4 tygodni
-        <FormSelect>
+        <FormSelect
+          value={wskaznik4tygodni}
+          onChange={(e) => setWskaznik4tygodni(e.target.value)}
+        >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
         Wskaźnik do 3 miesięcy:
-        <FormSelect>
+        <FormSelect
+          value={wskaznik3miesiecy}
+          onChange={(e) => setWskaznik3miesiecy(e.target.value)}
+        >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
         Data podpisania umowy:
-        <FormInput type="date"></FormInput>
+        <FormInput
+          value={dataPodpisaniaUmowy}
+          onChange={(e) => setDataPodpisaniaUmowy(e.target.value)}
+          type="date"
+        ></FormInput>
       </FormLabel>
       <FormLabel style={{ alignItems: "center" }}>
         Czas trwania umowy:
         <FormDateContainer>
           <FromDateWrapper>
             <FormSpan>od:</FormSpan>
-            <FormInput type="date"></FormInput>
+            <FormInput
+              value={czasTrwaniaOd}
+              onChange={(e) => setCzasTrwaniaOd(e.target.value)}
+              type="date"
+            ></FormInput>
           </FromDateWrapper>
           <FromDateWrapper>
             <FormSpan>do:</FormSpan>
-            <FormInput type="date"></FormInput>
+            <FormInput
+              value={czasTrwaniaDo}
+              onChange={(e) => setCzasTrwaniaDo(e.target.value)}
+              type="date"
+            ></FormInput>
           </FromDateWrapper>
         </FormDateContainer>
       </FormLabel>
       <FormLabel>
         Rodzaj umowy:
-        <FormSelect>
+        <FormSelect
+          value={rodzajUmowy}
+          onChange={(e) => setRodzajUmowy(e.target.value)}
+        >
           <FormOption>O pracę</FormOption>
           <FormOption>Umowa zlecenie</FormOption>
           <FormOption>Omowa o dzieło</FormOption>
@@ -112,11 +236,17 @@ const Employment = () => {
       </FormLabel>
       <FormLabel>
         Wymiar etatu:
-        <FormInput></FormInput>
+        <FormInput
+          value={wymiarEtatu}
+          onChange={(e) => setWymiarEtatu(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Umowa wskaźnikowa:
-        <FormSelect>
+        <FormSelect
+          value={umowaWskaznikowa}
+          onChange={(e) => setUmowaWskaznikowa(e.target.value)}
+        >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
         </FormSelect>
@@ -124,25 +254,47 @@ const Employment = () => {
       <FormHeader>Pracodawca:</FormHeader>
       <FormLabel>
         Nazwa firmy:
-        <FormInput></FormInput>
+        <FormInput
+          value={wymiarEtatu}
+          onChange={(e) => setWymiarEtatu(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Kod pocztowy:
-        <FormInput type="tel"></FormInput>
+        <FormInput
+          value={kodPocztowyFirmy}
+          onChange={(e) => setKodPocztowyFirmy(e.target.value)}
+          type="tel"
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Miasto:
-        <FormInput></FormInput>
+        <FormInput
+          value={miastoFirmy}
+          onChange={(e) => setMiastoFirmy(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Ulica:
-        <FormInput></FormInput>
+        <FormInput
+          value={ulicaFirmy}
+          onChange={(e) => setUlicaFirmy(e.target.value)}
+        ></FormInput>
       </FormLabel>
       <FormLabel>
         Numer:
-        <FormInput type="number"></FormInput>
+        <FormInput
+          value={numerFirmy}
+          onChange={(e) => setNumerFirmy(e.target.value)}
+          type="number"
+        ></FormInput>
       </FormLabel>
-      <Button type="submit" variant="outlined" className={classes.button}>
+      <Button
+        type="submit"
+        variant="outlined"
+        className={classes.button}
+        onClick={handleSubmit}
+      >
         Dodaj pracodawcę
       </Button>
     </Form>

@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
 
 const data = { consulting: ["Doradca 1", "Doradca 2", "Doradca 3"] };
 
-const Consulting = ({ doradztwo }) => {
+const Consulting = () => {
+  const [doradztwo, setDoradztwo] = useState([]);
   const [wyksztalcenie, setWyksztalcenie] = useState("");
   const [adresDoradztwa, setAdresDoradztwa] = useState("");
   const [dataSpotkania, setDataSpotkania] = useState("");
@@ -37,6 +38,24 @@ const Consulting = ({ doradztwo }) => {
   const [godzinySpotkaniaDo, setGodzinySpotkaniaDo] = useState("");
   const [czasTrwania, setCzasTrwania] = useState("");
   const classes = useStyles();
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("doradztwo")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDoradztwo(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

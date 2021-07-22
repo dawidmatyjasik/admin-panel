@@ -1,5 +1,6 @@
 import { Button, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import db from "../../../../../firebase";
 import {
   Form,
   FormDateContainer,
@@ -27,6 +28,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Internship = () => {
+  const [staz, setStaz] = useState([]);
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("staz")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setStaz(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
   const classes = useStyles();
   return (
     <Form>

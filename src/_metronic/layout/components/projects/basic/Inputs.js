@@ -44,7 +44,6 @@ export default function Inputs({ podstawowe }) {
   const [rodzajPrzedsiebiorstwa, setRodzajPrzedsiebiorstwa] = useState("");
   const [nip, setNip] = useState("");
   const [inne, setInne] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     db.collection("users")
@@ -79,7 +78,6 @@ export default function Inputs({ podstawowe }) {
       });
     console.log("dodano");
   };
-  console.log(podstawowe);
 
   useEffect(() => {
     if (podstawowe) {

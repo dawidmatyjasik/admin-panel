@@ -29,7 +29,8 @@ const data = {
   training: ["Szkolenie 1", "Szkoelnie 2", "Szkoelnie 3"],
   id: ["Numer 1", "Numer 2", "Numer 3"],
 };
-const Traning = ({ szkolenie }) => {
+const Traning = () => {
+  const [szkolenie, setSzkolenie] = useState([]);
   const [nazwaSzkolenia, setnNazwaSzkolenia] = useState("");
   const [numerGrupy, setNumerGrupy] = useState("");
   const [terminSzkoleniaOd, setTerminSzkoleniaOd] = useState("");
@@ -63,6 +64,24 @@ const Traning = ({ szkolenie }) => {
   const [zwrotKosztowOpiekiOd, setZwrotKosztowOpiekiOd] = useState("");
   const [zwrotKosztowOpiekiDo, setZwrotKosztowOpiekiDo] = useState("");
   const classes = useStyles();
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("szkolenie")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSzkolenie(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

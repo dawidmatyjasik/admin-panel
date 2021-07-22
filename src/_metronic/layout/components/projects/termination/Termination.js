@@ -1,6 +1,7 @@
 import { Button, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import db from "../../../../../firebase";
 import {
   Form,
   FormInput,
@@ -22,8 +23,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Termination = () => {
+  const [udzial, setUdzial] = useState([]);
   const [finish, setFinish] = useState("Nie");
   const classes = useStyles();
+
+  useEffect(() => {
+    db.collection("users")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("udzial")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setUdzial(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
 
   return (
     <Form>

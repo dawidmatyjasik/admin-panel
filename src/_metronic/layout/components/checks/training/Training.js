@@ -1,4 +1,5 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, TextField } from "@material-ui/core";
+import { Autocomplete } from "@material-ui/lab";
 import React from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
@@ -10,8 +11,6 @@ import {
   FormOption,
   FormSelect,
 } from "../../projects/ProjectsElements";
-import AutoComplete from "./AutoComplete";
-
 const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: "3%",
@@ -20,6 +19,16 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid rgba(0,0,0,.8)",
     "&:nth-child(1)": {
       marginRight: "2%",
+    },
+  },
+  input: {
+    width: "calc(30% + 24.5% + 10px)",
+    marginBottom: "1%",
+    "@media (max-width: 1000px)": {
+      width: "calc(30% + 38.5% + 10px)",
+    },
+    "@media (max-width: 500px)": {
+      width: "calc(30% + 52.5% + 10px)",
     },
   },
 }));
@@ -31,6 +40,13 @@ const data = {
     "Zbigniew Wodecki",
     "Krzysztof Liszka",
   ],
+  projects: ["Projekt komercyjny", "Ćwiczenie integracyjne", "Zadanie domowe"],
+  training: [
+    "Szkolenie indywidualne",
+    "Ćwiczenie grupowe",
+    "Trening integracyjny",
+  ],
+  group: ["Juniorzy", "Seniorzy", "Emeryci", "Doświadczeni"],
 };
 
 const Training = () => {
@@ -39,7 +55,42 @@ const Training = () => {
   const classes = useStyles();
   return (
     <Form>
-      <AutoComplete />
+      <Autocomplete
+        options={data.projects}
+        style={{ width: "100%" }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Projekt"
+            variant="outlined"
+            className={classes.input}
+          />
+        )}
+      />
+      <Autocomplete
+        options={data.training}
+        style={{ width: "100%" }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Szkolenie"
+            variant="outlined"
+            className={classes.input}
+          />
+        )}
+      />
+      <Autocomplete
+        options={data.group}
+        style={{ width: "100%" }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Grupa"
+            variant="outlined"
+            className={classes.input}
+          />
+        )}
+      />
       <FormLabel>
         Data szkolenia:
         <FormInput type="date"></FormInput>

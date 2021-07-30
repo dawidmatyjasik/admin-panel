@@ -11,12 +11,18 @@ export default function BasePage() {
       <Switch>
         {
           /* Redirect from root URL to /dashboard. */
-          <Redirect exact from="/" to="/dashboard" />
+          <Redirect exact from="/" to="/panel" />
         }
-        <ContentRoute path="/dashboard" component={DashboardPage} />
+        <ContentRoute path="/panel" component={DashboardPage} exact />
         <ContentRoute path="/builder" component={BuilderPage} />
-        {<Redirect exact from="/edytuj" to="/edytuj/dane-osobowe" />}
-        <ContentRoute path="/edytuj" component={EditPage} />
+        {
+          <Redirect
+            exact
+            from="/panel/edytuj"
+            to="/panel/edytuj/dane-osobowe"
+          />
+        }
+        <ContentRoute path="/panel/edytuj" component={EditPage} />
       </Switch>
     </Suspense>
   );

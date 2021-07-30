@@ -10,8 +10,14 @@ const Checks = () => {
     <>
       <Nav />
       <Switch>
-        <ContentRoute path="/edytuj/kontrola/szkolenie" component={Training} />
-        <ContentRoute path="/edytuj/kontrola/staz" component={Internship} />
+        <ContentRoute
+          path="/panel/edytuj/kontrola/szkolenie"
+          component={Training}
+        />
+        <ContentRoute
+          path="/panel/edytuj/kontrola/staz"
+          component={Internship}
+        />
       </Switch>
     </>
   );

@@ -34,7 +34,7 @@ export default function MediaCard() {
   return (
     <div className={classes.container}>
       <CardActionArea className={classes.card}>
-        <Link to="/edytuj/dane-osobowe">
+        <Link to="/panel/edytuj/dane-osobowe">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               WPROWADŹ DANE UŻYTKOWNIKA
@@ -49,7 +49,7 @@ export default function MediaCard() {
       </CardActionArea>
 
       <CardActionArea className={classes.card}>
-        <Link to="/dodaj/projekt">
+        <Link to="/panel/dodaj/projekt">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               PROJEKTY
@@ -64,7 +64,7 @@ export default function MediaCard() {
       </CardActionArea>
 
       <CardActionArea className={classes.card}>
-        <Link to="/kadra">
+        <Link to="/panel/kadra">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               KADRA
@@ -78,7 +78,7 @@ export default function MediaCard() {
         </Link>
       </CardActionArea>
       <CardActionArea className={classes.card}>
-        <Link to="/wyplaty">
+        <Link to="/panel/wyplaty">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               WYPŁATY DLA UP

@@ -29,26 +29,26 @@ const Projects = () => {
     <>
       <Nav />
       <Switch>
-        <ContentRoute path="/edytuj/dane-projektowe/podstawowe">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/podstawowe">
           <Basic />
         </ContentRoute>
-        <ContentRoute path="/edytuj/dane-projektowe/doradztwo">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/doradztwo">
           <Consulting />
         </ContentRoute>
-        <ContentRoute path="/edytuj/dane-projektowe/szkolenie">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/szkolenie">
           <Training />
         </ContentRoute>
 
-        <ContentRoute path="/edytuj/dane-projektowe/posrednictwo">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/posrednictwo">
           <Mediation />
         </ContentRoute>
-        <ContentRoute path="/edytuj/dane-projektowe/staz">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/staz">
           <Internship />
         </ContentRoute>
-        <ContentRoute path="/edytuj/dane-projektowe/zatrudnienie">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/zatrudnienie">
           <Employment />
         </ContentRoute>
-        <ContentRoute path="/edytuj/dane-projektowe/udzial">
+        <ContentRoute path="/panel/edytuj/dane-projektowe/udzial">
           <Termination />
         </ContentRoute>
       </Switch>

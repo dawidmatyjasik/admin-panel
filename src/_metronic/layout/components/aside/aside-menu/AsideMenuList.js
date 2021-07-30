@@ -22,10 +22,10 @@ export function AsideMenuList({ layoutProps }) {
           <i className="menu-icon flaticon-more-v2"></i>
         </li>
         <li
-          className={`menu-item ${getMenuItemActive("/edytuj")}`}
+          className={`menu-item ${getMenuItemActive("/panel/edytuj")}`}
           aria-haspopup="true"
         >
-          <NavLink className="menu-link" to="/edytuj">
+          <NavLink className="menu-link" to="/panel/edytuj">
             <span className="svg-icon menu-icon">
               <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Edit.svg")} />
             </span>
@@ -33,10 +33,12 @@ export function AsideMenuList({ layoutProps }) {
           </NavLink>
         </li>
         <li
-          className={`menu-item ${getMenuItemActive("/edytuj/dane-osobowe")}`}
+          className={`menu-item ${getMenuItemActive(
+            "/panel/edytuj/dane-osobowe"
+          )}`}
           aria-haspopup="true"
         >
-          <NavLink className="menu-link" to="/edytuj">
+          <NavLink className="menu-link" to="/panel/edytuj">
             <span className="svg-icon menu-icon">
               <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Cap-2.svg")} />
             </span>
@@ -51,7 +53,7 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
           data-menu-toggle="hover"
         >
-          <NavLink className="menu-link menu-toggle" to="/edytuj">
+          <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
             <span className="svg-icon menu-icon">
               <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
             </span>
@@ -68,13 +70,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/podstawowe"
+                  "/panel/edytuj/dane-projektowe/podstawowe"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/podstawowe"
+                  to="/panel/edytuj/dane-projektowe/podstawowe"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -84,13 +86,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/doradztwo"
+                  "/panel/edytuj/dane-projektowe/doradztwo"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/doradztwo"
+                  to="/panel/edytuj/dane-projektowe/doradztwo"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -100,13 +102,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/szkolenie"
+                  "/panel/edytuj/dane-projektowe/szkolenie"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/szkolenie"
+                  to="/panel/edytuj/dane-projektowe/szkolenie"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -116,13 +118,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/posrednictwo"
+                  "/panel/edytuj/dane-projektowe/posrednictwo"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/posrednictwo"
+                  to="/panel/edytuj/dane-projektowe/posrednictwo"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -132,13 +134,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/staz"
+                  "/panel/edytuj/dane-projektowe/staz"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/staz"
+                  to="/panel/edytuj/dane-projektowe/staz"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -148,13 +150,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/zatrudnienie"
+                  "/panel/edytuj/dane-projektowe/zatrudnienie"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/zatrudnienie"
+                  to="/panel/edytuj/dane-projektowe/zatrudnienie"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -164,13 +166,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/dane-projektowe/udzial"
+                  "/panel/edytuj/dane-projektowe/udzial"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/edytuj/dane-projektowe/udzial"
+                  to="/panel/edytuj/dane-projektowe/udzial"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -189,7 +191,7 @@ export function AsideMenuList({ layoutProps }) {
           aria-haspopup="true"
           data-menu-toggle="hover"
         >
-          <NavLink className="menu-link menu-toggle" to="/edytuj">
+          <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
             <span className="svg-icon menu-icon">
               <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Sketch.svg")} />
             </span>
@@ -206,11 +208,14 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/kontrola/szkolenia"
+                  "/panel/edytuj/kontrola/szkolenia"
                 )}`}
                 aria-haspopup="true"
               >
-                <NavLink className="menu-link" to="/edytuj/kontrola/szkolenie">
+                <NavLink
+                  className="menu-link"
+                  to="/panel/edytuj/kontrola/szkolenie"
+                >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
                   </i>
@@ -219,11 +224,11 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/edytuj/kontrola/szkolenia"
+                  "/panel/edytuj/kontrola/szkolenia"
                 )}`}
                 aria-haspopup="true"
               >
-                <NavLink className="menu-link" to="/edytuj/kontrola/staz">
+                <NavLink className="menu-link" to="/panel/edytuj/kontrola/staz">
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
                   </i>

@@ -6,7 +6,7 @@ const Nav = () => {
     <List>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/podstawowe"
+          to="/panel/edytuj/dane-projektowe/podstawowe"
           activeStyle={{ fontWeight: "bold" }}
         >
           Dane podstawowe
@@ -14,7 +14,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/doradztwo"
+          to="/panel/edytuj/dane-projektowe/doradztwo"
           activeStyle={{ fontWeight: "bold" }}
         >
           Doradztwo zawodowe
@@ -22,7 +22,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/szkolenie"
+          to="/panel/edytuj/dane-projektowe/szkolenie"
           activeStyle={{ fontWeight: "bold" }}
         >
           Szkolenie
@@ -30,7 +30,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/posrednictwo"
+          to="/panel/edytuj/dane-projektowe/posrednictwo"
           activeStyle={{ fontWeight: "bold" }}
         >
           Pośrednictwo pracy
@@ -38,7 +38,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/staz"
+          to="/panel/edytuj/dane-projektowe/staz"
           activeStyle={{ fontWeight: "bold" }}
         >
           Staż
@@ -46,7 +46,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/zatrudnienie"
+          to="/panel/edytuj/dane-projektowe/zatrudnienie"
           activeStyle={{ fontWeight: "bold" }}
         >
           Podjęcie zatrudnienia
@@ -54,7 +54,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe/udzial"
+          to="/panel/edytuj/dane-projektowe/udzial"
           activeStyle={{ fontWeight: "bold" }}
         >
           Zakończenie udziału w projekcie

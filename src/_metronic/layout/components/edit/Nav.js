@@ -6,7 +6,7 @@ const Nav = () => {
     <List>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-osobowe"
+          to="/panel/edytuj/dane-osobowe"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Dane osobowe
@@ -14,7 +14,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/dane-projektowe"
+          to="/panel/edytuj/dane-projektowe"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Dane projektowe
@@ -22,7 +22,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/edytuj/kontrola"
+          to="/panel/edytuj/kontrola"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Kontrole

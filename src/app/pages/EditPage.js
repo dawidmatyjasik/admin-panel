@@ -51,25 +51,28 @@ export const EditPage = () => {
     <>
       <Nav />
       <Switch>
-        <ContentRoute path="/edytuj/dane-osobowe">
+        <ContentRoute path="/panel/edytuj/dane-osobowe">
           <Personal />
         </ContentRoute>
         {
           <Redirect
             exact
-            from="/edytuj/dane-projektowe"
-            to="/edytuj/dane-projektowe/podstawowe"
+            from="/panel/edytuj/dane-projektowe"
+            to="/panel/edytuj/dane-projektowe/podstawowe"
           />
         }
-        <ContentRoute path="/edytuj/dane-projektowe" component={Projects} />
+        <ContentRoute
+          path="/panel/edytuj/dane-projektowe"
+          component={Projects}
+        />
         {
           <Redirect
             exact
-            from="/edytuj/kontrola"
-            to="/edytuj/kontrola/szkolenie"
+            from="/panel/edytuj/kontrola"
+            to="/panel/edytuj/kontrola/szkolenie"
           />
         }
-        <ContentRoute path="/edytuj/kontrola" component={Checks} />
+        <ContentRoute path="/panel/edytuj/kontrola" component={Checks} />
       </Switch>
     </>
   );

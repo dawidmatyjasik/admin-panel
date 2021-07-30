@@ -39,17 +39,17 @@ export default function MediaCard() {
             <Typography gutterBottom variant="h5" component="h2">
               WPROWADŹ DANE UŻYTKOWNIKA
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              (przy wprowadzeniu danych - nr PESEL powininen wysokczyć
-              komunikat, że dana osoba już widnieje w projekcie i przekierować
-              do audycji danych)
-            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            ></Typography>
           </CardContent>
         </Link>
       </CardActionArea>
 
       <CardActionArea className={classes.card}>
-        <Link to="/edytuj/dane-projektowe">
+        <Link to="/dodaj/projekt">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               PROJEKTY
@@ -64,10 +64,10 @@ export default function MediaCard() {
       </CardActionArea>
 
       <CardActionArea className={classes.card}>
-        <Link to="/edytuj/dane-osobowe">
+        <Link to="/kadra">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              EDYTUJ DANE UCZESTNIKA
+              KADRA
             </Typography>
             <Typography
               variant="body2"

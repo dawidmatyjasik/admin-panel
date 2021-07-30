@@ -14,7 +14,6 @@ export function AsideMenuList({ layoutProps }) {
           "menu-item-active"} menu-item-open menu-item-not-hightlighted`
       : "";
   };
-
   return (
     <>
       <ul className={`menu-nav ${layoutProps.ulClasses}`}>

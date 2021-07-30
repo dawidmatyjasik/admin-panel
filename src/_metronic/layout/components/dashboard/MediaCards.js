@@ -52,7 +52,7 @@ export default function MediaCard() {
         <Link to="/panel/dodaj/projekt">
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              PROJEKTY
+              DODAJ PROJEKT
             </Typography>
             <Typography
               variant="body2"

@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { List, ListElement } from "../projects/ProjectsElements";
+import { List, ListElement } from "../edit/NavElements";
 
 const Nav = () => {
   return (
@@ -8,7 +8,7 @@ const Nav = () => {
       <ListElement>
         <NavLink
           to="/panel/dodaj/projekt/dane-podstawowe"
-          activeStyle={{ fontWeight: "bold" }}
+          activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Dane podstawowe
         </NavLink>
@@ -16,7 +16,7 @@ const Nav = () => {
       <ListElement>
         <NavLink
           to="/panel/dodaj/projekt/wykonawcy"
-          activeStyle={{ fontWeight: "bold" }}
+          activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Wykonawcy usług
         </NavLink>

@@ -5,6 +5,7 @@ import { BuilderPage } from "./pages/BuilderPage";
 import { EditPage } from "./pages/EditPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import PayoutsPage from "./pages/PayoutsPage";
 
 export default function BasePage() {
   return (
@@ -29,6 +30,14 @@ export default function BasePage() {
           />
         }
         <ContentRoute path="/panel/dodaj/projekt" component={ProjectsPage} />
+        {
+          <Redirect
+            exact
+            from="/panel/wyplaty/"
+            to="/panel/wyplaty/szkolenie"
+          />
+        }
+        <ContentRoute path="/panel/wyplaty/" component={PayoutsPage} />
       </Switch>
     </Suspense>
   );

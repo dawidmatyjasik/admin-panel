@@ -7,18 +7,18 @@ const Nav = () => {
     <List style={{ justifyContent: "space-evenly" }}>
       <ListElement>
         <NavLink
-          to="/panel/dodaj/projekt/dane-podstawowe"
+          to="/panel/wyplaty/szkolenie"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
-          Dane podstawowe
+          Wypłaty za szkolenie
         </NavLink>
       </ListElement>
       <ListElement>
         <NavLink
-          to="/panel/dodaj/projekt/wykonawcy/doradztwo"
+          to="/panel/wyplaty/staz"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
-          Wykonawcy usług
+          Wypłaty za staż
         </NavLink>
       </ListElement>
     </List>

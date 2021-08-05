@@ -6,7 +6,7 @@ const NavInternship = () => {
     <List>
       <ListElement>
         <NavLink
-          to="/panel/wyplaty/staz/list-plac"
+          to="/panel/wyplaty/staz/lista-plac"
           activeStyle={{ fontWeight: "bold" }}
         >
           Lista płac

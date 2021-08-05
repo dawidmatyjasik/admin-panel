@@ -6,7 +6,7 @@ const NavTraining = () => {
     <List>
       <ListElement>
         <NavLink
-          to="/panel/wyplaty/szkolenie/list-plac"
+          to="/panel/wyplaty/szkolenie/lista-plac"
           activeStyle={{ fontWeight: "bold" }}
         >
           Lista płac

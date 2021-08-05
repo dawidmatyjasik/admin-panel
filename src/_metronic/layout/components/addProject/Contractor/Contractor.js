@@ -4,6 +4,7 @@ import { ContentRoute } from "../../content/ContentRoute";
 import Catering from "./catering/Catering";
 import Consulting from "./consulting/Consulting";
 import Nav from "./Nav";
+import Training from "./training/Training";
 const Contractor = () => {
   return (
     <>
@@ -16,7 +17,7 @@ const Contractor = () => {
           <Catering />
         </ContentRoute>
         <ContentRoute path="/panel/dodaj/projekt/wykonawcy/szkolenia">
-          <Consulting />
+          <Training />
         </ContentRoute>
       </Switch>
     </>

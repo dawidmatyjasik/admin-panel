@@ -1,9 +1,10 @@
 import React from "react";
 import { Redirect, Switch } from "react-router-dom";
 import { ContentRoute } from "../content/ContentRoute";
-import Consulting from "../projects/consulting/Consulting";
+import Internship from "./internship/Internship";
 import NavInternship from "./internship/Nav";
 import NavTraining from "./training/Nav";
+import Training from "./training/Training";
 const Payouts = () => {
   return (
     <>
@@ -17,7 +18,7 @@ const Payouts = () => {
         }
         <ContentRoute path="/panel/wyplaty/szkolenie">
           <NavTraining />
-          <Consulting />
+          <Training />
         </ContentRoute>
         {
           <Redirect
@@ -28,7 +29,7 @@ const Payouts = () => {
         }
         <ContentRoute path="/panel/wyplaty/staz">
           <NavInternship />
-          <Consulting />
+          <Internship />
         </ContentRoute>
       </Switch>
     </>

@@ -9,7 +9,7 @@ import {
   MenuItem,
   Select,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormDateContainer,
@@ -66,11 +66,8 @@ const names = [
 
 const Basic = () => {
   const classes = useStyles();
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = (event) => {
-    setPersonName(event.target.value);
-  };
+  const [osobaUpowazniona, setOsobaUpowazniona] = useState([]);
+  const [dostepDoKonta, setDostepDoKonta] = useState([]);
 
   return (
     <>
@@ -196,14 +193,14 @@ const Basic = () => {
             <Select
               className={classes.control}
               multiple
-              value={personName}
-              onChange={handleChange}
+              value={osobaUpowazniona}
+              onChange={(e) => setOsobaUpowazniona(e.target.value)}
               input={<Input />}
               renderValue={(selected) => selected.join(", ")}
             >
               {names.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
+                  <Checkbox checked={osobaUpowazniona.indexOf(name) > -1} />
                   <ListItemText primary={name} />
                 </MenuItem>
               ))}
@@ -216,14 +213,14 @@ const Basic = () => {
             <Select
               className={classes.control}
               multiple
-              value={personName}
-              onChange={handleChange}
+              value={dostepDoKonta}
+              onChange={(e) => setDostepDoKonta(e.target.value)}
               input={<Input />}
               renderValue={(selected) => selected.join(", ")}
             >
               {names.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
+                  <Checkbox checked={dostepDoKonta.indexOf(name) > -1} />
                   <ListItemText primary={name} />
                 </MenuItem>
               ))}

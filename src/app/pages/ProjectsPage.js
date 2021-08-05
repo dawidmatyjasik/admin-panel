@@ -13,7 +13,7 @@ const ProjectsPage = () => {
         <ContentRoute path="/panel/dodaj/projekt/dane-podstawowe" exact>
           <Basic />
         </ContentRoute>
-        <ContentRoute path="/panel/dodaj/projekt/wykonawcy" exact>
+        <ContentRoute path="/panel/dodaj/projekt/wykonawcy">
           <Contractor />
         </ContentRoute>
       </Switch>

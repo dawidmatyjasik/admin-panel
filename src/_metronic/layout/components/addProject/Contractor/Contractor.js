@@ -8,10 +8,13 @@ const Contractor = () => {
     <>
       <Nav />
       <Switch>
-        <ContentRoute path="/panel/edytuj/dane-projektowe/doradztwo">
+        <ContentRoute path="/panel/dodaj/projekt/wykonawcy/doradztwo">
           <Consulting />
         </ContentRoute>
-        <ContentRoute path="/panel/edytuj/dane-projektowe/doradztwo">
+        <ContentRoute path="/panel/dodaj/projekt/wykonawcy/catering">
+          <Consulting />
+        </ContentRoute>
+        <ContentRoute path="/panel/dodaj/projekt/wykonawcy/szkolenia">
           <Consulting />
         </ContentRoute>
       </Switch>

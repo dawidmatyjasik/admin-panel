@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import { ContentRoute } from "../../content/ContentRoute";
-import Consulting from "../../projects/consulting/Consulting";
+import Consulting from "./consulting/Consulting";
 import Nav from "./Nav";
 const Contractor = () => {
   return (

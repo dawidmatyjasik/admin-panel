@@ -15,7 +15,7 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/panel/dodaj/projekt/wykonawcy/doradztwo"
+          to="/panel/dodaj/projekt/wykonawcy"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
           Wykonawcy usług

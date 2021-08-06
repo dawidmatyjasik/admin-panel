@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Redirect, Switch } from "react-router-dom";
 import { ContentRoute } from "../../_metronic/layout";
 import Basic from "../../_metronic/layout/components/addProject/Basic/Basic";
 import Contractor from "../../_metronic/layout/components/addProject/Contractor/Contractor";
@@ -13,6 +13,13 @@ const ProjectsPage = () => {
         <ContentRoute path="/panel/dodaj/projekt/dane-podstawowe" exact>
           <Basic />
         </ContentRoute>
+        {
+          <Redirect
+            exact
+            from="/panel/dodaj/projekt/wykonawcy"
+            to="/panel/dodaj/projekt/wykonawcy/doradztwo"
+          />
+        }
         <ContentRoute path="/panel/dodaj/projekt/wykonawcy">
           <Contractor />
         </ContentRoute>

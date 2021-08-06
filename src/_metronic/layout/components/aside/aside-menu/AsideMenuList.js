@@ -18,6 +18,102 @@ export function AsideMenuList({ layoutProps }) {
     <>
       <ul className={`menu-nav ${layoutProps.ulClasses}`}>
         <li className="menu-section ">
+          <h4 className="menu-text">Dodaj projekt</h4>
+          <i className="menu-icon flaticon-more-v2"></i>
+        </li>
+        <li
+          className={`menu-item ${getMenuItemActive(
+            "/panel/dodaj/projekt/dane-podstawowe"
+          )}`}
+          aria-haspopup="true"
+        >
+          <NavLink
+            className="menu-link"
+            to="/panel/dodaj/projekt/dane-podstawowe"
+          >
+            <span className="svg-icon menu-icon">
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Edit.svg")} />
+            </span>
+            <span className="menu-text">Dane podstawowe</span>
+          </NavLink>
+        </li>
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            "/error",
+            true
+          )}`}
+          aria-haspopup="true"
+          data-menu-toggle="hover"
+        >
+          <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
+            <span className="svg-icon menu-icon">
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+            </span>
+            <span className="menu-text">Wykonawcy usług</span>
+            <i className="menu-arrow" />
+          </NavLink>
+          <div className="menu-submenu ">
+            <i className="menu-arrow" />
+            <ul className="menu-subnav">
+              <li className="menu-item  menu-item-parent" aria-haspopup="true">
+                <span className="menu-link">
+                  <span className="menu-text">Wykonawcy usług</span>
+                </span>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/dodaj/projekt/wykonawcy/doradztwo"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/dodaj/projekt/wykonawcy/doradztwo"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">
+                    Doradztwo zawodowe i pośrednictwo pracy
+                  </span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/dodaj/projekt/wykonawcy/catering"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/dodaj/projekt/wykonawcy/catering"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Catering</span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/dodaj/projekt/wykonawcy/szkolenia"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/dodaj/projekt/wykonawcy/szkolenia"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Szkolenia</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li className="menu-section ">
           <h4 className="menu-text">Zarządzanie</h4>
           <i className="menu-icon flaticon-more-v2"></i>
         </li>

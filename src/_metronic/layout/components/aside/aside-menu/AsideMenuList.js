@@ -32,7 +32,9 @@ export function AsideMenuList({ layoutProps }) {
             to="/panel/dodaj/projekt/dane-podstawowe"
           >
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Edit.svg")} />
+              <SVG
+                src={toAbsoluteUrl("/media/svg/icons/Design/Component.svg")}
+              />
             </span>
             <span className="menu-text">Dane podstawowe</span>
           </NavLink>
@@ -47,7 +49,7 @@ export function AsideMenuList({ layoutProps }) {
         >
           <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
             <span className="svg-icon menu-icon">
-              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Layers.svg")} />
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Border.svg")} />
             </span>
             <span className="menu-text">Wykonawcy usług</span>
             <i className="menu-arrow" />
@@ -335,6 +337,156 @@ export function AsideMenuList({ layoutProps }) {
           </div>
         </li>
         <li className="menu-section ">
+          <h4 className="menu-text">Wypłaty</h4>
+          <i className="menu-icon flaticon-more-v2"></i>
+        </li>
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            "/error",
+            true
+          )}`}
+          aria-haspopup="true"
+          data-menu-toggle="hover"
+        >
+          <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
+            <span className="svg-icon menu-icon">
+              <SVG
+                src={toAbsoluteUrl("/media/svg/icons/General/Clipboard.svg")}
+              />
+            </span>
+            <span className="menu-text">Wypłaty za szkolenia</span>
+            <i className="menu-arrow" />
+          </NavLink>
+          <div className="menu-submenu ">
+            <i className="menu-arrow" />
+            <ul className="menu-subnav">
+              <li className="menu-item  menu-item-parent" aria-haspopup="true">
+                <span className="menu-link">
+                  <span className="menu-text">Wypłaty za szkolenia</span>
+                </span>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/szkolenie/lista-plac"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/wyplaty/szkolenie/lista-plac"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">List płac</span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/szkolenie/dojazd"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/wyplaty/szkolenie/dojazd"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Zwrot kosztów dojazdu</span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/szkolenie/opieka"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/wyplaty/szkolenie/opieka"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Zwrot kosztów opieki</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li
+          className={`menu-item menu-item-submenu ${getMenuItemActive(
+            "/error",
+            true
+          )}`}
+          aria-haspopup="true"
+          data-menu-toggle="hover"
+        >
+          <NavLink className="menu-link menu-toggle" to="/panel/edytuj">
+            <span className="svg-icon menu-icon">
+              <SVG
+                src={toAbsoluteUrl("/media/svg/icons/General/Duplicate.svg")}
+              />
+            </span>
+            <span className="menu-text">Wypłaty za staż</span>
+            <i className="menu-arrow" />
+          </NavLink>
+          <div className="menu-submenu ">
+            <i className="menu-arrow" />
+            <ul className="menu-subnav">
+              <li className="menu-item  menu-item-parent" aria-haspopup="true">
+                <span className="menu-link">
+                  <span className="menu-text">Wypłaty za staż</span>
+                </span>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/staz/lista-plac"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink
+                  className="menu-link"
+                  to="/panel/wyplaty/staz/lista-plac"
+                >
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">List płac</span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/staz/dojazd"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink className="menu-link" to="/panel/wyplaty/staz/dojazd">
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Zwrot kosztów dojazdu</span>
+                </NavLink>
+              </li>
+              <li
+                className={`menu-item ${getMenuItemActive(
+                  "/panel/wyplaty/staz/opieka"
+                )}`}
+                aria-haspopup="true"
+              >
+                <NavLink className="menu-link" to="/panel/wyplaty/staz/opieka">
+                  <i className="menu-bullet menu-bullet-dot">
+                    <span />
+                  </i>
+                  <span className="menu-text">Zwrot kosztów opieki</span>
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </li>
+        {/*  <li className="menu-section ">
           <h4 className="menu-text">Custom</h4>
           <i className="menu-icon flaticon-more-v2"></i>
         </li>
@@ -431,7 +583,7 @@ export function AsideMenuList({ layoutProps }) {
               </li>
             </ul>
           </div>
-        </li>
+        </li> */}
       </ul>
     </>
   );

@@ -29,7 +29,12 @@ export function HeaderMobile() {
       >
         {/*begin::Logo*/}
         <Link to="/">
-          <img alt="logo" src={layoutProps.headerLogo} />
+          {/* <img alt="logo" src={layoutProps.headerLogo} /> */}
+          <img
+            src={toAbsoluteUrl("/media/logos/letowski-logo.png")}
+            alt="Łętowski logo"
+            style={{ objectFit: "contain", width: "80px", height: "100px" }}
+          />
         </Link>
         {/*end::Logo*/}
 

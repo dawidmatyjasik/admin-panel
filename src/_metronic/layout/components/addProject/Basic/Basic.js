@@ -66,8 +66,42 @@ const names = [
 
 const Basic = () => {
   const classes = useStyles();
+  const [nazwaProjektu, setNazwaProjektu] = useState("");
+  const [numerProjektu, setNumerProjektu] = useState("");
+  const [beneficjentOdpowiada, setBeneficjentOdpowiada] = useState("");
+  const [partnerOdpowiada, setPartnerOdpowiada] = useState("");
+
+  const [okresRealizacjiOd, setOkresRealizacjiOd] = useState("");
+  const [okresRealizacjiDo, setOkresRealizacjiDo] = useState("");
+  const [przedluzenieProjektu, setPrzedluzenieProjektu] = useState("");
+  const [numerUmowy, setNumerUmowy] = useState("");
+  const [dataUmowy, setDataUmowy] = useState("");
+  const [nazwiskoOpiekuna, setNazwiskoOpiekuna] = useState("");
+  const [imieOpiekuna, setImieOpiekuna] = useState("");
+  const [telefonOpiekuna, setTelefonOpiekuna] = useState("");
+  const [mailOpiekuna, setMailOpiekuna] = useState("");
+
+  const [terminMenadzera, seTterminMenadzera] = useState("");
+  const [nazwiskoMenadzera, setNazwiskoMenadzera] = useState("");
+  const [imieMenadzera, setImieMenadzera] = useState("");
+
+  const [terminKoordynatora, seTterminKoordynatora] = useState("");
+  const [nazwiskoKoordynatora, setNazwiskoKoordynatora] = useState("");
+  const [imieKoordynatora, setImieKoordynatora] = useState("");
+
   const [osobaUpowazniona, setOsobaUpowazniona] = useState([]);
   const [dostepDoKonta, setDostepDoKonta] = useState([]);
+  const [stronaProjektu, setStronaProjektu] = useState("");
+  const [emailProjektu, setEmailProjektu] = useState("");
+  const [stawkaZus, setStawkaZus] = useState("");
+  const [stawkaNettoSzkolenie, setStawkaNettoSzkolenie] = useState("");
+  const [stawkaNettoStaz, setStawkaNettoStaz] = useState("");
+  const [obszarTematyczny, setObszarTematyczny] = useState("");
+  const [statusRynkuPracy, setStatusRynkuPracy] = useState("");
+  const [subregionCentralny, setSubregionCentralny] = useState("");
+  const [terenyWiejskie, setTerenyWiejskie] = useState("");
+  const [zit, setZit] = useState("");
+  const [uwagi, setUwagi] = useState("");
 
   return (
     <>
@@ -78,10 +112,6 @@ const Basic = () => {
         </FormLabel>
         <FormLabel>
           Numer projektu:
-          <FormInput></FormInput>
-        </FormLabel>
-        <FormLabel>
-          Nazwa projektu:
           <FormInput></FormInput>
         </FormLabel>
         <FormLabel>

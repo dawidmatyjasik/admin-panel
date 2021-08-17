@@ -172,43 +172,50 @@ const Consulting = () => {
           <FormOption>Tak</FormOption>
         </FormSelect>
       </FormLabel>
-      <FormLabel>
-        Nazwa firmy:
-        <FormInput
-          value={nazwaFirmyKonsorcjantu}
-          onChange={(e) => setNazwaFirmyKonsorcjantu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Kod pocztowy:
-        <FormInput
-          value={kodPocztowyKonsorcjantu}
-          onChange={(e) => setKodPocztowyKonsorcjantu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Miasto:
-        <FormInput
-          value={miastoKonsorcjantu}
-          onChange={(e) => setMiastoKonsorcjantu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Ulica:
-        <FormInput
-          value={ulicaKonsorcjantu}
-          onChange={(e) => setUlicaKonsorcjantu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Numer domu:
-        <FormInput
-          value={numerKonsorcjantu}
-          onChange={(e) => setNumerKonsorcjantu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
+      {konsorcjant === "Tak" ? (
+        <>
+          {" "}
+          <FormLabel>
+            Nazwa firmy:
+            <FormInput
+              value={nazwaFirmyKonsorcjantu}
+              onChange={(e) => setNazwaFirmyKonsorcjantu(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Kod pocztowy:
+            <FormInput
+              value={kodPocztowyKonsorcjantu}
+              onChange={(e) => setKodPocztowyKonsorcjantu(e.target.value)}
+              type="number"
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Miasto:
+            <FormInput
+              value={miastoKonsorcjantu}
+              onChange={(e) => setMiastoKonsorcjantu(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Ulica:
+            <FormInput
+              value={ulicaKonsorcjantu}
+              onChange={(e) => setUlicaKonsorcjantu(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Numer domu:
+            <FormInput
+              value={numerKonsorcjantu}
+              onChange={(e) => setNumerKonsorcjantu(e.target.value)}
+              type="number"
+            ></FormInput>
+          </FormLabel>{" "}
+        </>
+      ) : (
+        <></>
+      )}
       <br />
       <FormLabel>
         Numer umowy:

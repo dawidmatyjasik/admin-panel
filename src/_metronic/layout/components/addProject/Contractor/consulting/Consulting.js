@@ -136,7 +136,6 @@ const Consulting = () => {
         <FormInput
           value={kodPocztowyDoradztwa}
           onChange={(e) => setKodPocztowyDoradztwa(e.target.value)}
-          type="number"
         ></FormInput>
       </FormLabel>
       <FormLabel>

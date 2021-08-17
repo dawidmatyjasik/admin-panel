@@ -353,7 +353,6 @@ const Basic = () => {
           <FormInput
             value={numerUmowy}
             onChange={(e) => setNumerUmowy(e.target.value)}
-            type="number"
           ></FormInput>
         </FormLabel>
         <FormLabel>

@@ -14,6 +14,7 @@ import db from "../../../../../firebase";
 import {
   Form,
   FormDateContainer,
+  FormHeader,
   FormInput,
   FormLabel,
   FormOption,
@@ -168,7 +169,7 @@ const Basic = () => {
     return;
   }, [podstawowe]);
 
-  const handleSubmitPartner = (e) => {
+  /*   const handleSubmitPartner = (e) => {
     e.preventDefault();
     db.collection("projects")
       .doc(`projekt`)
@@ -182,8 +183,8 @@ const Basic = () => {
       });
     console.log("dodano");
   };
-
-  const handleSubmitOpiekun = (e) => {
+ */
+  /*   const handleSubmitOpiekun = (e) => {
     e.preventDefault();
     db.collection("projects")
       .doc(`projekt`)
@@ -203,8 +204,8 @@ const Basic = () => {
         mailOpiekuna,
       });
     console.log("dodano");
-  };
-
+  }; */
+  /* 
   const handleSubmitMenadzer = (e) => {
     e.preventDefault();
     db.collection("projects")
@@ -217,9 +218,9 @@ const Basic = () => {
         imieMenadzera,
       });
     console.log("dodano");
-  };
+  }; */
 
-  const handleSubmitKoordynator = (e) => {
+  /*   const handleSubmitKoordynator = (e) => {
     e.preventDefault();
     db.collection("projects")
       .doc(`projekt`)
@@ -231,7 +232,7 @@ const Basic = () => {
         imieKoordynatora,
       });
     console.log("dodano");
-  };
+  }; */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -240,6 +241,30 @@ const Basic = () => {
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
+        nazwaProjektu,
+        numerProjektu,
+        beneficjentOdpowiada,
+        partnerOdpowiada,
+
+        okresRealizacjiOd,
+        okresRealizacjiDo,
+        przedluzenieProjektu,
+        numerUmowy,
+        programOperacyjny,
+        dataUmowy,
+        nazwiskoOpiekuna,
+        imieOpiekuna,
+        telefonOpiekuna,
+        mailOpiekuna,
+
+        terminMenadzera,
+        nazwiskoMenadzera,
+        imieMenadzera,
+
+        terminKoordynatora,
+        nazwiskoKoordynatora,
+        imieKoordynatora,
+
         osobaUpowazniona,
         dostepDoKonta,
         stronaProjektu,
@@ -260,6 +285,7 @@ const Basic = () => {
   return (
     <>
       <Form>
+        <FormHeader>Dodaj partnera</FormHeader>
         <FormLabel>
           Nazwa projektu:
           <FormInput
@@ -294,16 +320,7 @@ const Basic = () => {
             <FormOption>Staż</FormOption>
           </FormSelect>
         </FormLabel>
-        <Button
-          onClick={handleSubmitPartner}
-          variant="outlined"
-          className={classes.button}
-          type="submit"
-        >
-          Dodaj partnera
-        </Button>
-      </Form>
-      <Form>
+        <FormHeader>Dodaj opiekuna projektu</FormHeader>
         <FormLabel style={{ alignItems: "center" }}>
           Okres realizacji projektu:
           <FormDateContainer>
@@ -386,16 +403,7 @@ const Basic = () => {
             type="mail"
           ></FormInput>
         </FormLabel>
-        <Button
-          onClick={handleSubmitOpiekun}
-          variant="outlined"
-          className={classes.button}
-          type="submit"
-        >
-          Dodaj opiekuna projektu
-        </Button>
-      </Form>
-      <Form>
+        <FormHeader>Dodaj menadżera</FormHeader>
         <FormLabel>
           Termin:
           <FormInput
@@ -418,15 +426,7 @@ const Basic = () => {
             onChange={(e) => setImieMenadzera(e.target.value)}
           ></FormInput>
         </FormLabel>
-        <Button
-          onClick={handleSubmitMenadzer}
-          variant="outlined"
-          className={classes.button}
-        >
-          Dodaj menadżera
-        </Button>
-      </Form>
-      <Form>
+        <FormHeader>Dodaj koordynatora:</FormHeader>
         <FormLabel>
           Termin:
           <FormInput
@@ -449,15 +449,7 @@ const Basic = () => {
             onChange={(e) => setImieKoordynatora(e.target.value)}
           ></FormInput>
         </FormLabel>
-        <Button
-          variant="outlined"
-          onClick={handleSubmitKoordynator}
-          className={classes.button}
-        >
-          Dodaj koordynatora
-        </Button>
-      </Form>
-      <Form>
+        <FormHeader>Informacje</FormHeader>
         {/*  <FormLabel>
           Osoby upoważnione do LSI / SL:
           <FormControl>
@@ -593,7 +585,12 @@ const Basic = () => {
             onChange={(e) => setUwagi(e.target.value)}
           ></FormInput>
         </FormLabel>
-        <Button type="submit" variant="outlined" className={classes.button}>
+        <Button
+          onClick={handleSubmit}
+          type="submit"
+          variant="outlined"
+          className={classes.button}
+        >
           Zapisz
         </Button>
       </Form>

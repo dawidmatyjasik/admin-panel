@@ -107,8 +107,6 @@ const Basic = () => {
   const [zit, setZit] = useState("");
   const [uwagi, setUwagi] = useState("");
 
-  console.log(podstawowe);
-
   useEffect(() => {
     console.log("test");
 

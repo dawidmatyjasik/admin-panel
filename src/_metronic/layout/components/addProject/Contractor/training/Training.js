@@ -39,6 +39,35 @@ const data = {
 
 const Training = () => {
   const classes = useStyles();
+  const [szkolenie, setPosrednictwo] = useState([]);
+  const [nazwaSzkolenia, setDataZakonczeniaSzkolenia] = useState("");
+  const [numerGrupy, setnumerGrupy] = useState("");
+
+  const [nazwaFrimySzkolenia, setNazwaFrimySzkolenia] = useState("");
+  const [kodPocztowySzkolenia, setKodPocztowySzkolenia] = useState("");
+  const [miastoSzkolenia, setMiastoSzkolenia] = useState("");
+  const [ulicaSzkolenia, setUlicaSzkolenia] = useState("");
+  const [numerMieszkaniaSzkolenia, setNumerMieszkaniaSzkolenia] = useState("");
+  const [numerUmowySzkolenia, setNumerUmowySzkolenia] = useState("");
+  const [dataUmowySzkolenia, setDataUmowySzkolenia] = useState("");
+  const [umowaPowierdzaniaDanych, setUmowaPowierdzaniaDanych] = useState("");
+  const [umowaZgloszonaWup, setUmowaZgloszonaWup] = useState("");
+  const [dataZgloszenia, setDataZgloszenia] = useState("");
+
+  const [nazwaFrimyPodwykonawcy, setNazwaFrimyPodwykonawcy] = useState("");
+  const [kodPocztowyPodwykonawcy, setKodPocztowyPodwykonawcy] = useState("");
+  const [miastoPodwykonawcy, setMiastoPodwykonawcy] = useState("");
+  const [ulicaPodwykonawcy, setUlicaPodwykonawcy] = useState("");
+  const [
+    numerMieszkaniaPodwykonawcy,
+    setNumerMieszkaniaPodwykonawcy,
+  ] = useState("");
+
+  const [trener, setTrener] = useState("");
+  const [egzaminator, setEgzaminator] = useState("");
+  const [terminSzkoleniaOd, setTerminSzkoleniaOd] = useState("");
+  const [terminSzkoleniaDo, setTerminSzkoleniaDo] = useState("");
+  const [rekomendacje, setRekomendacje] = useState("");
   return (
     <Form>
       <FormLabel>
@@ -49,10 +78,7 @@ const Training = () => {
         Numer grupy:
         <FormInput></FormInput>
       </FormLabel>
-      <FormLabel>
-        Wykonawca szkolenia:
-        <FormInput></FormInput>
-      </FormLabel>
+      <FormHeader>Wykonawca szkolenia:</FormHeader>
       <FormLabel>
         Nazwa firmy:
         <FormInput></FormInput>
@@ -100,11 +126,7 @@ const Training = () => {
         Data zgłoszenia:
         <FormInput type="date"></FormInput>
       </FormLabel>
-      <br />
-      <FormLabel>
-        Podwykonawca szkolenia:
-        <FormInput></FormInput>
-      </FormLabel>
+      <FormHeader>Podwykonawca szkolenia:</FormHeader>
       <FormLabel>
         Nazwa firmy:
         <FormInput></FormInput>

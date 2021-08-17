@@ -9,7 +9,8 @@ import {
   MenuItem,
   Select,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import db from "../../../../../firebase";
 import {
   Form,
   FormDateContainer,
@@ -102,6 +103,112 @@ const Basic = () => {
   const [terenyWiejskie, setTerenyWiejskie] = useState("");
   const [zit, setZit] = useState("");
   const [uwagi, setUwagi] = useState("");
+
+  /*   useEffect(() => {
+    db.collection("projects")
+      .doc(`03262104439`)
+      .collection("projektowe")
+      .doc("posrednictwo")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setPosrednictwo(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []); */
+
+  const handleSubmitPartner = (e) => {
+    e.preventDefault();
+    db.collection("projects")
+      .doc(`${nazwaProjektu}`)
+      .collection("podstawowe")
+      .doc("podstawowe")
+      .set({
+        nazwaProjektu,
+        numerProjektu,
+        beneficjentOdpowiada,
+        partnerOdpowiada,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmitOpiekun = (e) => {
+    e.preventDefault();
+    db.collection("projects")
+      .doc(`${nazwaProjektu}`)
+      .collection("podstawowe")
+      .doc("podstawowe")
+      .set({
+        okresRealizacjiOd,
+        okresRealizacjiDo,
+        przedluzenieProjektu,
+        numerUmowy,
+        partnerOdpowiada,
+        dataUmowy,
+        nazwiskoOpiekuna,
+        imieOpiekuna,
+        telefonOpiekuna,
+        mailOpiekuna,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmitMenadzer = (e) => {
+    e.preventDefault();
+    db.collection("projects")
+      .doc(`${nazwaProjektu}`)
+      .collection("podstawowe")
+      .doc("podstawowe")
+      .set({
+        terminMenadzera,
+        nazwiskoMenadzera,
+        imieMenadzera,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmitKoordynator = (e) => {
+    e.preventDefault();
+    db.collection("projects")
+      .doc(`${nazwaProjektu}`)
+      .collection("podstawowe")
+      .doc("podstawowe")
+      .set({
+        terminKoordynatora,
+        nazwiskoKoordynatora,
+        imieKoordynatora,
+      });
+    console.log("dodano");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    db.collection("projects")
+      .doc(`${nazwaProjektu}`)
+      .collection("podstawowe")
+      .doc("podstawowe")
+      .set({
+        osobaUpowazniona,
+        dostepDoKonta,
+        stronaProjektu,
+        emailProjektu,
+        stawkaZus,
+        stawkaNettoSzkolenie,
+        stawkaNettoStaz,
+        obszarTematyczny,
+        statusRynkuPracy,
+        subregionCentralny,
+        terenyWiejskie,
+        zit,
+        uwagi,
+      });
+    console.log("dodano");
+  };
 
   return (
     <>

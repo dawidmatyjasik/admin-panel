@@ -106,6 +106,8 @@ const Basic = () => {
   const [zit, setZit] = useState("");
   const [uwagi, setUwagi] = useState("");
 
+  console.log(podstawowe);
+
   useEffect(() => {
     console.log("test");
 
@@ -138,6 +140,7 @@ const Basic = () => {
       setPrzedluzenieProjektu(podstawowe.przedluzenieProjektu || "");
       setNumerUmowy(podstawowe.numerUmowy || "");
       setDataUmowy(podstawowe.dataUmowy || "");
+      setProgramOperacyjny(podstawowe.programOperacyjny || "");
       setNazwiskoOpiekuna(podstawowe.nazwiskoOpiekuna || "");
       setImieOpiekuna(podstawowe.imieOpiekuna || "");
       setTelefonOpiekuna(podstawowe.telefonOpiekuna || "");
@@ -191,6 +194,7 @@ const Basic = () => {
         okresRealizacjiDo,
         przedluzenieProjektu,
         numerUmowy,
+        programOperacyjny,
         partnerOdpowiada,
         dataUmowy,
         nazwiskoOpiekuna,
@@ -294,6 +298,7 @@ const Basic = () => {
           onClick={handleSubmitPartner}
           variant="outlined"
           className={classes.button}
+          type="submit"
         >
           Dodaj partnera
         </Button>
@@ -385,6 +390,7 @@ const Basic = () => {
           onClick={handleSubmitOpiekun}
           variant="outlined"
           className={classes.button}
+          type="submit"
         >
           Dodaj opiekuna projektu
         </Button>

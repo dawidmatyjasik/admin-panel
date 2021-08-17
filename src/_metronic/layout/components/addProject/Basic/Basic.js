@@ -66,6 +66,7 @@ const names = [
 ];
 
 const Basic = () => {
+  const [podstawowe, setPodstawowe] = useState([]);
   const classes = useStyles();
   const [nazwaProjektu, setNazwaProjektu] = useState("");
   const [numerProjektu, setNumerProjektu] = useState("");
@@ -77,16 +78,17 @@ const Basic = () => {
   const [przedluzenieProjektu, setPrzedluzenieProjektu] = useState("");
   const [numerUmowy, setNumerUmowy] = useState("");
   const [dataUmowy, setDataUmowy] = useState("");
+  const [programOperacyjny, setProgramOperacyjny] = useState("");
   const [nazwiskoOpiekuna, setNazwiskoOpiekuna] = useState("");
   const [imieOpiekuna, setImieOpiekuna] = useState("");
   const [telefonOpiekuna, setTelefonOpiekuna] = useState("");
   const [mailOpiekuna, setMailOpiekuna] = useState("");
 
-  const [terminMenadzera, seTterminMenadzera] = useState("");
+  const [terminMenadzera, setTerminMenadzera] = useState("");
   const [nazwiskoMenadzera, setNazwiskoMenadzera] = useState("");
   const [imieMenadzera, setImieMenadzera] = useState("");
 
-  const [terminKoordynatora, seTterminKoordynatora] = useState("");
+  const [terminKoordynatora, setTerminKoordynatora] = useState("");
   const [nazwiskoKoordynatora, setNazwiskoKoordynatora] = useState("");
   const [imieKoordynatora, setImieKoordynatora] = useState("");
 
@@ -104,15 +106,18 @@ const Basic = () => {
   const [zit, setZit] = useState("");
   const [uwagi, setUwagi] = useState("");
 
-  /*   useEffect(() => {
+  useEffect(() => {
+    console.log("test");
+
     db.collection("projects")
-      .doc(`03262104439`)
-      .collection("projektowe")
-      .doc("posrednictwo")
+      // .doc(`${nazwaProjektu} `)
+      .doc(`projekt`)
+      .collection("podstawowe")
+      .doc("podstawowe")
       .get()
       .then((doc) => {
         if (doc.exists) {
-          setPosrednictwo(doc.data());
+          setPodstawowe(doc.data());
         } else {
           console.log("No such document!");
         }
@@ -120,12 +125,50 @@ const Basic = () => {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-  }, []); */
+  }, []);
+
+  useEffect(() => {
+    if (podstawowe) {
+      setNazwaProjektu(podstawowe.nazwaProjektu || "");
+      setNumerProjektu(podstawowe.numerProjektu || "");
+      setBeneficjentOdpowiada(podstawowe.beneficjentOdpowiada || "");
+      setPartnerOdpowiada(podstawowe.partnerOdpowiada || "");
+      setOkresRealizacjiOd(podstawowe.okresRealizacjiOd || "");
+      setOkresRealizacjiDo(podstawowe.okresRealizacjiDo || "");
+      setPrzedluzenieProjektu(podstawowe.przedluzenieProjektu || "");
+      setNumerUmowy(podstawowe.numerUmowy || "");
+      setDataUmowy(podstawowe.dataUmowy || "");
+      setNazwiskoOpiekuna(podstawowe.nazwiskoOpiekuna || "");
+      setImieOpiekuna(podstawowe.imieOpiekuna || "");
+      setTelefonOpiekuna(podstawowe.telefonOpiekuna || "");
+      setMailOpiekuna(podstawowe.mailOpiekuna || "");
+      setTerminMenadzera(podstawowe.terminMenadzera || "");
+      setNazwiskoMenadzera(podstawowe.nazwiskoMenadzera || "");
+      setImieMenadzera(podstawowe.imieMenadzera || "");
+      setTerminKoordynatora(podstawowe.terminKoordynatora || "");
+      setNazwiskoKoordynatora(podstawowe.nazwiskoKoordynatora || "");
+      setImieKoordynatora(podstawowe.imieKoordynatora || "");
+      setOsobaUpowazniona(podstawowe.osobaUpowazniona || "");
+      setDostepDoKonta(podstawowe.dostepDoKonta || "");
+      setStronaProjektu(podstawowe.stronaProjektu || "");
+      setEmailProjektu(podstawowe.emailProjektu || "");
+      setStawkaZus(podstawowe.stawkaZus || "");
+      setStawkaNettoSzkolenie(podstawowe.stawkaNettoSzkolenie || "");
+      setStawkaNettoStaz(podstawowe.stawkaNettoStaz || "");
+      setObszarTematyczny(podstawowe.obszarTematyczny || "");
+      setStatusRynkuPracy(podstawowe.statusRynkuPracy || "");
+      setSubregionCentralny(podstawowe.subregionCentralny || "");
+      setTerenyWiejskie(podstawowe.terenyWiejskie || "");
+      setZit(podstawowe.zit || "");
+      setUwagi(podstawowe.uwagi || "");
+    }
+    return;
+  }, [podstawowe]);
 
   const handleSubmitPartner = (e) => {
     e.preventDefault();
     db.collection("projects")
-      .doc(`${nazwaProjektu}`)
+      .doc(`projekt`)
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
@@ -140,7 +183,7 @@ const Basic = () => {
   const handleSubmitOpiekun = (e) => {
     e.preventDefault();
     db.collection("projects")
-      .doc(`${nazwaProjektu}`)
+      .doc(`projekt`)
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
@@ -161,7 +204,7 @@ const Basic = () => {
   const handleSubmitMenadzer = (e) => {
     e.preventDefault();
     db.collection("projects")
-      .doc(`${nazwaProjektu}`)
+      .doc(`projekt`)
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
@@ -175,7 +218,7 @@ const Basic = () => {
   const handleSubmitKoordynator = (e) => {
     e.preventDefault();
     db.collection("projects")
-      .doc(`${nazwaProjektu}`)
+      .doc(`projekt`)
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
@@ -189,7 +232,7 @@ const Basic = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     db.collection("projects")
-      .doc(`${nazwaProjektu}`)
+      .doc(`projekt`)
       .collection("podstawowe")
       .doc("podstawowe")
       .set({
@@ -215,27 +258,43 @@ const Basic = () => {
       <Form>
         <FormLabel>
           Nazwa projektu:
-          <FormInput></FormInput>
+          <FormInput
+            value={nazwaProjektu}
+            onChange={(e) => setNazwaProjektu(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Numer projektu:
-          <FormInput></FormInput>
+          <FormInput
+            value={numerProjektu}
+            onChange={(e) => setNumerProjektu(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Beneficjent odpowiada za:
-          <FormSelect>
+          <FormSelect
+            value={beneficjentOdpowiada}
+            onChange={(e) => setBeneficjentOdpowiada(e.target.value)}
+          >
             <FormOption>Szkolenie</FormOption>
             <FormOption>Staż</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
           Partner odpowiada za:
-          <FormSelect>
+          <FormSelect
+            value={partnerOdpowiada}
+            onChange={(e) => setPartnerOdpowiada(e.target.value)}
+          >
             <FormOption>Szkolenie</FormOption>
             <FormOption>Staż</FormOption>
           </FormSelect>
         </FormLabel>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          onClick={handleSubmitPartner}
+          variant="outlined"
+          className={classes.button}
+        >
           Dodaj partnera
         </Button>
       </Form>
@@ -245,86 +304,155 @@ const Basic = () => {
           <FormDateContainer>
             <FromDateWrapper>
               <FormSpan>od:</FormSpan>
-              <FormInput type="date"></FormInput>
+              <FormInput
+                value={okresRealizacjiOd}
+                onChange={(e) => setOkresRealizacjiOd(e.target.value)}
+                type="date"
+              ></FormInput>
             </FromDateWrapper>
             <FromDateWrapper>
               <FormSpan>do:</FormSpan>
-              <FormInput type="date"></FormInput>
+              <FormInput
+                value={okresRealizacjiDo}
+                onChange={(e) => setOkresRealizacjiDo(e.target.value)}
+                type="date"
+              ></FormInput>
             </FromDateWrapper>
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
           Przedłużenie projektu:
-          <FormInput type="date"></FormInput>
+          <FormInput
+            value={przedluzenieProjektu}
+            onChange={(e) => setPrzedluzenieProjektu(e.target.value)}
+            type="date"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Numer umowy:
-          <FormInput type="number"></FormInput>
+          <FormInput
+            value={numerUmowy}
+            onChange={(e) => setNumerUmowy(e.target.value)}
+            type="number"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Data umowy:
-          <FormInput type="date"></FormInput>
+          <FormInput
+            value={dataUmowy}
+            onChange={(e) => setDataUmowy(e.target.value)}
+            type="date"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Program operacyjny:
-          <FormInput></FormInput>
+          <FormInput
+            value={programOperacyjny}
+            onChange={(e) => setProgramOperacyjny(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
-          Naziwsko opiekuna:
-          <FormInput></FormInput>
+          Nazwisko opiekuna:
+          <FormInput
+            value={nazwiskoOpiekuna}
+            onChange={(e) => setNazwiskoOpiekuna(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Imie opiekuna:
-          <FormInput></FormInput>
+          <FormInput
+            value={imieOpiekuna}
+            onChange={(e) => setImieOpiekuna(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Telefon opiekuna:
-          <FormInput type="tel"></FormInput>
+          <FormInput
+            value={telefonOpiekuna}
+            onChange={(e) => setTelefonOpiekuna(e.target.value)}
+            type="tel"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Mail opiekuna:
-          <FormInput type="mail"></FormInput>
+          <FormInput
+            value={mailOpiekuna}
+            onChange={(e) => setMailOpiekuna(e.target.value)}
+            type="mail"
+          ></FormInput>
         </FormLabel>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          onClick={handleSubmitOpiekun}
+          variant="outlined"
+          className={classes.button}
+        >
           Dodaj opiekuna projektu
         </Button>
       </Form>
       <Form>
         <FormLabel>
           Termin:
-          <FormInput type="date"></FormInput>
+          <FormInput
+            value={terminMenadzera}
+            onChange={(e) => setTerminMenadzera(e.target.value)}
+            type="date"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Nazwisko menadżera:
-          <FormInput></FormInput>
+          <FormInput
+            value={nazwiskoMenadzera}
+            onChange={(e) => setNazwiskoMenadzera(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Imię menadżera:
-          <FormInput></FormInput>
+          <FormInput
+            value={imieMenadzera}
+            onChange={(e) => setImieMenadzera(e.target.value)}
+          ></FormInput>
         </FormLabel>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          onClick={handleSubmitMenadzer}
+          variant="outlined"
+          className={classes.button}
+        >
           Dodaj menadżera
         </Button>
       </Form>
       <Form>
         <FormLabel>
           Termin:
-          <FormInput type="date"></FormInput>
+          <FormInput
+            value={terminKoordynatora}
+            onChange={(e) => setTerminKoordynatora(e.target.value)}
+            type="date"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Nazwisko koordynatora:
-          <FormInput></FormInput>
+          <FormInput
+            value={nazwiskoKoordynatora}
+            onChange={(e) => setNazwiskoKoordynatora(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Imię koordynatora:
-          <FormInput></FormInput>
+          <FormInput
+            value={imieKoordynatora}
+            onChange={(e) => setImieKoordynatora(e.target.value)}
+          ></FormInput>
         </FormLabel>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          onClick={handleSubmitKoordynator}
+          className={classes.button}
+        >
           Dodaj koordynatora
         </Button>
       </Form>
       <Form>
-        <FormLabel>
+        {/*  <FormLabel>
           Osoby upoważnione do LSI / SL:
           <FormControl>
             <Select
@@ -363,29 +491,52 @@ const Basic = () => {
               ))}
             </Select>
           </FormControl>
-        </FormLabel>
+        </FormLabel> */}
         <FormLabel>
           Strona internetowa projektu:
-          <FormInput></FormInput>
+          <FormInput
+            value={stronaProjektu}
+            onChange={(e) => setStronaProjektu(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           E-mail projektu:
-          <FormInput type="mail"></FormInput>
+          <FormInput
+            value={emailProjektu}
+            onChange={(e) => setEmailProjektu(e.target.value)}
+            type="mail"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Stawka ZUS:
-          <FormInput type="number"></FormInput>
+          <FormInput
+            value={stawkaZus}
+            onChange={(e) => setStawkaZus(e.target.value)}
+            type="number"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
-          Stawka netto za szkolenie / h<FormInput type="number"></FormInput>
+          Stawka netto za szkolenie / h
+          <FormInput
+            value={stawkaNettoSzkolenie}
+            onChange={(e) => setStawkaNettoSzkolenie(e.target.value)}
+            type="number"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Stawka netto za staż / mc
-          <FormInput type="number"></FormInput>
+          <FormInput
+            value={stawkaNettoStaz}
+            onChange={(e) => setStawkaNettoStaz(e.target.value)}
+            type="number"
+          ></FormInput>
         </FormLabel>
         <FormLabel>
           Obszar tematyczny:
-          <FormSelect>
+          <FormSelect
+            value={obszarTematyczny}
+            onChange={(e) => setObszarTematyczny(e.target.value)}
+          >
             <FormOption>Aktywizacja zawodowa</FormOption>
             <FormOption>Outplacment</FormOption>
             <FormOption>Kształcenie zawodowe</FormOption>
@@ -394,35 +545,47 @@ const Basic = () => {
         </FormLabel>
         <FormLabel>
           Status na rynku pracy:
-          <FormSelect>
+          <FormSelect
+            value={statusRynkuPracy}
+            onChange={(e) => setStatusRynkuPracy(e.target.value)}
+          >
             <FormOption>Tak</FormOption>
             <FormOption>Nie</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
           Subregion centralny
-          <FormSelect>
+          <FormSelect
+            value={subregionCentralny}
+            onChange={(e) => setSubregionCentralny(e.target.value)}
+          >
             <FormOption>Tak</FormOption>
             <FormOption>Nie</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
           Tereny wiejskie
-          <FormSelect>
+          <FormSelect
+            value={terenyWiejskie}
+            onChange={(e) => setTerenyWiejskie(e.target.value)}
+          >
             <FormOption>Tak</FormOption>
             <FormOption>Nie</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
           ZIT
-          <FormSelect>
+          <FormSelect value={zit} onChange={(e) => setZit(e.target.value)}>
             <FormOption>Tak</FormOption>
             <FormOption>Nie</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
           Uwagi:
-          <FormInput></FormInput>
+          <FormInput
+            value={uwagi}
+            onChange={(e) => setUwagi(e.target.value)}
+          ></FormInput>
         </FormLabel>
         <Button type="submit" variant="outlined" className={classes.button}>
           Zapisz

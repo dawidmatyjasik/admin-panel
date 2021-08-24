@@ -71,8 +71,18 @@ export default function Personal() {
   const [plec, setPlec] = useState("");
   const [telefon, setTelefon] = useState("");
   const [mail, setMail] = useState("");
-  const [adres, setAdres] = useState("");
+  const [ulica, setUlica] = useState("");
+  const [numerDomu, setNumerDomu] = useState("");
+  const [numerLokalu, setNumerLokalu] = useState("");
+  const [miejscowosc, setMiejscowosc] = useState("");
+  const [kodPocztowy, setKodPocztowy] = useState("");
+  const [powiat, setPowiat] = useState("");
+  const [gmina, setGmina] = useState("");
+  const [wojewodztwo, setWojewodztwo] = useState("");
   const [czarnaLista, setCzarnaLista] = useState(false);
+  const [zgodaMarketingowa, setZgodaMarketingowa] = useState(false);
+  const [zgodaZus, setZgodaZus] = useState(false);
+  const [rmua, setRmua] = useState(false);
   const [projekt, setProjekt] = useState("");
 
   const [users, setUsers] = useState([]);
@@ -142,8 +152,18 @@ export default function Personal() {
         plec,
         telefon,
         mail,
-        adres,
+        ulica,
+        numerDomu,
+        numerLokalu,
+        miejscowosc,
+        kodPocztowy,
+        powiat,
+        gmina,
+        wojewodztwo,
         czarnaLista,
+        zgodaMarketingowa,
+        zgodaZus,
+        rmua,
         projekt,
       });
     console.log("dodano");
@@ -159,8 +179,18 @@ export default function Personal() {
       setPlec(osobowe[0]?.data?.plec || "");
       setTelefon(osobowe[0]?.data?.telefon || "");
       setMail(osobowe[0]?.data?.mail || "");
-      setAdres(osobowe[0]?.data?.adres || "");
+      setUlica(osobowe[0]?.data?.ulica || "");
+      setNumerDomu(osobowe[0]?.data?.numerDomu || "");
+      setNumerLokalu(osobowe[0]?.data?.numerLokalu || "");
+      setMiejscowosc(osobowe[0]?.data?.miejscowosc || "");
+      setKodPocztowy(osobowe[0]?.data?.kodPocztowy || "");
+      setPowiat(osobowe[0]?.data?.powiat || "");
+      setGmina(osobowe[0]?.data?.gmina || "");
+      setWojewodztwo(osobowe[0]?.data?.wojewodztwo || "");
       setCzarnaLista(osobowe[0]?.data?.czarnaLista || false);
+      setZgodaMarketingowa(osobowe[0]?.data?.zgodaMarketingowa || false);
+      setZgodaZus(osobowe[0]?.data?.zgodaZus || false);
+      setRmua(osobowe[0]?.data?.rmua || false);
       setProjekt(osobowe[0]?.data?.projekt || "");
     }
   }, [osobowe]);
@@ -217,7 +247,7 @@ export default function Personal() {
         onChange={(e) => setMiejsceUrodzenia(e.target.value)}
       />
       <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Płeć</FormLabel>
+        <FormLabel component="legend">Płeć*</FormLabel>
         <RadioGroup
           aria-label="Gender"
           name="gender1"
@@ -236,7 +266,6 @@ export default function Personal() {
             control={<Radio />}
             label="Mężczyzna"
           />
-          <FormControlLabel value="other" control={<Radio />} label="Inne" />
         </RadioGroup>
       </FormControl>
       <TextField
@@ -248,6 +277,7 @@ export default function Personal() {
         value={telefon}
         onChange={(e) => setTelefon(e.target.value)}
       />
+
       <TextField
         id="mail"
         label="E-mail"
@@ -256,14 +286,72 @@ export default function Personal() {
         value={mail}
         onChange={(e) => setMail(e.target.value)}
       />
+      {/*  */}
       <TextField
-        id="adress"
-        label="Adres zamieszkania"
+        id="ulica"
+        label="Ulica"
         className={classes.textField}
         margin="normal"
-        value={adres}
-        onChange={(e) => setAdres(e.target.value)}
+        value={ulica}
+        onChange={(e) => setUlica(e.target.value)}
       />
+      <TextField
+        id="dom"
+        label="Numer domu"
+        className={classes.textField}
+        margin="normal"
+        value={numerDomu}
+        onChange={(e) => setNumerDomu(e.target.value)}
+      />
+      <TextField
+        id="lokal"
+        label="Numer lokalu"
+        className={classes.textField}
+        margin="normal"
+        value={numerLokalu}
+        onChange={(e) => setNumerLokalu(e.target.value)}
+      />
+      <TextField
+        id="miejscowosc"
+        label="Miejscowość"
+        className={classes.textField}
+        margin="normal"
+        value={miejscowosc}
+        onChange={(e) => setMiejscowosc(e.target.value)}
+      />
+      <TextField
+        id="kod"
+        label="Kod pocztowy"
+        className={classes.textField}
+        margin="normal"
+        value={kodPocztowy}
+        onChange={(e) => setKodPocztowy(e.target.value)}
+      />
+      <TextField
+        id="powiat"
+        label="Powiat"
+        className={classes.textField}
+        margin="normal"
+        value={powiat}
+        onChange={(e) => setPowiat(e.target.value)}
+      />
+      <TextField
+        id="gmina"
+        label="Gmina"
+        className={classes.textField}
+        margin="normal"
+        value={gmina}
+        onChange={(e) => setGmina(e.target.value)}
+      />
+      <TextField
+        id="wojewodztwo"
+        label="Województwo"
+        className={classes.textField}
+        margin="normal"
+        value={wojewodztwo}
+        onChange={(e) => setWojewodztwo(e.target.value)}
+      />
+      {/*  */}
       <FormControlLabel
         control={<Switch color="primary" />}
         label="Czarna lista"
@@ -271,6 +359,30 @@ export default function Personal() {
         className={classes.switch}
         onChange={(e) => setCzarnaLista(e.target.checked)}
         checked={czarnaLista}
+      />
+      <FormControlLabel
+        control={<Switch color="primary" />}
+        label="Zgoda marketingowa"
+        labelPlacement="start"
+        className={classes.switch}
+        onChange={(e) => setZgodaMarketingowa(e.target.checked)}
+        checked={zgodaMarketingowa}
+      />
+      <FormControlLabel
+        control={<Switch color="primary" />}
+        label="Zgoda na elektroniczną wysyłkę ZUS"
+        labelPlacement="start"
+        className={classes.switch}
+        onChange={(e) => setZgodaZus(e.target.checked)}
+        checked={zgodaZus}
+      />
+      <FormControlLabel
+        control={<Switch color="primary" />}
+        label="RMUA"
+        labelPlacement="start"
+        className={classes.switch}
+        onChange={(e) => setRmua(e.target.checked)}
+        checked={rmua}
       />
       <TextField
         id="project"

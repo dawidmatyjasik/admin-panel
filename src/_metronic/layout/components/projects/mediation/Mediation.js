@@ -38,11 +38,16 @@ const Mediation = () => {
   const [posrednictwo, setPosrednictwo] = useState([]);
   const [dataZakonczeniaSzkolenia, setDataZakonczeniaSzkolenia] = useState("");
   const [posrednik, setPosrednik] = useState("");
-  const [adresPosrednictwa, setAdresPosrednictwa] = useState("");
+  const [miastoPosrednictwa, setMiastoPosrednictwa] = useState("");
+  const [ulicaPosrednictwa, setUlicaPosrednictwa] = useState("");
+  const [numerPosrednictwa, setNumerPosrednictwa] = useState("");
+  // const [adresPosrednictwa, setAdresPosrednictwa] = useState("");
   const [dataSpotkania, setDataSpotkania] = useState("");
   const [godzinySpotkaniaOd, setGodzinySpotkaniaOd] = useState("");
   const [godzinySpotkaniaDo, setGodzinySpotkaniaDo] = useState("");
   const [czasTrwania, setCzasTrwania] = useState("");
+  const [dokumenty, setDokumenty] = useState("");
+  const [kartaPp, setKartaPp] = useState("");
   const [uwagi, setUwagi] = useState("");
 
   useEffect(() => {
@@ -72,11 +77,16 @@ const Mediation = () => {
       .set({
         dataZakonczeniaSzkolenia,
         posrednik,
-        adresPosrednictwa,
+        miastoPosrednictwa,
+        ulicaPosrednictwa,
+        numerPosrednictwa,
+        /*         adresPosrednictwa, */
         dataSpotkania,
         godzinySpotkaniaOd,
         godzinySpotkaniaDo,
         czasTrwania,
+        dokumenty,
+        kartaPp,
         uwagi,
       });
     console.log("dodano");
@@ -86,11 +96,16 @@ const Mediation = () => {
     if (posrednictwo) {
       setDataZakonczeniaSzkolenia(posrednictwo.dataZakonczeniaSzkolenia || "");
       setPosrednik(posrednictwo.posrednik || "");
-      setAdresPosrednictwa(posrednictwo.adresPosrednictwa || "");
+      // setAdresPosrednictwa(posrednictwo.adresPosrednictwa || "");
+      setMiastoPosrednictwa(posrednictwo.miastoPosrednictwa || "");
+      setUlicaPosrednictwa(posrednictwo.ulicaPosrednictwa || "");
+      setNumerPosrednictwa(posrednictwo.numerPosrednictwa || "");
       setDataSpotkania(posrednictwo.dataSpotkania || "");
       setGodzinySpotkaniaOd(posrednictwo.godzinySpotkaniaOd || "");
       setGodzinySpotkaniaDo(posrednictwo.godzinySpotkaniaDo || "");
       setCzasTrwania(posrednictwo.czasTrwania || "");
+      setDokumenty(posrednictwo.dokumenty || "");
+      setKartaPp(posrednictwo.kartaPp || "");
       setUwagi(posrednictwo.uwagi || "");
     }
   }, [posrednictwo]);
@@ -119,12 +134,33 @@ const Mediation = () => {
         </FormSelect>
       </FormLabel>
       <FormLabel>
+        Miasto pośrednictwa:
+        <FormInput
+          value={miastoPosrednictwa}
+          onChange={(e) => setMiastoPosrednictwa(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Ulica pośrednictwa:
+        <FormInput
+          value={ulicaPosrednictwa}
+          onChange={(e) => setUlicaPosrednictwa(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Numer pośrednictwa:
+        <FormInput
+          value={numerPosrednictwa}
+          onChange={(e) => setNumerPosrednictwa(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      {/* <FormLabel>
         Pełny adress miejsca pośrednictwa:
         <FormInput
           value={adresPosrednictwa}
           onChange={(e) => setAdresPosrednictwa(e.target.value)}
         ></FormInput>
-      </FormLabel>
+      </FormLabel> */}
       <FormLabel>
         Data spotkania:
         <FormInput
@@ -162,6 +198,31 @@ const Mediation = () => {
           type="number"
         ></FormInput>
       </FormLabel>
+      <FormLabel>
+        Dokumenty:
+        <FormSelect
+          value={dokumenty}
+          onChange={(e) => setDokumenty(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      {dokumenty === "Tak" ? (
+        <FormLabel>
+          Karta pp sesja I
+          <FormSelect
+            value={kartaPp}
+            onChange={(e) => setKartaPp(e.target.value)}
+          >
+            <FormOption>Dokument 1</FormOption>
+            <FormOption>Dokument 2</FormOption>
+            <FormOption>Dokument 3</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
       <FormLabel>
         Uwagi*:
         <FormInput

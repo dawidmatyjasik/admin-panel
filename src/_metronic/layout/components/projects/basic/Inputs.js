@@ -32,6 +32,11 @@ export default function Inputs({ podstawowe }) {
   const [wyksztalcenie, setWyksztalcenie] = useState("");
   const [niepelnosprawnosc, setNiepelnosprawnosc] = useState("");
   const [status, setStatus] = useState("");
+  const [osobaPracujaca, setOsobaPracujaca] = useState("");
+  const [osobaBezrobotna, setOsobaBezrobotna] = useState("");
+  const [uczaca, setUczaca] = useState("");
+  const [koniecEdukacji, setKoniecEdukacji] = useState("");
+  const [outplacment, setOutplacment] = useState("");
   const [bezrobocie, setBezrobocie] = useState(0);
   const [numerKonta, setNumerKonta] = useState("");
   const [mniejszoscNarodowa, setMniejszoscNarodowa] = useState("");
@@ -147,11 +152,11 @@ export default function Inputs({ podstawowe }) {
           value={wyksztalcenie}
           onChange={(e) => setWyksztalcenie(e.target.value)}
         >
-          <FormOption>Podstawowe</FormOption>
-          <FormOption>Gimnazjalne</FormOption>
-          <FormOption>Ponadgimnazjalne</FormOption>
-          <FormOption>Policealne</FormOption>
-          <FormOption>Wyższe</FormOption>
+          <FormOption>Podstawowe (ISCED 1)</FormOption>
+          <FormOption>Gimnazjalne (ISCED 2)</FormOption>
+          <FormOption>Ponadgimnazjalne (ISCED 3)</FormOption>
+          <FormOption>Policealne (ISCED 4)</FormOption>
+          <FormOption>Wyższe (ISCED 5-8)</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
@@ -164,6 +169,7 @@ export default function Inputs({ podstawowe }) {
           <FormOption>Stopień lekki</FormOption>
           <FormOption>Stopień umiarkowany</FormOption>
           <FormOption>Stopień znaczny</FormOption>
+          <FormOption>Zaburzenia psychiczne</FormOption>
           <FormOption>Odmowa podania informacji</FormOption>
         </FormSelect>
       </FormLabel>
@@ -171,9 +177,74 @@ export default function Inputs({ podstawowe }) {
         Status na rynku pracy:
         <FormSelect value={status} onChange={(e) => setStatus(e.target.value)}>
           <FormOption>Osoba pracująca</FormOption>
-          <FormOption>Osoba niepracująca</FormOption>
+          <FormOption>Osoba bezrobotna</FormOption>
+          <FormOption>Osoba bierna zawodowe</FormOption>
+          <FormOption>Outplacment</FormOption>
         </FormSelect>
       </FormLabel>
+      {status === "Osoba pracująca" ? (
+        <FormLabel>
+          Osoba pracująca:
+          <FormSelect
+            value={osobaPracujaca}
+            onChange={(e) => setOsobaPracujaca(e.target.value)}
+          >
+            <FormOption>Ubogo pracująca</FormOption>
+            <FormOption>Umowa cywilnoprawna</FormOption>
+            <FormOption>Umowa krótkoterminowa</FormOption>
+            <FormOption>Działalność gospodarcza</FormOption>
+            <FormOption>Umowa o pracę</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : <></> && status === "Osoba bezrobotna" ? (
+        <FormLabel>
+          Osoba bezrobotna:
+          <FormSelect
+            value={osobaBezrobotna}
+            onChange={(e) => setOsobaBezrobotna(e.target.value)}
+          >
+            <FormOption>Zarejestrowana</FormOption>
+            <FormOption>Niezarejestrowana</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : <></> && status === "Osoba bierna zawodowe" ? (
+        <FormLabel>
+          Ucząca się:
+          <FormSelect
+            value={uczaca}
+            onChange={(e) => setUczaca(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : <></> && status === "Outplacment" ? (
+        <FormLabel>
+          Osoba pracująca:
+          <FormSelect
+            value={outplacment}
+            onChange={(e) => setOutplacment(e.target.value)}
+          >
+            <FormOption>Zagrożona zwolnieniem</FormOption>
+            <FormOption>Przewidziana do zwolnienia</FormOption>
+            <FormOption>Zwolniona</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
+      {uczaca === "Tak" ? (
+        <FormLabel>
+          Planowa data zakończenia edukacji:
+          <FormInput
+            type="date"
+            value={koniecEdukacji}
+            onChange={(e) => setKoniecEdukacji(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
       <FormLabel>
         Liczba miesięcy bezrobocia:
         <FormInput
@@ -210,7 +281,6 @@ export default function Inputs({ podstawowe }) {
         >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
-          <FormOption>Nie dotyczny</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>

@@ -334,7 +334,7 @@ export default function Inputs({ podstawowe }) {
           <FormOption>Nie dotyczny</FormOption>
         </FormSelect>
       </FormLabel>
-      {ubezpieczenie === "Tak" ? (
+      {status === "Osoba pracująca" || status === "Outplacment" ? (
         <>
           <FormHeader>Dane pracodawcy:</FormHeader>
           <FormLabel>

@@ -4,6 +4,7 @@ import db from "../../../../../firebase";
 import {
   Form,
   FormDateContainer,
+  FormFlexContainer,
   FormHeader,
   FormInput,
   FormLabel,
@@ -42,18 +43,21 @@ const Traning = () => {
   const [nazwiskoEgzaminatora, setNazwiskoEgzaminatora] = useState("");
   const [miejsceSzkolenia, setMiejsceSzkolenia] = useState("");
   const [medycynaPracy, setMedycynaPracy] = useState("");
+  const [badaniaMedycynaPracy, setBadaniaMedycynaPracy] = useState("");
   const [sanepid, setSanepid] = useState("");
+  const [badaniaPsychologiczne, setBadaniaPsychologiczne] = useState("");
   const [psychologiczne, setPsychologiczne] = useState("");
   const [zgloszenieZus, setZgloszenieZus] = useState("");
   const [wygloszenieZus, setWygloszenieZus] = useState("");
   const [nnwOd, setNnwOd] = useState("");
   const [nnwDo, setNnwDo] = useState("");
   const [korepetycjeCyfrowe, setKorepetycjeCyfrowe] = useState("");
+  const [godzinyObecnosciL4, setGodzinyObecnosciL4] = useState("");
   const [godzinyObecnosci, setGodzinyObecnosci] = useState("");
   const [ukonczylSzkolenie, setUkonczylSzkolenie] = useState("");
+  const [wynikEgzaminu, setWynikEgzaminu] = useState("");
   const [uzyskalKwalifikacje, setUzyskalKwalifikacje] = useState("");
   const [godzinyZus, setGodzinyZus] = useState("");
-  const [innyTytulZus, setInnyTytulZus] = useState("");
   const [stypendium, setStypendium] = useState("");
   const [stypendiumOd, setStypendiumOd] = useState("");
   const [stypendiumDo, setStypendiumDo] = useState("");
@@ -63,6 +67,18 @@ const Traning = () => {
   const [zwrotKosztowOpieki, setZwrotKosztowOpieki] = useState("");
   const [zwrotKosztowOpiekiOd, setZwrotKosztowOpiekiOd] = useState("");
   const [zwrotKosztowOpiekiDo, setZwrotKosztowOpiekiDo] = useState("");
+  const [listaObecnosci, setListaObecnosci] = useState("");
+  const [potwierdzenieCateringu, setPotwierdzenieCateringu] = useState("");
+  const [zaswiadczenie, setZaswiadczenie] = useState("");
+  const [certyfikatEgzaminu, setCertyfikatEgzaminu] = useState("");
+  const [wniosekZwrotKosztowDojazdu, setWniosekZwrotKosztowDojazdu] = useState(
+    ""
+  );
+  const [wniosekZwrotKosztowOpieki, setWniosekZwrotKosztowOpieki] = useState(
+    ""
+  );
+  const [oswiadczenieNnw, setOswiadczenieNnw] = useState("");
+  const [uwagi, setUwagi] = useState("");
   const classes = useStyles();
 
   useEffect(() => {
@@ -101,7 +117,9 @@ const Traning = () => {
         nazwiskoEgzaminatora,
         miejsceSzkolenia,
         medycynaPracy,
+        badaniaMedycynaPracy,
         sanepid,
+        badaniaPsychologiczne,
         psychologiczne,
         zgloszenieZus,
         wygloszenieZus,
@@ -109,10 +127,11 @@ const Traning = () => {
         nnwDo,
         korepetycjeCyfrowe,
         godzinyObecnosci,
+        godzinyObecnosciL4,
         ukonczylSzkolenie,
+        wynikEgzaminu,
         uzyskalKwalifikacje,
         godzinyZus,
-        innyTytulZus,
         stypendium,
         stypendiumOd,
         stypendiumDo,
@@ -122,6 +141,14 @@ const Traning = () => {
         zwrotKosztowOpieki,
         zwrotKosztowOpiekiOd,
         zwrotKosztowOpiekiDo,
+        listaObecnosci,
+        potwierdzenieCateringu,
+        zaswiadczenie,
+        certyfikatEgzaminu,
+        wniosekZwrotKosztowDojazdu,
+        wniosekZwrotKosztowOpieki,
+        oswiadczenieNnw,
+        uwagi,
       });
     console.log("dodano");
   };
@@ -139,7 +166,9 @@ const Traning = () => {
       setNazwiskoEgzaminatora(szkolenie.nazwiskoEgzaminatora || "");
       setMiejsceSzkolenia(szkolenie.miejsceSzkolenia || "");
       setMedycynaPracy(szkolenie.medycynaPracy || "");
+      setBadaniaMedycynaPracy(szkolenie.badaniaMedycynaPracy || "");
       setSanepid(szkolenie.sanepid || "");
+      setBadaniaPsychologiczne(szkolenie.badaniaPsychologiczne || "");
       setPsychologiczne(szkolenie.psychologiczne || "");
       setZgloszenieZus(szkolenie.zgloszenieZus || "");
       setWygloszenieZus(szkolenie.wygloszenieZus || "");
@@ -147,10 +176,11 @@ const Traning = () => {
       setNnwDo(szkolenie.nnwDo || "");
       setKorepetycjeCyfrowe(szkolenie.korepetycjeCyfrowe || "");
       setGodzinyObecnosci(szkolenie.godzinyObecnosci || "");
+      setGodzinyObecnosciL4(szkolenie.godzinyObecnosciL4 || "");
       setUkonczylSzkolenie(szkolenie.ukonczylSzkolenie || "");
+      setWynikEgzaminu(szkolenie.wynikEgzaminu || "");
       setUzyskalKwalifikacje(szkolenie.uzyskalKwalifikacje || "");
       setGodzinyZus(szkolenie.godzinyZus || "");
-      setInnyTytulZus(szkolenie.innyTytulZus || "");
       setStypendium(szkolenie.stypendium || "");
       setStypendiumOd(szkolenie.stypendiumOd || "");
       setStypendiumDo(szkolenie.stypendiumDo || "");
@@ -160,12 +190,20 @@ const Traning = () => {
       setZwrotKosztowOpieki(szkolenie.zwrotKosztowOpieki || "");
       setZwrotKosztowOpiekiOd(szkolenie.zwrotKosztowOpiekiOd || "");
       setZwrotKosztowOpiekiDo(szkolenie.zwrotKosztowOpiekiDo || "");
+      setListaObecnosci(szkolenie.listaObecnosci || "");
+      setPotwierdzenieCateringu(szkolenie.potwierdzenieCateringu || "");
+      setZaswiadczenie(szkolenie.zaswiadczenie || "");
+      setCertyfikatEgzaminu(szkolenie.certyfikatEgzaminu || "");
+      setWniosekZwrotKosztowDojazdu(szkolenie.wniosekZwrotKosztowDojazdu || "");
+      setWniosekZwrotKosztowOpieki(szkolenie.wniosekZwrotKosztowOpieki || "");
+      setOswiadczenieNnw(szkolenie.oswiadczenieNnw || "");
+      setUwagi(szkolenie.uwagi || "");
     }
   }, [szkolenie]);
 
   return (
     <Form>
-      <FormHeader>Szkolenie:</FormHeader>
+      <FormHeader>Informacje:</FormHeader>
       <FormLabel>
         Nazwa szkolenia:
         <FormSelect
@@ -247,6 +285,8 @@ const Traning = () => {
           onChange={(e) => setNazwiskoEgzaminatora(e.target.value)}
         ></FormInput>
       </FormLabel>
+      <br />
+      <FormHeader>Szkolenie:</FormHeader>
       <FormLabel>
         Miejsce szkolenia:
         <FormInput
@@ -256,12 +296,27 @@ const Traning = () => {
       </FormLabel>
       <FormLabel>
         Badania medycyna pracy:
-        <FormInput
-          value={medycynaPracy}
-          onChange={(e) => setMedycynaPracy(e.target.value)}
-          type="date"
-        ></FormInput>
+        <FormSelect
+          value={badaniaMedycynaPracy}
+          onChange={(e) => setBadaniaMedycynaPracy(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczy</FormOption>
+        </FormSelect>
       </FormLabel>
+      {badaniaMedycynaPracy === "Tak" ? (
+        <FormLabel>
+          Termin badań medycyny pracy:
+          <FormInput
+            value={medycynaPracy}
+            onChange={(e) => setMedycynaPracy(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
       <FormLabel>
         Badania sanepid:
         <FormSelect
@@ -270,16 +325,33 @@ const Traning = () => {
         >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczy</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
-        Badania psychologiczne:
-        <FormInput
-          value={psychologiczne}
-          onChange={(e) => setPsychologiczne(e.target.value)}
-          type="date"
-        ></FormInput>
+        Badania medycyna pracy:
+        <FormSelect
+          value={badaniaPsychologiczne}
+          onChange={(e) => setBadaniaPsychologiczne(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczy</FormOption>
+        </FormSelect>
       </FormLabel>
+      {badaniaPsychologiczne === "Tak" ? (
+        <FormLabel>
+          Termin badań psychologicznych:
+          <FormInput
+            value={psychologiczne}
+            onChange={(e) => setPsychologiczne(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
+
       <FormLabel>
         Zgłoszenie do ZUS:
         <FormInput
@@ -328,7 +400,15 @@ const Traning = () => {
         </FormSelect>
       </FormLabel>
       <FormLabel>
-        Liczba godzin obecności na szkoleniu:
+        Liczba godzin obecności na szkoleniu (włącznie z L4):
+        <FormInput
+          value={godzinyObecnosciL4}
+          onChange={(e) => setGodzinyObecnosciL4(e.target.value)}
+          type="number"
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Liczba godzin obecności na szkoleniu (bez z L4):
         <FormInput
           value={godzinyObecnosci}
           onChange={(e) => setGodzinyObecnosci(e.target.value)}
@@ -346,6 +426,16 @@ const Traning = () => {
         </FormSelect>
       </FormLabel>
       <FormLabel>
+        Wynik egzaminu:
+        <FormSelect
+          value={ukonczylSzkolenie}
+          onChange={(e) => setUkonczylSzkolenie(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
         Czy UP uzyskał kwalifikację:
         <FormSelect
           value={uzyskalKwalifikacje}
@@ -353,6 +443,7 @@ const Traning = () => {
         >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczy</FormOption>
         </FormSelect>
       </FormLabel>
       <FormHeader>Rozliczenie szkolenia:</FormHeader>
@@ -363,16 +454,6 @@ const Traning = () => {
           onChange={(e) => setGodzinyZus(e.target.value)}
           type="number"
         ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Czy UP ma inny tytuł ZUS:
-        <FormSelect
-          value={innyTytulZus}
-          onChange={(e) => setInnyTytulZus(e.target.value)}
-        >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
       </FormLabel>
       <FormLabel>
         Stypendium:
@@ -479,14 +560,98 @@ const Traning = () => {
       ) : (
         <></>
       )}
-      <Button
-        type="submit"
-        variant="outlined"
-        className={classes.button}
-        onClick={handleSubmit}
-      >
-        Zapisz
-      </Button>
+      <FormHeader>Dokumenty szkoleniowe:</FormHeader>
+      <FormLabel>
+        Lista obecności:
+        <FormSelect
+          value={listaObecnosci}
+          onChange={(e) => setListaObecnosci(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Potwierdzenie cateringu:
+        <FormSelect
+          value={potwierdzenieCateringu}
+          onChange={(e) => setPotwierdzenieCateringu(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+          <FormOption>Nie dotyczy</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Zaświadczenie:
+        <FormSelect
+          value={zaswiadczenie}
+          onChange={(e) => setZaswiadczenie(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Certyfikat z egzaminu:
+        <FormSelect
+          value={certyfikatEgzaminu}
+          onChange={(e) => setCertyfikatEgzaminu(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Wniosek o zwrot kosztów dojazdu:
+        <FormSelect
+          value={wniosekZwrotKosztowDojazdu}
+          onChange={(e) => setWniosekZwrotKosztowDojazdu(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Wniosek o zwrot kosztów opieki:
+        <FormSelect
+          value={wniosekZwrotKosztowOpieki}
+          onChange={(e) => setWniosekZwrotKosztowOpieki(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Oświadczenie do polisy NNW:
+        <FormSelect
+          value={oswiadczenieNnw}
+          onChange={(e) => setOswiadczenieNnw(e.target.value)}
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Uwagi:
+        <FormInput
+          value={uwagi}
+          onChange={(e) => setUwagi(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormFlexContainer>
+        <Button
+          type="submit"
+          variant="outlined"
+          className={classes.button}
+          onClick={handleSubmit}
+        >
+          Dodaj szkolenie
+        </Button>
+        <Button variant="outlined" className={classes.button}>
+          Zaplanuj kontrolę szkolenia
+        </Button>
+      </FormFlexContainer>
     </Form>
   );
 };

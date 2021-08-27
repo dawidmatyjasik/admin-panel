@@ -46,10 +46,12 @@ export default function Inputs({ podstawowe }) {
   const [pozbawienieWolnosci, setPozbawienieWolnosci] = useState("");
   const [rolnictwo, setRolnictwo] = useState("");
   const [ubezpieczenie, setUbezpieczenie] = useState("");
+  const [rodzajUbezpieczenia, setRodzajUbezpieczenia] = useState("");
   const [nazwaFirmy, setNazwaFirmy] = useState("");
   const [adresFirmy, setAdresFirmy] = useState("");
   const [stanowisko, setStanowisko] = useState("");
   const [klasyfikacja, setKlasyfikacja] = useState("");
+  const [innaKlasyfikacja, setInnaKlasyfikacja] = useState("");
   const [zatrudnienieOd, setZatrudnienieOd] = useState("");
   const [zatrudnienieDo, setZatrudnienieDo] = useState("");
   const [rodzajPrzedsiebiorstwa, setRodzajPrzedsiebiorstwa] = useState("");
@@ -68,6 +70,10 @@ export default function Inputs({ podstawowe }) {
         wyksztalcenie,
         niepelnosprawnosc,
         status,
+        osobaPracujaca,
+        osobaBezrobotna,
+        uczaca,
+        outplacment,
         bezrobocie,
         numerKonta,
         mniejszoscNarodowa,
@@ -77,10 +83,12 @@ export default function Inputs({ podstawowe }) {
         pozbawienieWolnosci,
         rolnictwo,
         ubezpieczenie,
+        rodzajUbezpieczenia,
         nazwaFirmy,
         adresFirmy,
         stanowisko,
         klasyfikacja,
+        innaKlasyfikacja,
         zatrudnienieOd,
         zatrudnienieDo,
         rodzajPrzedsiebiorstwa,
@@ -98,6 +106,10 @@ export default function Inputs({ podstawowe }) {
       setWyksztalcenie(podstawowe.wyksztalcenie || "");
       setNiepelnosprawnosc(podstawowe.niepelnosprawnosc || "");
       setStatus(podstawowe.status || "");
+      setOsobaPracujaca(podstawowe.osobaPracujaca || "");
+      setOsobaBezrobotna(podstawowe.osobaBezrobotna || "");
+      setUczaca(podstawowe.uczaca || "");
+      setOutplacment(podstawowe.outplacment || "");
       setBezrobocie(podstawowe.bezrobocie || "");
       setNumerKonta(podstawowe.numerKonta || "");
       setMniejszoscNarodowa(podstawowe.mniejszoscNarodowa || "");
@@ -107,10 +119,12 @@ export default function Inputs({ podstawowe }) {
       setPozbawienieWolnosci(podstawowe.pozbawienieWolnosci || "");
       setRolnictwo(podstawowe.rolnictwo || "");
       setUbezpieczenie(podstawowe.ubezpieczenie || "");
+      setRodzajUbezpieczenia(podstawowe.rodzajUbezpieczenia || "");
       setNazwaFirmy(podstawowe.nazwaFirmy || "");
       setAdresFirmy(podstawowe.adresFirmy || "");
       setStanowisko(podstawowe.stanowisko || "");
       setKlasyfikacja(podstawowe.klasyfikacja || "");
+      setInnaKlasyfikacja(podstawowe.innaKlasyfikacja || "");
       setZatrudnienieOd(podstawowe.zatrudnienieOd || "");
       setZatrudnienieDo(podstawowe.zatrudnienieDo || "");
       setRodzajPrzedsiebiorstwa(podstawowe.rodzajPrzedsiebiorstwa || "");
@@ -334,6 +348,22 @@ export default function Inputs({ podstawowe }) {
           <FormOption>Nie dotyczny</FormOption>
         </FormSelect>
       </FormLabel>
+      {ubezpieczenie === "Tak" ? (
+        <FormLabel>
+          Ubezpieczenie społeczne:
+          <FormSelect
+            value={rodzajUbezpieczenia}
+            onChange={(e) => setRodzajUbezpieczenia(e.target.value)}
+          >
+            <FormOption>Renta rodzinna</FormOption>
+            <FormOption>Emerytura</FormOption>
+            <FormOption>Zasiłek dla bezrobotnych</FormOption>
+            <FormOption>Renta z tytułu niezdonlności do pracy</FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
       {status === "Osoba pracująca" || status === "Outplacment" ? (
         <>
           <FormHeader>Dane pracodawcy:</FormHeader>
@@ -367,9 +397,45 @@ export default function Inputs({ podstawowe }) {
               value={klasyfikacja}
               onChange={(e) => setKlasyfikacja(e.target.value)}
             >
-              <FormOption>Brak</FormOption>
+              <FormOption>Instruktor praktycznej nauki zawodu</FormOption>
+              <FormOption>
+                Kluczowy pracownik instytucji pomocy i integracji społecznej
+              </FormOption>
+              <FormOption>Nauczyciel kształcenia ogólnego</FormOption>
+              <FormOption>Nauczyciel kształcenia zawodowego</FormOption>
+              <FormOption>Nauczyciel wychowania przedszkolnego</FormOption>
+              <FormOption>Pracownik instytucji rynku pracy</FormOption>
+              <FormOption>
+                Pracownik instytucji systemu ochrony zdrowia
+              </FormOption>
+              <FormOption>
+                Pracownik instytucji systemu wspierania rodzin i pieczy
+                zastępczej{" "}
+              </FormOption>
+              <FormOption>
+                Pracownik instytucji szkolenictwa wyższego
+              </FormOption>
+              <FormOption>
+                Pracownik ośrodka wsparcia ekonomii społecznej
+              </FormOption>
+              <FormOption>
+                Pracownik poradni psychologiczno-pedagogicznej
+              </FormOption>
+              <FormOption>Rolnik</FormOption>
+              <FormOption>Inne</FormOption>
             </FormSelect>
           </FormLabel>
+          {klasyfikacja === "Inne" ? (
+            <FormLabel>
+              Jakie?
+              <FormInput
+                value={innaKlasyfikacja}
+                onChange={(e) => setInnaKlasyfikacja(e.target.value)}
+              ></FormInput>
+            </FormLabel>
+          ) : (
+            <></>
+          )}
           <FormLabel>
             Okres zatrudnienia od:
             <FormInput

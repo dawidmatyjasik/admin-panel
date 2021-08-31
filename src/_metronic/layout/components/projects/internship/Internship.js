@@ -41,7 +41,6 @@ const Internship = () => {
   const [stazDo, setStazDo] = useState("");
   const [przedluzenieStazuDo, setPrzedluzenieStazuDo] = useState("");
   const [medycynaPracy, setMedycynaPracy] = useState("");
-  const [sanepid, setSanepid] = useState("");
   const [nazwaPracodawcy, setNazwaPracodawcy] = useState("");
   const [kodPocztowyPracodawcy, setKodPocztowyPracodawcy] = useState("");
   const [miastoPracodawcy, setMiastoPracodawcy] = useState("");
@@ -60,6 +59,7 @@ const Internship = () => {
   );
   const [godzinyStazuOd, setGodzinyStazuOd] = useState("");
   const [godzinyStazuDo, setGodzinyStazuDo] = useState("");
+  const [dodajGodziny, setDodajGodziny] = useState("");
   const [dniUrlopu, setDniUrlopu] = useState("");
   const [pozostaleDniUrlopu, setPozostaleDniUrlopu] = useState("");
   const [urlopOd, setUrlopOd] = useState("");
@@ -173,7 +173,6 @@ const Internship = () => {
         stazDo,
         przedluzenieStazuDo,
         medycynaPracy,
-        sanepid,
         nazwaPracodawcy,
         kodPocztowyPracodawcy,
         miastoPracodawcy,
@@ -190,6 +189,7 @@ const Internship = () => {
         wymiarGodzinPracyOpiekuna,
         godzinyStazuOd,
         godzinyStazuDo,
+        dodajGodziny,
         dniUrlopu,
         pozostaleDniUrlopu,
         urlopOd,
@@ -215,7 +215,6 @@ const Internship = () => {
       setStazDo(staz.stazDo || "");
       setPrzedluzenieStazuDo(staz.przedluzenieStazuDo || "");
       setMedycynaPracy(staz.medycynaPracy || "");
-      setSanepid(staz.sanepid || "");
       setNazwaPracodawcy(staz.nazwaPracodawcy || "");
       setKodPocztowyPracodawcy(staz.kodPocztowyPracodawcy || "");
       setMiastoPracodawcy(staz.miastoPracodawcy || "");
@@ -232,6 +231,7 @@ const Internship = () => {
       setWymiarGodzinPracyOpiekuna(staz.wymiarGodzinPracyOpiekuna || "");
       setGodzinyStazuOd(staz.godzinyStazuOd || "");
       setGodzinyStazuDo(staz.godzinyStazuDo || "");
+      setDodajGodziny(staz.dodajGodziny || "");
       setDniUrlopu(staz.dniUrlopu || "");
       setPozostaleDniUrlopu(staz.pozostaleDniUrlopu || "");
       setUrlopOd(staz.urlopOd || "");
@@ -267,7 +267,24 @@ const Internship = () => {
   const classes = useStyles();
   return (
     <Form>
-      <FormHeader>Pracodawca:</FormHeader>
+      <FormHeader>Stypendia:</FormHeader>
+      <FormLabel>
+        Zgłoszenie do ZUS:
+        <FormInput
+          value={zgloszenieZus}
+          onChange={(e) => setZgloszenieZus(e.target.value)}
+          type="date"
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Wygłoszenie ZUS:
+        <FormInput
+          value={wygloszenieZus}
+          onChange={(e) => setWygloszenieZus(e.target.value)}
+          type="date"
+        ></FormInput>
+      </FormLabel>
+      <FormHeader>Staż:</FormHeader>
       <FormLabel>
         Ubezpieczenie NNW do kiedy:
         <FormInput
@@ -321,16 +338,7 @@ const Internship = () => {
           type="date"
         ></FormInput>
       </FormLabel>
-      <FormLabel>
-        Badania sanepid:
-        <FormSelect
-          value={sanepid}
-          onChange={(e) => setSanepid(e.target.value)}
-        >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
-      </FormLabel>
+      <FormHeader>Pracodawca:</FormHeader>
       <FormLabel>
         Nazwa pracodawcy:
         <FormInput
@@ -338,7 +346,7 @@ const Internship = () => {
           onChange={(e) => setNazwaPracodawcy(e.target.value)}
         ></FormInput>
       </FormLabel>
-      <FormHeader>Adres pracodawcy:</FormHeader>
+
       <FormLabel>
         Kod pocztowy:
         <FormInput
@@ -415,6 +423,9 @@ const Internship = () => {
           onChange={(e) => setStanowiskoStazu(e.target.value)}
         ></FormInput>
       </FormLabel>
+      <Button variant="outlined" className={classes.button}>
+        Zmiana miejsca
+      </Button>
       <FormHeader>Opiekun stażu:</FormHeader>
       <FormLabel>
         E-mail
@@ -461,12 +472,20 @@ const Internship = () => {
           </FromDateWrapper>
         </FormDateContainer>
       </FormLabel>
+      <FormLabel>
+        Dodaj godziny stażu:
+        <FormInput
+          value={dodajGodziny}
+          onChange={(e) => setDodajGodziny(e.target.value)}
+          type="tel"
+        ></FormInput>
+      </FormLabel>
       <FormFlexContainer>
         <Button variant="outlined" className={classes.button}>
-          Dodaj pracodawcę
+          Zaplanuj kontrolę stażu
         </Button>
         <Button variant="outlined" className={classes.button}>
-          Zaplanuj kontrolę stażu
+          Dodaj godziny
         </Button>
       </FormFlexContainer>
       <FormHeader>Rozliczenie stażu:</FormHeader>
@@ -519,23 +538,6 @@ const Internship = () => {
       <Button variant="outlined" className={classes.button}>
         Dodaj urlop
       </Button>
-      <FormHeader>Stypendia:</FormHeader>
-      <FormLabel>
-        Zgłoszenie do ZUS:
-        <FormInput
-          value={zgloszenieZus}
-          onChange={(e) => setZgloszenieZus(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Wygłoszenie ZUS:
-        <FormInput
-          value={wygloszenieZus}
-          onChange={(e) => setWygloszenieZus(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
       <FormSubHeader>Miesiąc 1:</FormSubHeader>
       <FormLabel style={{ alignItems: "center" }}>
         Stypendium:

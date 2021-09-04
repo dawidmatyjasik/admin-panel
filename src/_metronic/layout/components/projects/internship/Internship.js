@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Internship = () => {
   const [staz, setStaz] = useState([]);
+  const [dotyczy, setDotyczy] = useState(true);
   const [ubezbieczenieNnw, setUbezbieczenieNnw] = useState("");
   const [dataPodpisaniaUmowy, setDataPodpisaniaUmowy] = useState("");
   const [stazOd, setStazOd] = useState("");
@@ -167,6 +168,7 @@ const Internship = () => {
       .collection("projektowe")
       .doc("staz")
       .set({
+        dotyczy,
         ubezbieczenieNnw,
         dataPodpisaniaUmowy,
         stazOd,
@@ -204,11 +206,12 @@ const Internship = () => {
         wyplaconoStypendium,
         uwagi,
       });
-    console.log("dodano");
+    alert("dodano!");
   };
 
   useEffect(() => {
     if (staz) {
+      setDotyczy(staz.dotyczy);
       setUbezbieczenieNnw(staz.ubezbieczenieNnw || "");
       setDataPodpisaniaUmowy(staz.dataPodpisaniaUmowy || "");
       setStazOd(staz.stazOd || "");
@@ -265,336 +268,372 @@ const Internship = () => {
       });
   }, []);
   const classes = useStyles();
+
+  const handleRefersTo = (e) => {
+    e.preventDefault();
+    setDotyczy(!dotyczy);
+  };
+
   return (
     <Form>
-      <FormHeader>Stypendia:</FormHeader>
-      <FormLabel>
-        Zgłoszenie do ZUS:
-        <FormInput
-          value={zgloszenieZus}
-          onChange={(e) => setZgloszenieZus(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Wygłoszenie ZUS:
-        <FormInput
-          value={wygloszenieZus}
-          onChange={(e) => setWygloszenieZus(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormHeader>Staż:</FormHeader>
-      <FormLabel>
-        Ubezpieczenie NNW do kiedy:
-        <FormInput
-          value={ubezbieczenieNnw}
-          onChange={(e) => setUbezbieczenieNnw(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Data podpisania umowy stażowej:
-        <FormInput
-          value={dataPodpisaniaUmowy}
-          onChange={(e) => setDataPodpisaniaUmowy(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel style={{ alignItems: "center" }}>
-        Staż:
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              value={stazOd}
-              onChange={(e) => setStazOd(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={stazDo}
-              onChange={(e) => setStazDo(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Przedłużenie stażu do:
-        <FormInput
-          value={przedluzenieStazuDo}
-          onChange={(e) => setPrzedluzenieStazuDo(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Badania medycyna pracy:
-        <FormInput
-          value={medycynaPracy}
-          onChange={(e) => setMedycynaPracy(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormHeader>Pracodawca:</FormHeader>
-      <FormLabel>
-        Nazwa pracodawcy:
-        <FormInput
-          value={nazwaPracodawcy}
-          onChange={(e) => setNazwaPracodawcy(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-
-      <FormLabel>
-        Kod pocztowy:
-        <FormInput
-          value={kodPocztowyPracodawcy}
-          onChange={(e) => setKodPocztowyPracodawcy(e.target.value)}
-          type="tel"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Miasto:
-        <FormInput
-          value={miastoPracodawcy}
-          onChange={(e) => setMiastoPracodawcy(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Ulica
-        <FormInput
-          value={ulicaPracodawcy}
-          onChange={(e) => setUlicaPracodawcy(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Numer:
-        <FormInput
-          value={numerPracodawcy}
-          onChange={(e) => setNumerPracodawcy(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormHeader>Miejsce odbywania stażu:</FormHeader>
-      <FormLabel>
-        Kod pocztowy:
-        <FormInput
-          value={kodPocztowyStazu}
-          onChange={(e) => setKodPocztowyStazu(e.target.value)}
-          type="tel"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Miasto:
-        <FormInput
-          value={miastoStazu}
-          onChange={(e) => setMiastoStazu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Ulica
-        <FormInput
-          value={ulicaStazu}
-          onChange={(e) => setUlicaStazu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Numer:
-        <FormInput
-          value={numerStazu}
-          onChange={(e) => setNumerStazu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        NIP:
-        <FormInput
-          value={nipStazu}
-          onChange={(e) => setNipStazu(e.target.value)}
-          type="tel"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Stanowisko na stażu:
-        <FormInput
-          value={stanowiskoStazu}
-          onChange={(e) => setStanowiskoStazu(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <Button variant="outlined" className={classes.button}>
-        Zmiana miejsca
+      <Button
+        variant="outlined"
+        className={classes.button}
+        onClick={handleRefersTo}
+      >
+        Nie dotyczy (należy kliknąć zapisz)
       </Button>
-      <FormHeader>Opiekun stażu:</FormHeader>
-      <FormLabel>
-        E-mail
-        <FormInput
-          value={emailOpiekuna}
-          onChange={(e) => setEmailOpiekuna(e.target.value)}
-          type="mail"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Telefon:
-        <FormInput
-          value={telefonOpiekuna}
-          onChange={(e) => setTelefonOpiekuna(e.target.value)}
-          type="tel"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Wymiar godzin czasu pracy:
-        <FormInput
-          value={wymiarGodzinPracyOpiekuna}
-          onChange={(e) => setWymiarGodzinPracyOpiekuna(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel style={{ alignItems: "center" }}>
-        Godziny stażu
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              value={godzinyStazuOd}
-              onChange={(e) => setGodzinyStazuOd(e.target.value)}
-              type="time"
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={godzinyStazuDo}
-              onChange={(e) => setGodzinyStazuDo(e.target.value)}
-              type="time"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Dodaj godziny stażu:
-        <FormInput
-          value={dodajGodziny}
-          onChange={(e) => setDodajGodziny(e.target.value)}
-          type="tel"
-        ></FormInput>
-      </FormLabel>
-      <FormFlexContainer>
-        <Button variant="outlined" className={classes.button}>
-          Zaplanuj kontrolę stażu
-        </Button>
-        <Button variant="outlined" className={classes.button}>
-          Dodaj godziny
-        </Button>
-      </FormFlexContainer>
-      <FormHeader>Rozliczenie stażu:</FormHeader>
+      <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
+        <FormHeader>Stypendia:</FormHeader>
+        <FormLabel>
+          Zgłoszenie do ZUS:
+          <FormInput
+            value={zgloszenieZus}
+            onChange={(e) => setZgloszenieZus(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Wygłoszenie ZUS:
+          <FormInput
+            value={wygloszenieZus}
+            onChange={(e) => setWygloszenieZus(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormHeader>Staż:</FormHeader>
+        <FormLabel>
+          Ubezpieczenie NNW do kiedy:
+          <FormInput
+            value={ubezbieczenieNnw}
+            onChange={(e) => setUbezbieczenieNnw(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Data podpisania umowy stażowej:
+          <FormInput
+            value={dataPodpisaniaUmowy}
+            onChange={(e) => setDataPodpisaniaUmowy(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Staż:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={stazOd}
+                onChange={(e) => setStazOd(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={stazDo}
+                onChange={(e) => setStazDo(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Przedłużenie stażu do:
+          <FormInput
+            value={przedluzenieStazuDo}
+            onChange={(e) => setPrzedluzenieStazuDo(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Badania medycyna pracy:
+          <FormInput
+            value={medycynaPracy}
+            onChange={(e) => setMedycynaPracy(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormHeader>Pracodawca:</FormHeader>
+        <FormLabel>
+          Nazwa pracodawcy:
+          <FormInput
+            value={nazwaPracodawcy}
+            onChange={(e) => setNazwaPracodawcy(e.target.value)}
+          ></FormInput>
+        </FormLabel>
 
-      <FormLabel>
-        Liczba dni urlopu:
-        <FormInput
-          value={dniUrlopu}
-          onChange={(e) => setDniUrlopu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Pozostałe dni urlopu:
-        <FormInput
-          value={pozostaleDniUrlopu}
-          onChange={(e) => setPozostaleDniUrlopu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel style={{ alignItems: "center" }}>
-        Wybierz urlop:
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              value={urlopOd}
-              onChange={(e) => setUrlopOd(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={urlopDo}
-              onChange={(e) => setUrlopDo(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Wybrane dni urlopu:
-        <FormInput
-          value={wybraneDniUrlopu}
-          onChange={(e) => setWybraneDniUrlopu(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <Button variant="outlined" className={classes.button}>
-        Dodaj urlop
-      </Button>
-      <FormSubHeader>Miesiąc 1:</FormSubHeader>
-      <FormLabel style={{ alignItems: "center" }}>
-        Stypendium:
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              value={stypendiumOd}
-              onChange={(e) => setStypendiumOd(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={stypendiumDo}
-              onChange={(e) => setStypendiumDo(e.target.value)}
-              type="date"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Liczba dni przepracowanych:
-        <FormInput
-          value={dniPrzepracowane}
-          onChange={(e) => setDniPrzepracowane(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Liczba dni do wyliczenia składek ZUS:
-        <FormInput
-          value={dniWyliczeniaZus}
-          onChange={(e) => setDniWyliczeniaZus(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Wypłacono stypendium:
-        <FormSelect
-          value={wyplaconoStypendium}
-          onChange={(e) => setWyplaconoStypendium(e.target.value)}
+        <FormLabel>
+          Kod pocztowy:
+          <FormInput
+            value={kodPocztowyPracodawcy}
+            onChange={(e) => setKodPocztowyPracodawcy(e.target.value)}
+            type="tel"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Miasto:
+          <FormInput
+            value={miastoPracodawcy}
+            onChange={(e) => setMiastoPracodawcy(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Ulica
+          <FormInput
+            value={ulicaPracodawcy}
+            onChange={(e) => setUlicaPracodawcy(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Numer:
+          <FormInput
+            value={numerPracodawcy}
+            onChange={(e) => setNumerPracodawcy(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormHeader>Miejsce odbywania stażu:</FormHeader>
+        <FormLabel>
+          Kod pocztowy:
+          <FormInput
+            value={kodPocztowyStazu}
+            onChange={(e) => setKodPocztowyStazu(e.target.value)}
+            type="tel"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Miasto:
+          <FormInput
+            value={miastoStazu}
+            onChange={(e) => setMiastoStazu(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Ulica
+          <FormInput
+            value={ulicaStazu}
+            onChange={(e) => setUlicaStazu(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Numer:
+          <FormInput
+            value={numerStazu}
+            onChange={(e) => setNumerStazu(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          NIP:
+          <FormInput
+            value={nipStazu}
+            onChange={(e) => setNipStazu(e.target.value)}
+            type="tel"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Stanowisko na stażu:
+          <FormInput
+            value={stanowiskoStazu}
+            onChange={(e) => setStanowiskoStazu(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={() => alert("będzie zmieniało miejsce odbywania stażu")}
         >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
-      </FormLabel>
-      <FormLabel>
-        Uwagi:
-        <FormInput
-          value={uwagi}
-          onChange={(e) => setUwagi(e.target.value)}
-        ></FormInput>
-      </FormLabel>
+          Zmiana miejsca
+        </Button>
+        <FormHeader>Opiekun stażu:</FormHeader>
+        <FormLabel>
+          E-mail
+          <FormInput
+            value={emailOpiekuna}
+            onChange={(e) => setEmailOpiekuna(e.target.value)}
+            type="mail"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Telefon:
+          <FormInput
+            value={telefonOpiekuna}
+            onChange={(e) => setTelefonOpiekuna(e.target.value)}
+            type="tel"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Wymiar godzin czasu pracy:
+          <FormInput
+            value={wymiarGodzinPracyOpiekuna}
+            onChange={(e) => setWymiarGodzinPracyOpiekuna(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Godziny stażu
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={godzinyStazuOd}
+                onChange={(e) => setGodzinyStazuOd(e.target.value)}
+                type="time"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={godzinyStazuDo}
+                onChange={(e) => setGodzinyStazuDo(e.target.value)}
+                type="time"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Dodaj godziny stażu:
+          <FormInput
+            value={dodajGodziny}
+            onChange={(e) => setDodajGodziny(e.target.value)}
+            type="tel"
+          ></FormInput>
+        </FormLabel>
+        <FormFlexContainer>
+          <Button
+            variant="outlined"
+            className={classes.button}
+            onClick={() => alert("będzie planowało kontrolę stażu")}
+          >
+            Zaplanuj kontrolę stażu
+          </Button>
+          <Button
+            variant="outlined"
+            className={classes.button}
+            onClick={() => alert("będzie dodawało godziny stażu")}
+          >
+            Dodaj godziny
+          </Button>
+        </FormFlexContainer>
+        <FormHeader>Rozliczenie stażu:</FormHeader>
+
+        <FormLabel>
+          Liczba dni urlopu:
+          <FormInput
+            value={dniUrlopu}
+            onChange={(e) => setDniUrlopu(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Pozostałe dni urlopu:
+          <FormInput
+            value={pozostaleDniUrlopu}
+            onChange={(e) => setPozostaleDniUrlopu(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Wybierz urlop:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={urlopOd}
+                onChange={(e) => setUrlopOd(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={urlopDo}
+                onChange={(e) => setUrlopDo(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Wybrane dni urlopu:
+          <FormInput
+            value={wybraneDniUrlopu}
+            onChange={(e) => setWybraneDniUrlopu(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={() => alert("będzie wybierało urlop")}
+        >
+          Dodaj urlop
+        </Button>
+        <FormSubHeader>Miesiąc 1:</FormSubHeader>
+        <FormLabel style={{ alignItems: "center" }}>
+          Stypendium:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={stypendiumOd}
+                onChange={(e) => setStypendiumOd(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={stypendiumDo}
+                onChange={(e) => setStypendiumDo(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Liczba dni przepracowanych:
+          <FormInput
+            value={dniPrzepracowane}
+            onChange={(e) => setDniPrzepracowane(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Liczba dni do wyliczenia składek ZUS:
+          <FormInput
+            value={dniWyliczeniaZus}
+            onChange={(e) => setDniWyliczeniaZus(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Wypłacono stypendium:
+          <FormSelect
+            value={wyplaconoStypendium}
+            onChange={(e) => setWyplaconoStypendium(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Uwagi:
+          <FormInput
+            value={uwagi}
+            onChange={(e) => setUwagi(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+      </div>
       <FormFlexContainer>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+          onClick={() => alert("będzie dodawało miesiąc")}
+        >
           Dodaj miesiąc
         </Button>
         <Button

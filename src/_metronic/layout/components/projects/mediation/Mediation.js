@@ -36,6 +36,7 @@ const data = { mediation: ["Pośrednik 1", "Pośrednik 2", "Pośrednik 3"] };
 
 const Mediation = () => {
   const [posrednictwo, setPosrednictwo] = useState([]);
+  const [dotyczy, setDotyczy] = useState("");
   const [dataZakonczeniaSzkolenia, setDataZakonczeniaSzkolenia] = useState("");
   const [posrednik, setPosrednik] = useState("");
   const [miastoPosrednictwa, setMiastoPosrednictwa] = useState("");
@@ -75,6 +76,7 @@ const Mediation = () => {
       .collection("projektowe")
       .doc("posrednictwo")
       .set({
+        dotyczy,
         dataZakonczeniaSzkolenia,
         posrednik,
         miastoPosrednictwa,
@@ -94,6 +96,7 @@ const Mediation = () => {
 
   useEffect(() => {
     if (posrednictwo) {
+      setDotyczy(posrednictwo.dotyczy);
       setDataZakonczeniaSzkolenia(posrednictwo.dataZakonczeniaSzkolenia || "");
       setPosrednik(posrednictwo.posrednik || "");
       // setAdresPosrednictwa(posrednictwo.adresPosrednictwa || "");
@@ -110,128 +113,146 @@ const Mediation = () => {
     }
   }, [posrednictwo]);
 
+  const handleRefersTo = (e) => {
+    e.preventDefault();
+    setDotyczy(!dotyczy);
+  };
+
   const classes = useStyles();
   return (
     <Form>
-      <FormHeader>Sesja I</FormHeader>
-      <FormLabel>
-        Data zakończenia szkoleina:
-        <FormInput
-          value={dataZakonczeniaSzkolenia}
-          onChange={(e) => setDataZakonczeniaSzkolenia(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Pośrednik pracy:
-        <FormSelect
-          value={posrednik}
-          onChange={(e) => setPosrednik(e.target.value)}
-        >
-          {data.mediation.map((item) => (
-            <FormOption key={item}>{item}</FormOption>
-          ))}
-        </FormSelect>
-      </FormLabel>
-      <FormLabel>
-        Miasto pośrednictwa:
-        <FormInput
-          value={miastoPosrednictwa}
-          onChange={(e) => setMiastoPosrednictwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Ulica pośrednictwa:
-        <FormInput
-          value={ulicaPosrednictwa}
-          onChange={(e) => setUlicaPosrednictwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Numer pośrednictwa:
-        <FormInput
-          value={numerPosrednictwa}
-          onChange={(e) => setNumerPosrednictwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      {/* <FormLabel>
+      <Button
+        variant="outlined"
+        className={classes.button}
+        onClick={handleRefersTo}
+      >
+        Nie dotyczy (należy kliknąć zapisz)
+      </Button>
+      <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
+        <FormHeader>Sesja I</FormHeader>
+        <FormLabel>
+          Data zakończenia szkoleina:
+          <FormInput
+            value={dataZakonczeniaSzkolenia}
+            onChange={(e) => setDataZakonczeniaSzkolenia(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Pośrednik pracy:
+          <FormSelect
+            value={posrednik}
+            onChange={(e) => setPosrednik(e.target.value)}
+          >
+            {data.mediation.map((item) => (
+              <FormOption key={item}>{item}</FormOption>
+            ))}
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Miasto pośrednictwa:
+          <FormInput
+            value={miastoPosrednictwa}
+            onChange={(e) => setMiastoPosrednictwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Ulica pośrednictwa:
+          <FormInput
+            value={ulicaPosrednictwa}
+            onChange={(e) => setUlicaPosrednictwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Numer pośrednictwa:
+          <FormInput
+            value={numerPosrednictwa}
+            onChange={(e) => setNumerPosrednictwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        {/* <FormLabel>
         Pełny adress miejsca pośrednictwa:
         <FormInput
           value={adresPosrednictwa}
           onChange={(e) => setAdresPosrednictwa(e.target.value)}
         ></FormInput>
       </FormLabel> */}
-      <FormLabel>
-        Data spotkania:
-        <FormInput
-          value={dataSpotkania}
-          onChange={(e) => setDataSpotkania(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel style={{ alignItems: "center" }}>
-        Godziny spotkania:
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              value={godzinySpotkaniaOd}
-              onChange={(e) => setGodzinySpotkaniaOd(e.target.value)}
-              type="time"
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={godzinySpotkaniaDo}
-              onChange={(e) => setGodzinySpotkaniaDo(e.target.value)}
-              type="time"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Czas trwania spotkania:
-        <FormInput
-          value={czasTrwania}
-          onChange={(e) => setCzasTrwania(e.target.value)}
-          type="number"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Dokumenty:
-        <FormSelect
-          value={dokumenty}
-          onChange={(e) => setDokumenty(e.target.value)}
-        >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
-      </FormLabel>
-      {dokumenty === "Tak" ? (
         <FormLabel>
-          Karta pp sesja I
+          Data spotkania:
+          <FormInput
+            value={dataSpotkania}
+            onChange={(e) => setDataSpotkania(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Godziny spotkania:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={godzinySpotkaniaOd}
+                onChange={(e) => setGodzinySpotkaniaOd(e.target.value)}
+                type="time"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={godzinySpotkaniaDo}
+                onChange={(e) => setGodzinySpotkaniaDo(e.target.value)}
+                type="time"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Czas trwania spotkania:
+          <FormInput
+            value={czasTrwania}
+            onChange={(e) => setCzasTrwania(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Dokumenty:
           <FormSelect
-            value={kartaPp}
-            onChange={(e) => setKartaPp(e.target.value)}
+            value={dokumenty}
+            onChange={(e) => setDokumenty(e.target.value)}
           >
-            <FormOption>Dokument 1</FormOption>
-            <FormOption>Dokument 2</FormOption>
-            <FormOption>Dokument 3</FormOption>
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
           </FormSelect>
         </FormLabel>
-      ) : (
-        <></>
-      )}
-      <FormLabel>
-        Uwagi*:
-        <FormInput
-          value={uwagi}
-          onChange={(e) => setUwagi(e.target.value)}
-        ></FormInput>
-      </FormLabel>
+        {dokumenty === "Tak" ? (
+          <FormLabel>
+            Karta pp sesja I
+            <FormSelect
+              value={kartaPp}
+              onChange={(e) => setKartaPp(e.target.value)}
+            >
+              <FormOption>Dokument 1</FormOption>
+              <FormOption>Dokument 2</FormOption>
+              <FormOption>Dokument 3</FormOption>
+            </FormSelect>
+          </FormLabel>
+        ) : (
+          <></>
+        )}
+        <FormLabel>
+          Uwagi*:
+          <FormInput
+            value={uwagi}
+            onChange={(e) => setUwagi(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+      </div>
       <FormFlexContainer>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+        >
           Dodaj sesję pośrednictwa
         </Button>
         <Button

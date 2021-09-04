@@ -1,4 +1,5 @@
 import { Button, makeStyles } from "@material-ui/core";
+import { SettingsInputAntennaTwoTone } from "@material-ui/icons";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import db from "../../../../../firebase";
@@ -37,6 +38,7 @@ const data = { consulting: ["Doradca 1", "Doradca 2", "Doradca 3"] };
 
 const Consulting = () => {
   const [doradztwo, setDoradztwo] = useState([]);
+  const [dotyczy, setDotyczy] = useState("");
   const [diagnozaIpd, setDiagnozaIpd] = useState("");
   const [aktualizacjaIpd, setAktualizacjaIpd] = useState("");
   const [miastoDoradztwa, setMiastoDoradztwa] = useState("");
@@ -83,6 +85,7 @@ const Consulting = () => {
       .collection("projektowe")
       .doc("doradztwo")
       .set({
+        dotyczy,
         diagnozaIpd,
         aktualizacjaIpd,
         miastoDoradztwa,
@@ -103,11 +106,12 @@ const Consulting = () => {
         zmianaSzkolenia,
         uwagi,
       });
-    console.log("dodano");
+    alert("dodano!");
   };
 
   useEffect(() => {
     if (doradztwo) {
+      setDotyczy(doradztwo.dotyczy);
       setDiagnozaIpd(doradztwo.diagnozaIpd || "");
       setAktualizacjaIpd(doradztwo.aktualizacjaIpd || "");
       setMiastoDoradztwa(doradztwo.miastoDoradztwa || "");
@@ -130,219 +134,236 @@ const Consulting = () => {
     }
   }, [doradztwo]);
 
+  const handleRefersTo = (e) => {
+    e.preventDefault();
+    setDotyczy(!dotyczy);
+  };
+
   return (
     <Form>
-      <Button variant="outlined" className={classes.button}>
-        Nie dotyczy
+      <Button
+        variant="outlined"
+        className={classes.button}
+        onClick={handleRefersTo}
+      >
+        Nie dotyczy (należy kliknąć zapisz)
       </Button>
-      <FormHeader>Sesja I</FormHeader>
-      <FormLabel>
-        Diagnoza z IPD
-        <FormSelect
-          value={diagnozaIpd}
-          onChange={(e) => setDiagnozaIpd(e.target.value)}
-        >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
-      </FormLabel>
-      <FormLabel>
-        Aktualizacja IPD:
-        <FormSelect
-          value={aktualizacjaIpd}
-          onChange={(e) => setAktualizacjaIpd(e.target.value)}
-        >
-          <FormOption>Nie</FormOption>
-          <FormOption>Tak</FormOption>
-        </FormSelect>
-      </FormLabel>
-      <FormLabel>
-        Doradca zawodowy
-        <FormInput
-          style={{ fontWeight: "bold" }}
-          disabled
-          placeholder="Janusz Walczuk"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Data podsumowania:
-        <FormInput
-          disabled
-          style={{ fontWeight: "bold" }}
-          placeholder="21.06.2021r"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Dokument C1:
-        <FormInput
-          disabled
-          style={{ fontWeight: "bold" }}
-          placeholder="Tak"
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Miejsce doradztwa:
-        <FormInput
-          value={miastoDoradztwa}
-          onChange={(e) => setMiastoDoradztwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Ulica doradztwa:
-        <FormInput
-          value={ulicaDoradztwa}
-          onChange={(e) => setUlicaDoradztwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel>
-        Miejsce doradztwa:
-        <FormInput
-          value={numerDoradztwa}
-          onChange={(e) => setNumerDoradztwa(e.target.value)}
-        ></FormInput>
-      </FormLabel>
+      <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
+        <FormHeader>Sesja I</FormHeader>
+        <FormLabel>
+          Diagnoza z IPD
+          <FormSelect
+            value={diagnozaIpd}
+            onChange={(e) => setDiagnozaIpd(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Aktualizacja IPD:
+          <FormSelect
+            value={aktualizacjaIpd}
+            onChange={(e) => setAktualizacjaIpd(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Doradca zawodowy
+          <FormInput
+            style={{ fontWeight: "bold" }}
+            disabled
+            placeholder="Janusz Walczuk"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Data podsumowania:
+          <FormInput
+            disabled
+            style={{ fontWeight: "bold" }}
+            placeholder="21.06.2021r"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Dokument C1:
+          <FormInput
+            disabled
+            style={{ fontWeight: "bold" }}
+            placeholder="Tak"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Miejsce doradztwa:
+          <FormInput
+            value={miastoDoradztwa}
+            onChange={(e) => setMiastoDoradztwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Ulica doradztwa:
+          <FormInput
+            value={ulicaDoradztwa}
+            onChange={(e) => setUlicaDoradztwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Miejsce doradztwa:
+          <FormInput
+            value={numerDoradztwa}
+            onChange={(e) => setNumerDoradztwa(e.target.value)}
+          ></FormInput>
+        </FormLabel>
 
-      <FormLabel>
-        Data spotkania:
-        <FormInput
-          type="date"
-          value={dataSpotkania}
-          onChange={(e) => setDataSpotkania(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      <FormLabel style={{ alignItems: "center" }}>
-        Godziny spotkania:
-        <FormDateContainer>
-          <FromDateWrapper>
-            <FormSpan>od:</FormSpan>
-            <FormInput
-              type="time"
-              value={godzinySpotkaniaOd}
-              onChange={(e) => setGodzinySpotkaniaOd(e.target.value)}
-            ></FormInput>
-          </FromDateWrapper>
-          <FromDateWrapper>
-            <FormSpan>do:</FormSpan>
-            <FormInput
-              value={godzinySpotkaniaDo}
-              onChange={(e) => setGodzinySpotkaniaDo(e.target.value)}
-              type="time"
-            ></FormInput>
-          </FromDateWrapper>
-        </FormDateContainer>
-      </FormLabel>
-      <FormLabel>
-        Czas trwania spotkania:
-        <FormInput
-          type="number"
-          value={czasTrwania}
-          onChange={(e) => setCzasTrwania(e.target.value)}
-        ></FormInput>
-      </FormLabel>
-      {diagnozaIpd === "Tak" ? (
-        <>
-          <FormLabel>
-            Część A1
-            <FormSelect value={a1} onChange={(e) => setA1(e.target.value)}>
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Część A2
-            <FormSelect value={a2} onChange={(e) => setA2(e.target.value)}>
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Kwestionariusze
-            <FormSelect
-              value={kwestionariusze}
-              onChange={(e) => setKwestionariusze(e.target.value)}
-            >
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Temat szkolenia wynikajązdy z diagnozy:
-            <FormInput
-              value={tematySzkolenia}
-              onChange={(e) => setTematySzkolenia(e.target.value)}
-            ></FormInput>
-          </FormLabel>
-        </>
-      ) : (
-        <></>
-      )}
-      {aktualizacjaIpd === "Tak" ? (
-        <>
-          <FormLabel>
-            Część B1:
-            <FormSelect value={b1} onChange={(e) => setB1(e.target.value)}>
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Część B2:
-            <FormSelect value={b2} onChange={(e) => setB2(e.target.value)}>
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Zmiana IPD:
-            <FormSelect
-              value={zmianaIpd}
-              onChange={(e) => setZmianaIpd(e.target.value)}
-            >
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-        </>
-      ) : (
-        <></>
-      )}
-      {zmianaIpd === "Tak" ? (
-        <>
-          <FormLabel>
-            Zmiana stażu:
-            <FormSelect
-              value={zmianaStazu}
-              onChange={(e) => setZmianaStazu(e.target.value)}
-            >
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-          <FormLabel>
-            Zmiana szkolenia:
-            <FormSelect
-              value={zmianaSzkolenia}
-              onChange={(e) => setZmianaSzkolenia(e.target.value)}
-            >
-              <FormOption>Nie</FormOption>
-              <FormOption>Tak</FormOption>
-            </FormSelect>
-          </FormLabel>
-        </>
-      ) : (
-        <></>
-      )}
-      <FormLabel>
-        Uwagi:
-        <FormInput
-          value={uwagi}
-          onChange={(e) => setUwagi(e.target.value)}
-        ></FormInput>
-      </FormLabel>
+        <FormLabel>
+          Data spotkania:
+          <FormInput
+            type="date"
+            value={dataSpotkania}
+            onChange={(e) => setDataSpotkania(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Godziny spotkania:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                type="time"
+                value={godzinySpotkaniaOd}
+                onChange={(e) => setGodzinySpotkaniaOd(e.target.value)}
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={godzinySpotkaniaDo}
+                onChange={(e) => setGodzinySpotkaniaDo(e.target.value)}
+                type="time"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Czas trwania spotkania:
+          <FormInput
+            type="number"
+            value={czasTrwania}
+            onChange={(e) => setCzasTrwania(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        {diagnozaIpd === "Tak" ? (
+          <>
+            <FormLabel>
+              Część A1
+              <FormSelect value={a1} onChange={(e) => setA1(e.target.value)}>
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Część A2
+              <FormSelect value={a2} onChange={(e) => setA2(e.target.value)}>
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Kwestionariusze
+              <FormSelect
+                value={kwestionariusze}
+                onChange={(e) => setKwestionariusze(e.target.value)}
+              >
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Temat szkolenia wynikajązdy z diagnozy:
+              <FormInput
+                value={tematySzkolenia}
+                onChange={(e) => setTematySzkolenia(e.target.value)}
+              ></FormInput>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+        {aktualizacjaIpd === "Tak" ? (
+          <>
+            <FormLabel>
+              Część B1:
+              <FormSelect value={b1} onChange={(e) => setB1(e.target.value)}>
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Część B2:
+              <FormSelect value={b2} onChange={(e) => setB2(e.target.value)}>
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Zmiana IPD:
+              <FormSelect
+                value={zmianaIpd}
+                onChange={(e) => setZmianaIpd(e.target.value)}
+              >
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+        {zmianaIpd === "Tak" ? (
+          <>
+            <FormLabel>
+              Zmiana stażu:
+              <FormSelect
+                value={zmianaStazu}
+                onChange={(e) => setZmianaStazu(e.target.value)}
+              >
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+            <FormLabel>
+              Zmiana szkolenia:
+              <FormSelect
+                value={zmianaSzkolenia}
+                onChange={(e) => setZmianaSzkolenia(e.target.value)}
+              >
+                <FormOption>Nie</FormOption>
+                <FormOption>Tak</FormOption>
+              </FormSelect>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+        <FormLabel>
+          Uwagi:
+          <FormInput
+            value={uwagi}
+            onChange={(e) => setUwagi(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+      </div>
       <FormFlexContainer>
-        <Button variant="outlined" className={classes.button}>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={(e) => alert("będzie dodawało kolejną sesję")}
+          style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+        >
           Dodaj kolejną sesję
         </Button>
+
         <Button
           onClick={handleSubmit}
           type="submit"

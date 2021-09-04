@@ -13,13 +13,13 @@ const List = () => {
     <BasicList>
       <BasicListElement>
         <BasicListContainer>
-          Data rozpoczęcia: <BasicListSpan>21:06:2003</BasicListSpan>
+          Data rozpoczęcia: <BasicListSpan>30.07:2021r</BasicListSpan>
         </BasicListContainer>
         <TodayIcon />
       </BasicListElement>
       <BasicListElement>
         <BasicListContainer>
-          Data zakończenia: <BasicListSpan>21:06:2003</BasicListSpan>
+          Data zakończenia: <BasicListSpan>31:08:2021r.</BasicListSpan>
         </BasicListContainer>
         <EventIcon />
       </BasicListElement>

@@ -95,7 +95,7 @@ export default function Inputs({ podstawowe }) {
         nip,
         inne,
       });
-    console.log("dodano");
+    alert("zapisano!");
   };
 
   useEffect(() => {

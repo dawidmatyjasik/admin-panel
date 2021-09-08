@@ -427,7 +427,7 @@ export default function Inputs({ podstawowe }) {
           </FormLabel>
           {klasyfikacja === "Inne" ? (
             <FormLabel>
-              Jakie?
+              Inne jakie?
               <FormInput
                 value={innaKlasyfikacja}
                 onChange={(e) => setInnaKlasyfikacja(e.target.value)}

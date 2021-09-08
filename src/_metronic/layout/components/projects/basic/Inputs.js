@@ -192,7 +192,7 @@ export default function Inputs({ podstawowe }) {
         <FormSelect value={status} onChange={(e) => setStatus(e.target.value)}>
           <FormOption>Osoba pracująca</FormOption>
           <FormOption>Osoba bezrobotna</FormOption>
-          <FormOption>Osoba bierna zawodowe</FormOption>
+          <FormOption>Osoba bierna zawodowo</FormOption>
           <FormOption>Outplacment</FormOption>
         </FormSelect>
       </FormLabel>
@@ -221,7 +221,7 @@ export default function Inputs({ podstawowe }) {
             <FormOption>Niezarejestrowana</FormOption>
           </FormSelect>
         </FormLabel>
-      ) : <></> && status === "Osoba bierna zawodowe" ? (
+      ) : <></> && status === "Osoba bierna zawodowo" ? (
         <FormLabel>
           Ucząca się:
           <FormSelect
@@ -247,7 +247,7 @@ export default function Inputs({ podstawowe }) {
       ) : (
         <></>
       )}
-      {uczaca === "Tak" ? (
+      {uczaca === "Tak" && status === "Osoba bierna zawodowo" ? (
         <FormLabel>
           Planowa data zakończenia edukacji:
           <FormInput

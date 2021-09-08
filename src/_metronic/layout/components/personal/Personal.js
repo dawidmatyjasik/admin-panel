@@ -80,9 +80,9 @@ export default function Personal() {
   const [gmina, setGmina] = useState("");
   const [wojewodztwo, setWojewodztwo] = useState("");
   const [czarnaLista, setCzarnaLista] = useState(false);
+  const [czarnaListaPowod, setCzarnaListaPowod] = useState("");
   const [zgodaMarketingowa, setZgodaMarketingowa] = useState(false);
   const [zgodaZus, setZgodaZus] = useState(false);
-  const [rmua, setRmua] = useState(false);
   const [projekt, setProjekt] = useState("");
 
   const [users, setUsers] = useState([]);
@@ -139,6 +139,7 @@ export default function Personal() {
         }))
       )
     ); */
+
     db.collection("users")
       .doc(`03262104439`)
       .collection("osobowe")
@@ -161,12 +162,12 @@ export default function Personal() {
         gmina,
         wojewodztwo,
         czarnaLista,
+        czarnaListaPowod,
         zgodaMarketingowa,
         zgodaZus,
-        rmua,
         projekt,
       });
-    console.log("dodano");
+    alert("dodano!");
   };
 
   useEffect(() => {
@@ -188,9 +189,9 @@ export default function Personal() {
       setGmina(osobowe[0]?.data?.gmina || "");
       setWojewodztwo(osobowe[0]?.data?.wojewodztwo || "");
       setCzarnaLista(osobowe[0]?.data?.czarnaLista || false);
+      setCzarnaListaPowod(osobowe[0]?.data?.czarnaListaPowod || "");
       setZgodaMarketingowa(osobowe[0]?.data?.zgodaMarketingowa || false);
       setZgodaZus(osobowe[0]?.data?.zgodaZus || false);
-      setRmua(osobowe[0]?.data?.rmua || false);
       setProjekt(osobowe[0]?.data?.projekt || "");
     }
   }, [osobowe]);
@@ -360,6 +361,18 @@ export default function Personal() {
         onChange={(e) => setCzarnaLista(e.target.checked)}
         checked={czarnaLista}
       />
+      {czarnaLista ? (
+        <TextField
+          id="czarna lista"
+          label="Powód wpisania na czarną listę"
+          className={classes.textField}
+          margin="normal"
+          value={czarnaListaPowod}
+          onChange={(e) => setCzarnaListaPowod(e.target.value)}
+        />
+      ) : (
+        <></>
+      )}
       <FormControlLabel
         control={<Switch color="primary" />}
         label="Zgoda marketingowa"
@@ -370,19 +383,11 @@ export default function Personal() {
       />
       <FormControlLabel
         control={<Switch color="primary" />}
-        label="Zgoda na elektroniczną wysyłkę ZUS"
+        label="Zgoda na elektroniczną wysyłkę ZUS RMUA"
         labelPlacement="start"
         className={classes.switch}
         onChange={(e) => setZgodaZus(e.target.checked)}
         checked={zgodaZus}
-      />
-      <FormControlLabel
-        control={<Switch color="primary" />}
-        label="RMUA"
-        labelPlacement="start"
-        className={classes.switch}
-        onChange={(e) => setRmua(e.target.checked)}
-        checked={rmua}
       />
       <TextField
         id="project"

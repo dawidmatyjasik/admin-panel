@@ -179,7 +179,7 @@ const Consulting = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Data podsumowania:
+          Data spotkania:
           <FormInput
             disabled
             style={{ fontWeight: "bold" }}
@@ -194,28 +194,29 @@ const Consulting = () => {
             placeholder="Tak"
           ></FormInput>
         </FormLabel>
+        <FormHeader>Miejsce doradztwa:</FormHeader>
         <FormLabel>
-          Miejsce doradztwa:
+          Miasto:
           <FormInput
             value={miastoDoradztwa}
             onChange={(e) => setMiastoDoradztwa(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Ulica doradztwa:
+          Ulica:
           <FormInput
             value={ulicaDoradztwa}
             onChange={(e) => setUlicaDoradztwa(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Miejsce doradztwa:
+          Numer:
           <FormInput
             value={numerDoradztwa}
             onChange={(e) => setNumerDoradztwa(e.target.value)}
           ></FormInput>
         </FormLabel>
-
+        <FormHeader>Data doradztwa:</FormHeader>
         <FormLabel>
           Data spotkania:
           <FormInput
@@ -246,7 +247,7 @@ const Consulting = () => {
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
-          Czas trwania spotkania:
+          Czas trwania spotkania (h):
           <FormInput
             type="number"
             value={czasTrwania}

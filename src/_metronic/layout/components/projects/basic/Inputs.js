@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import db from "../../../../../firebase";
 import {
   Form,
+  FormDateContainer,
   FormHeader,
   FormInput,
   FormLabel,
   FormOption,
   FormSelect,
+  FormSpan,
+  FromDateWrapper,
 } from "../ProjectsElements";
 
 const useStyles = makeStyles((theme) => ({
@@ -436,21 +439,26 @@ export default function Inputs({ podstawowe }) {
           ) : (
             <></>
           )}
-          <FormLabel>
-            Okres zatrudnienia od:
-            <FormInput
-              type="date"
-              value={zatrudnienieOd}
-              onChange={(e) => setZatrudnienieOd(e.target.value)}
-            ></FormInput>
-          </FormLabel>
-          <FormLabel>
-            Okres zatrudnienia do:
-            <FormInput
-              type="date"
-              value={zatrudnienieDo}
-              onChange={(e) => setZatrudnienieDo(e.target.value)}
-            ></FormInput>
+          <FormLabel style={{ alignItems: "center" }}>
+            Czas trwania umowy:
+            <FormDateContainer>
+              <FromDateWrapper>
+                <FormSpan>od:</FormSpan>
+                <FormInput
+                  value={zatrudnienieOd}
+                  onChange={(e) => setZatrudnienieOd(e.target.value)}
+                  type="date"
+                ></FormInput>
+              </FromDateWrapper>
+              <FromDateWrapper>
+                <FormSpan>do:</FormSpan>
+                <FormInput
+                  value={zatrudnienieDo}
+                  onChange={(e) => setZatrudnienieDo(e.target.value)}
+                  type="date"
+                ></FormInput>
+              </FromDateWrapper>
+            </FormDateContainer>
           </FormLabel>
           <FormLabel>
             Rodzaj przedsiębiorstwa:

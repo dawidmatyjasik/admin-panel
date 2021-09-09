@@ -1,4 +1,3 @@
-import { Button, makeStyles } from "@material-ui/core";
 import { SettingsInputAntennaTwoTone } from "@material-ui/icons";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -15,6 +14,14 @@ import {
   FormSpan,
   FromDateWrapper,
 } from "../ProjectsElements";
+import {
+  makeStyles,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  Button,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -58,6 +65,8 @@ const Consulting = () => {
   const [zmianaStazu, setZmianaStazu] = useState("");
   const [zmianaSzkolenia, setZmianaSzkolenia] = useState("");
   const [uwagi, setUwagi] = useState("");
+  const [dokumenty, setDokumenty] = useState("Diagnoza IPD");
+
   const classes = useStyles();
 
   useEffect(() => {
@@ -86,6 +95,7 @@ const Consulting = () => {
       .doc("doradztwo")
       .set({
         dotyczy,
+        dokumenty,
         diagnozaIpd,
         aktualizacjaIpd,
         miastoDoradztwa,
@@ -112,6 +122,7 @@ const Consulting = () => {
   useEffect(() => {
     if (doradztwo) {
       setDotyczy(doradztwo.dotyczy);
+      setDokumenty(doradztwo.dokumenty || "");
       setDiagnozaIpd(doradztwo.diagnozaIpd || "");
       setAktualizacjaIpd(doradztwo.aktualizacjaIpd || "");
       setMiastoDoradztwa(doradztwo.miastoDoradztwa || "");
@@ -148,53 +159,31 @@ const Consulting = () => {
       >
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
+      <RadioGroup
+        aria-label="gender"
+        name="gender1"
+        value={dokumenty}
+        onChange={(e) => setDokumenty(e.target.value)}
+        style={{ display: "flex", flexDirection: "row" }}
+      >
+        <FormControlLabel
+          control={<Radio />}
+          label="Diagnoza IPD"
+          value="Diagnoza IPD"
+        />
+        <FormControlLabel
+          control={<Radio />}
+          label="Aktualizacja IPD"
+          value="Aktualizacja IPD"
+        />
+        <FormControlLabel
+          control={<Radio />}
+          label="Zakończenie IPD"
+          value="Zakończenie IPD"
+        />
+      </RadioGroup>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
         <FormHeader>Sesja I</FormHeader>
-        <FormLabel>
-          Diagnoza z IPD
-          <FormSelect
-            value={diagnozaIpd}
-            onChange={(e) => setDiagnozaIpd(e.target.value)}
-          >
-            <FormOption>Nie</FormOption>
-            <FormOption>Tak</FormOption>
-          </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Aktualizacja IPD:
-          <FormSelect
-            value={aktualizacjaIpd}
-            onChange={(e) => setAktualizacjaIpd(e.target.value)}
-          >
-            <FormOption>Nie</FormOption>
-            <FormOption>Tak</FormOption>
-          </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Doradca zawodowy
-          <FormInput
-            style={{ fontWeight: "bold" }}
-            disabled
-            placeholder="Janusz Walczuk"
-          ></FormInput>
-        </FormLabel>
-        <FormLabel>
-          Data spotkania:
-          <FormInput
-            disabled
-            style={{ fontWeight: "bold" }}
-            placeholder="21.06.2021r"
-          ></FormInput>
-        </FormLabel>
-        <FormLabel>
-          Dokument C1:
-          <FormInput
-            disabled
-            style={{ fontWeight: "bold" }}
-            placeholder="Tak"
-          ></FormInput>
-        </FormLabel>
-        <FormHeader>Miejsce doradztwa:</FormHeader>
         <FormLabel>
           Miasto:
           <FormInput
@@ -216,7 +205,6 @@ const Consulting = () => {
             onChange={(e) => setNumerDoradztwa(e.target.value)}
           ></FormInput>
         </FormLabel>
-        <FormHeader>Data doradztwa:</FormHeader>
         <FormLabel>
           Data spotkania:
           <FormInput
@@ -254,7 +242,7 @@ const Consulting = () => {
             onChange={(e) => setCzasTrwania(e.target.value)}
           ></FormInput>
         </FormLabel>
-        {diagnozaIpd === "Tak" ? (
+        {dokumenty === "Diagnoza IPD" ? (
           <>
             <FormLabel>
               Część A1
@@ -291,7 +279,7 @@ const Consulting = () => {
         ) : (
           <></>
         )}
-        {aktualizacjaIpd === "Tak" ? (
+        {dokumenty === "Aktualizacja IPD" ? (
           <>
             <FormLabel>
               Część B1:
@@ -342,6 +330,36 @@ const Consulting = () => {
                 <FormOption>Nie</FormOption>
                 <FormOption>Tak</FormOption>
               </FormSelect>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+        {dokumenty === "Zakończenie IPD" ? (
+          <>
+            <FormLabel>
+              Doradca zawodowy
+              <FormInput
+                style={{ fontWeight: "bold" }}
+                disabled
+                placeholder="Adam Walczak"
+              ></FormInput>
+            </FormLabel>
+            <FormLabel>
+              Data podsumowania:
+              <FormInput
+                disabled
+                style={{ fontWeight: "bold" }}
+                placeholder="21.06.2021r"
+              ></FormInput>
+            </FormLabel>
+            <FormLabel>
+              Dokument C1:
+              <FormInput
+                disabled
+                style={{ fontWeight: "bold" }}
+                placeholder="Tak"
+              ></FormInput>
             </FormLabel>
           </>
         ) : (

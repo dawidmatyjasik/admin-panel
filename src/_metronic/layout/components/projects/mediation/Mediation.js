@@ -14,6 +14,8 @@ import {
   FormInputMarker,
   FormLabel,
   FormLabelMarker,
+  FormList,
+  FormListItem,
   FormOption,
   FormSelect,
   FormSpan,
@@ -136,14 +138,19 @@ const Mediation = () => {
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
-        <FormLabelMarker>
-          Data zakończenia szkoleina:
-          <FormInputMarker
-            type="date"
-            value={dataZakonczeniaSzkolenia}
-            onChange={(e) => setDataZakonczeniaSzkolenia(e.target.value)}
-          ></FormInputMarker>
-        </FormLabelMarker>
+        <FormList>
+          <FormListItem>
+            <FormLabelMarker>
+              Data zakończenia szkoleina:
+              <FormInputMarker
+                type="date"
+                value={dataZakonczeniaSzkolenia}
+                onChange={(e) => setDataZakonczeniaSzkolenia(e.target.value)}
+              ></FormInputMarker>
+            </FormLabelMarker>
+          </FormListItem>
+        </FormList>
+
         <FormHeader>Sesja I</FormHeader>
         <FormLabel>
           Pośrednik pracy:

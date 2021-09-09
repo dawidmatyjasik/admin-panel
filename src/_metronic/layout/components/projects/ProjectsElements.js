@@ -186,26 +186,62 @@ export const FromDateWrapper = styled.div`
 export const FormLabelMarker = styled.label`
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
   border: 1px solid #e3e6f0;
-  border-left: 0.25rem solid #4e73df;
-  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  /* box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); */
   background-color: #fff;
-  color: #4e73df;
   font-size: 1rem;
-  padding: 0 10px;
-  width: 22%;
   font-weight: bold;
-  margin-top: 2vh;
-  @media (max-width: 1000px) {
-    width: 30%;
-  }
-  @media (max-width: 500px) {
-    width: 55%;
-  }
+  height: 70px;
+  margin: 0;
+  padding: 10px 0px;
+  padding-right: 20px;
+  border-radius: 8px;
+  padding-left: 5px;
 `;
 
 export const FormInputMarker = styled.input`
   background-color: transparent;
   border: none;
+  font-weight: 500;
+`;
+
+export const FormList = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+`;
+
+export const FormListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2vh;
+  width: 100%;
+  border-radius: 8px;
+  @media (max-width: 500px) {
+    width: 40%;
+  }
+
+  /*   &:nth-child(1) {
+    border-left: 0.25rem solid #4e73df;
+    color: #4e73df;
+  }
+  &:nth-child(2) {
+    border-left: 0.25rem solid #1cc88a;
+    color: #1cc88a;
+  }
+  &:nth-child(3) {
+    border-left: 0.25rem solid #36b9cc;
+    color: #36b9cc;
+  } */
+  /*   @media (max-width: 1000px) {
+    width: 30%;
+  }
+  */
 `;

@@ -7,7 +7,11 @@ import {
   FormFlexContainer,
   FormHeader,
   FormInput,
+  FormInputMarker,
   FormLabel,
+  FormLabelMarker,
+  FormList,
+  FormListItem,
   FormOption,
   FormSelect,
   FormSpan,
@@ -36,7 +40,12 @@ const useStyles = makeStyles((theme) => ({
 const Internship = () => {
   const [staz, setStaz] = useState([]);
   const [dotyczy, setDotyczy] = useState(true);
-  const [ubezbieczenieNnw, setUbezbieczenieNnw] = useState("");
+  const [ubezbieczenieNnwOd, setUbezbieczenieNnwOd] = useState("");
+  const [ubezbieczenieNnwDo, setUbezbieczenieNnwDo] = useState("");
+  const [
+    ubezbieczenieNnwPrzedluzenie,
+    setUbezbieczenieNnwPrzedluzenie,
+  ] = useState("");
   const [dataPodpisaniaUmowy, setDataPodpisaniaUmowy] = useState("");
   const [stazOd, setStazOd] = useState("");
   const [stazDo, setStazDo] = useState("");
@@ -169,7 +178,9 @@ const Internship = () => {
       .doc("staz")
       .set({
         dotyczy,
-        ubezbieczenieNnw,
+        ubezbieczenieNnwOd,
+        ubezbieczenieNnwDo,
+        ubezbieczenieNnwPrzedluzenie,
         dataPodpisaniaUmowy,
         stazOd,
         stazDo,
@@ -212,7 +223,9 @@ const Internship = () => {
   useEffect(() => {
     if (staz) {
       setDotyczy(staz.dotyczy);
-      setUbezbieczenieNnw(staz.ubezbieczenieNnw || "");
+      setUbezbieczenieNnwOd(staz.ubezbieczenieNnwOd || "");
+      setUbezbieczenieNnwDo(staz.ubezbieczenieNnwDo || "");
+      setUbezbieczenieNnwPrzedluzenie(staz.ubezbieczenieNnwPrzedluzenie || "");
       setDataPodpisaniaUmowy(staz.dataPodpisaniaUmowy || "");
       setStazOd(staz.stazOd || "");
       setStazDo(staz.stazDo || "");
@@ -284,7 +297,41 @@ const Internship = () => {
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
-        <FormHeader>Stypendia:</FormHeader>
+        <FormList>
+          <FormListItem>
+            <FormLabelMarker>
+              Ubezpieczenie NNW od:
+              <FormInputMarker
+                type="date"
+                value={ubezbieczenieNnwOd}
+                onChange={(e) => setUbezbieczenieNnwOd(e.target.value)}
+              ></FormInputMarker>
+            </FormLabelMarker>
+          </FormListItem>
+          <FormListItem>
+            <FormLabelMarker>
+              Ubezpieczenie NNW do:
+              <FormInputMarker
+                type="date"
+                value={ubezbieczenieNnwDo}
+                onChange={(e) => setUbezbieczenieNnwDo(e.target.value)}
+              ></FormInputMarker>
+            </FormLabelMarker>
+          </FormListItem>
+          <FormListItem>
+            <FormLabelMarker>
+              Ubezpieczenie NNW przedłużone do:
+              <FormInputMarker
+                type="date"
+                value={ubezbieczenieNnwPrzedluzenie}
+                onChange={(e) =>
+                  setUbezbieczenieNnwPrzedluzenie(e.target.value)
+                }
+              ></FormInputMarker>
+            </FormLabelMarker>
+          </FormListItem>
+        </FormList>
+
         <FormLabel>
           Zgłoszenie do ZUS:
           <FormInput
@@ -298,15 +345,6 @@ const Internship = () => {
           <FormInput
             value={wygloszenieZus}
             onChange={(e) => setWygloszenieZus(e.target.value)}
-            type="date"
-          ></FormInput>
-        </FormLabel>
-        <FormHeader>Staż:</FormHeader>
-        <FormLabel>
-          Ubezpieczenie NNW do kiedy:
-          <FormInput
-            value={ubezbieczenieNnw}
-            onChange={(e) => setUbezbieczenieNnw(e.target.value)}
             type="date"
           ></FormInput>
         </FormLabel>

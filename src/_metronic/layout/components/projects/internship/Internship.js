@@ -62,6 +62,10 @@ const Internship = () => {
   const [numerStazu, setNumerStazu] = useState("");
   const [nipStazu, setNipStazu] = useState("");
   const [stanowiskoStazu, setStanowiskoStazu] = useState("");
+  const [opiekunStazuOd, setOpiekunStazuOd] = useState("");
+  const [opiekunStazuDo, setOpiekunStazuDo] = useState("");
+  const [nazwiskoOpiekuna, setNazwiskoOpiekuna] = useState("");
+  const [imieOpiekuna, setImieOpiekuna] = useState("");
   const [emailOpiekuna, setEmailOpiekuna] = useState("");
   const [telefonOpiekuna, setTelefonOpiekuna] = useState("");
   const [wymiarGodzinPracyOpiekuna, setWymiarGodzinPracyOpiekuna] = useState(
@@ -197,6 +201,10 @@ const Internship = () => {
         numerStazu,
         nipStazu,
         stanowiskoStazu,
+        opiekunStazuOd,
+        opiekunStazuDo,
+        nazwiskoOpiekuna,
+        imieOpiekuna,
         emailOpiekuna,
         telefonOpiekuna,
         wymiarGodzinPracyOpiekuna,
@@ -242,6 +250,10 @@ const Internship = () => {
       setNumerStazu(staz.numerStazu || "");
       setNipStazu(staz.nipStazu || "");
       setStanowiskoStazu(staz.stanowiskoStazu || "");
+      setOpiekunStazuOd(staz.opiekunStazuOd || "");
+      setOpiekunStazuDo(staz.opiekunStazuDo || "");
+      setNazwiskoOpiekuna(staz.nazwiskoOpiekuna || "");
+      setImieOpiekuna(staz.imieOpiekuna || "");
       setEmailOpiekuna(staz.emailOpiekuna || "");
       setTelefonOpiekuna(staz.telefonOpiekuna || "");
       setWymiarGodzinPracyOpiekuna(staz.wymiarGodzinPracyOpiekuna || "");
@@ -483,9 +495,44 @@ const Internship = () => {
           className={classes.button}
           onClick={() => alert("będzie zmieniało miejsce odbywania stażu")}
         >
-          Zmiana miejsca
+          Dodaj miejsce stażu
         </Button>
         <FormHeader>Opiekun stażu:</FormHeader>
+        <FormLabel style={{ alignItems: "center" }}>
+          Opiekun stażu
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={opiekunStazuOd}
+                onChange={(e) => setOpiekunStazuOd(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={opiekunStazuDo}
+                onChange={(e) => setOpiekunStazuDo(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
+        <FormLabel>
+          Nazwisko:
+          <FormInput
+            value={nazwiskoOpiekuna}
+            onChange={(e) => setNazwiskoOpiekuna(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Imię
+          <FormInput
+            value={imieOpiekuna}
+            onChange={(e) => setImieOpiekuna(e.target.value)}
+          ></FormInput>
+        </FormLabel>
         <FormLabel>
           E-mail
           <FormInput
@@ -503,7 +550,7 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Wymiar godzin czasu pracy:
+          Wymiar czasu pracy:
           <FormInput
             value={wymiarGodzinPracyOpiekuna}
             onChange={(e) => setWymiarGodzinPracyOpiekuna(e.target.value)}
@@ -530,14 +577,6 @@ const Internship = () => {
               ></FormInput>
             </FromDateWrapper>
           </FormDateContainer>
-        </FormLabel>
-        <FormLabel>
-          Dodaj godziny stażu:
-          <FormInput
-            value={dodajGodziny}
-            onChange={(e) => setDodajGodziny(e.target.value)}
-            type="tel"
-          ></FormInput>
         </FormLabel>
         <FormFlexContainer>
           <Button

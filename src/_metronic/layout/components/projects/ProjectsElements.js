@@ -182,3 +182,30 @@ export const FromDateWrapper = styled.div`
     }
   }
 `;
+
+export const FormLabelMarker = styled.label`
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px solid #e3e6f0;
+  border-left: 0.25rem solid #4e73df;
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+  background-color: #fff;
+  color: #4e73df;
+  font-size: 1rem;
+  padding: 0 10px;
+  width: 22%;
+  font-weight: bold;
+  margin-top: 2vh;
+  @media (max-width: 1000px) {
+    width: 30%;
+  }
+  @media (max-width: 500px) {
+    width: 55%;
+  }
+`;
+
+export const FormInputMarker = styled.input`
+  background-color: transparent;
+  border: none;
+`;

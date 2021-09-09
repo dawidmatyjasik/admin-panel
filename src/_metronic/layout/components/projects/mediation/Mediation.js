@@ -2,17 +2,24 @@ import { Button, makeStyles } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import db from "../../../../../firebase";
 import {
+  BasicList,
+  BasicListContainer,
+  BasicListElement,
+  BasicListSpan,
   Form,
   FormDateContainer,
   FormFlexContainer,
   FormHeader,
   FormInput,
+  FormInputMarker,
   FormLabel,
+  FormLabelMarker,
   FormOption,
   FormSelect,
   FormSpan,
   FromDateWrapper,
 } from "../ProjectsElements";
+import TodayIcon from "@material-ui/icons/Today";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -129,15 +136,15 @@ const Mediation = () => {
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
-        <FormHeader>Sesja I</FormHeader>
-        <FormLabel>
+        <FormLabelMarker>
           Data zakończenia szkoleina:
-          <FormInput
+          <FormInputMarker
+            type="date"
             value={dataZakonczeniaSzkolenia}
             onChange={(e) => setDataZakonczeniaSzkolenia(e.target.value)}
-            type="date"
-          ></FormInput>
-        </FormLabel>
+          ></FormInputMarker>
+        </FormLabelMarker>
+        <FormHeader>Sesja I</FormHeader>
         <FormLabel>
           Pośrednik pracy:
           <FormSelect
@@ -150,21 +157,21 @@ const Mediation = () => {
           </FormSelect>
         </FormLabel>
         <FormLabel>
-          Miasto pośrednictwa:
+          Miejsce pośrednictwa:
           <FormInput
             value={miastoPosrednictwa}
             onChange={(e) => setMiastoPosrednictwa(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Ulica pośrednictwa:
+          Ulica:
           <FormInput
             value={ulicaPosrednictwa}
             onChange={(e) => setUlicaPosrednictwa(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Numer pośrednictwa:
+          Numer:
           <FormInput
             value={numerPosrednictwa}
             onChange={(e) => setNumerPosrednictwa(e.target.value)}
@@ -207,7 +214,7 @@ const Mediation = () => {
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
-          Czas trwania spotkania:
+          Czas trwania spotkania (h):
           <FormInput
             value={czasTrwania}
             onChange={(e) => setCzasTrwania(e.target.value)}

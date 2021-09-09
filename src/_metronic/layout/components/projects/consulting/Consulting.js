@@ -159,30 +159,30 @@ const Consulting = () => {
       >
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
-      <RadioGroup
-        aria-label="gender"
-        name="gender1"
-        value={dokumenty}
-        onChange={(e) => setDokumenty(e.target.value)}
-        style={{ display: "flex", flexDirection: "row" }}
-      >
-        <FormControlLabel
-          control={<Radio />}
-          label="Diagnoza IPD"
-          value="Diagnoza IPD"
-        />
-        <FormControlLabel
-          control={<Radio />}
-          label="Aktualizacja IPD"
-          value="Aktualizacja IPD"
-        />
-        <FormControlLabel
-          control={<Radio />}
-          label="Zakończenie IPD"
-          value="Zakończenie IPD"
-        />
-      </RadioGroup>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
+        <RadioGroup
+          aria-label="gender"
+          name="gender1"
+          value={dokumenty}
+          onChange={(e) => setDokumenty(e.target.value)}
+          style={{ display: "flex", flexDirection: "row" }}
+        >
+          <FormControlLabel
+            control={<Radio />}
+            label="Diagnoza IPD"
+            value="Diagnoza IPD"
+          />
+          <FormControlLabel
+            control={<Radio />}
+            label="Aktualizacja IPD"
+            value="Aktualizacja IPD"
+          />
+          <FormControlLabel
+            control={<Radio />}
+            label="Zakończenie IPD"
+            value="Zakończenie IPD"
+          />
+        </RadioGroup>
         <FormHeader>Sesja I</FormHeader>
         <FormLabel>
           Miasto:

@@ -483,7 +483,7 @@ const Traning = () => {
         </FormLabel>
         {stypendium === "Tak" ? (
           <FormLabel style={{ alignItems: "center" }}>
-            Data:
+            Okres stypendium:
             <FormDateContainer>
               <FromDateWrapper>
                 <FormSpan>od:</FormSpan>
@@ -518,7 +518,7 @@ const Traning = () => {
         </FormLabel>
         {zwrotKosztowDojazdu === "Tak" ? (
           <FormLabel style={{ alignItems: "center" }}>
-            Data:
+            Zwrot za okres:
             <FormDateContainer>
               <FromDateWrapper>
                 <FormSpan>od:</FormSpan>
@@ -553,7 +553,7 @@ const Traning = () => {
         </FormLabel>
         {zwrotKosztowOpieki === "Tak" ? (
           <FormLabel style={{ alignItems: "center" }}>
-            Data:
+            Zwrot za okres:
             <FormDateContainer>
               <FromDateWrapper>
                 <FormSpan>od:</FormSpan>

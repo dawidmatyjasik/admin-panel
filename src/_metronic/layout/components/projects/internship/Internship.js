@@ -86,6 +86,7 @@ const Internship = () => {
   const [dniPrzepracowane, setDniPrzepracowane] = useState("");
   const [dniWyliczeniaZus, setDniWyliczeniaZus] = useState("");
   const [wyplaconoStypendium, setWyplaconoStypendium] = useState("");
+  const [nieobecnoscBezplatna, setNieobecnoscBezplatna] = useState("");
   const [uwagi, setUwagi] = useState("");
   useEffect(() => {
     db.collection("users")
@@ -222,6 +223,7 @@ const Internship = () => {
         stypendiumDo,
         dniPrzepracowane,
         dniWyliczeniaZus,
+        nieobecnoscBezplatna,
         wyplaconoStypendium,
         uwagi,
       });
@@ -271,6 +273,7 @@ const Internship = () => {
       setStypendiumDo(staz.stypendiumDo || "");
       setDniPrzepracowane(staz.dniPrzepracowane || "");
       setDniWyliczeniaZus(staz.dniWyliczeniaZus || "");
+      setNieobecnoscBezplatna(staz.nieobecnoscBezplatna || "");
       setWyplaconoStypendium(staz.wyplaconoStypendium || "");
       setUwagi(staz.uwagi || "");
     }
@@ -292,6 +295,7 @@ const Internship = () => {
         console.log("Error getting document:", error);
       });
   }, []);
+
   const classes = useStyles();
 
   const handleRefersTo = (e) => {
@@ -582,22 +586,22 @@ const Internship = () => {
           <Button
             variant="outlined"
             className={classes.button}
-            onClick={() => alert("będzie planowało kontrolę stażu")}
+            onClick={() => alert("będzie dodawało pracodawcę")}
           >
-            Zaplanuj kontrolę stażu
+            Dodaj pracodawcę
           </Button>
           <Button
             variant="outlined"
             className={classes.button}
-            onClick={() => alert("będzie dodawało godziny stażu")}
+            onClick={() => alert("będzie planowało kontrolę stażu")}
           >
-            Dodaj godziny
+            Zaplanuj kontrolę stażu
           </Button>
         </FormFlexContainer>
         <FormHeader>Rozliczenie stażu:</FormHeader>
 
         <FormLabel>
-          Liczba dni urlopu:
+          Liczba dni urlopu przysługująca na stażu:
           <FormInput
             value={dniUrlopu}
             onChange={(e) => setDniUrlopu(e.target.value)}
@@ -605,7 +609,10 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Pozostałe dni urlopu:
+          <div>
+            Liczba dni urlopu na dzień{" "}
+            <span style={{ fontWeight: "bold" }}>09.09.2021</span>
+          </div>
           <FormInput
             value={pozostaleDniUrlopu}
             onChange={(e) => setPozostaleDniUrlopu(e.target.value)}
@@ -613,7 +620,9 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel style={{ alignItems: "center" }}>
-          Wybierz urlop:
+          <div>
+            Wybrano <span style={{ fontWeight: "bold" }}>0</span> dni urlopu:
+          </div>
           <FormDateContainer>
             <FromDateWrapper>
               <FormSpan>od:</FormSpan>
@@ -633,14 +642,6 @@ const Internship = () => {
             </FromDateWrapper>
           </FormDateContainer>
         </FormLabel>
-        <FormLabel>
-          Wybrane dni urlopu:
-          <FormInput
-            value={wybraneDniUrlopu}
-            onChange={(e) => setWybraneDniUrlopu(e.target.value)}
-            type="number"
-          ></FormInput>
-        </FormLabel>
         <Button
           variant="outlined"
           className={classes.button}
@@ -648,6 +649,7 @@ const Internship = () => {
         >
           Dodaj urlop
         </Button>
+        <FormHeader>Wypłata stypendium:</FormHeader>
         <FormSubHeader>Miesiąc 1:</FormSubHeader>
         <FormLabel style={{ alignItems: "center" }}>
           Stypendium:
@@ -671,7 +673,7 @@ const Internship = () => {
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
-          Liczba dni przepracowanych:
+          Liczba dni przepracowanych bez L4:
           <FormInput
             value={dniPrzepracowane}
             onChange={(e) => setDniPrzepracowane(e.target.value)}
@@ -679,10 +681,18 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Liczba dni do wyliczenia składek ZUS:
+          Liczba dni na L4:
           <FormInput
             value={dniWyliczeniaZus}
             onChange={(e) => setDniWyliczeniaZus(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Liczba dni nieobecności bezpłatnej:
+          <FormInput
+            value={nieobecnoscBezplatna}
+            onChange={(e) => setNieobecnoscBezplatna(e.target.value)}
             type="number"
           ></FormInput>
         </FormLabel>

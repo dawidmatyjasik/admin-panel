@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 const Termination = () => {
   const [udzial, setUdzial] = useState([]);
   const [dataZakonczeniaUdzialu, setDataZakonczeniaUdzialu] = useState("");
+  const [innyPowod, setInnyPowod] = useState("");
   const [zakonczylZgonieZeSciezka, setZakonczylZgonieZeSciezka] = useState(
     "Tak"
   );
@@ -55,6 +56,7 @@ const Termination = () => {
     if (udzial) {
       setDataZakonczeniaUdzialu(udzial.dataZakonczeniaUdzialu || "");
       setZakonczylZgonieZeSciezka(udzial.zakonczylZgonieZeSciezka || "");
+      setInnyPowod(udzial.innyPowod || "");
       setPowodNieukonczenia(udzial.powodNieukonczenia || "");
       setDokumentPotwierdzajacy(udzial.dokumentPotwierdzajacy || "");
       setDataDokumentu(udzial.dataDokumentu || "");
@@ -69,6 +71,7 @@ const Termination = () => {
       .doc("udzial")
       .set({
         dataZakonczeniaUdzialu,
+        innyPowod,
         zakonczylZgonieZeSciezka,
         powodNieukonczenia,
         dokumentPotwierdzajacy,
@@ -116,33 +119,52 @@ const Termination = () => {
             <FormOption>
               Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
             </FormOption>
-            <FormOption>Nieusprawiedliwona </FormOption>
+            <FormOption>Nieusprawiedliwiona obecność na szkoleniu</FormOption>
+            <FormOption>Nieusprawiedliwiona obecność na stażu</FormOption>
             <FormOption>
-              Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
+              Wypowiedzenie przez pracodawcę umowy stażowej
             </FormOption>
-            <FormOption>
-              Skreślenie ze stażu - 33 dni ciągłej nieobecności (L4)
-            </FormOption>
+            <FormOption>Inny powód</FormOption>
           </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
+      {powodNieukonczenia === "Inny powód" &&
+      zakonczylZgonieZeSciezka === "Nie" ? (
+        <FormLabel>
+          Powód zakończenia niezgodnie ze ścieżką:
+          <FormInput
+            value={innyPowod}
+            onChange={(e) => setInnyPowod(e.target.value)}
+          ></FormInput>
         </FormLabel>
       ) : (
         <></>
       )}
       <FormLabel>
         Dokument potwierdzający zakończenie udziału w projekcie:
-        <FormInput
+        <FormSelect
           value={dokumentPotwierdzajacy}
           onChange={(e) => setDokumentPotwierdzajacy(e.target.value)}
-        ></FormInput>
+        >
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
       </FormLabel>
-      <FormLabel>
-        Data dokumentu:
-        <FormInput
-          value={dataDokumentu}
-          onChange={(e) => setDataDokumentu(e.target.value)}
-          type="date"
-        ></FormInput>
-      </FormLabel>
+      {dokumentPotwierdzajacy === "Tak" ? (
+        <FormLabel>
+          Data dokumentu:
+          <FormInput
+            value={dataDokumentu}
+            onChange={(e) => setDataDokumentu(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
+
       <Button
         onClick={handleSubmit}
         type="submit"

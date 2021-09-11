@@ -42,7 +42,10 @@ const Traning = () => {
   const [nazwiskoTrenera, setNazwiskoTrenera] = useState("");
   const [imieEgzaminatora, setImieEgzaminatora] = useState("");
   const [nazwiskoEgzaminatora, setNazwiskoEgzaminatora] = useState("");
-  const [miejsceSzkolenia, setMiejsceSzkolenia] = useState("");
+  const [miastoSzkolenia, setMiastoSzkolenia] = useState("");
+  const [ulicaSzkolenia, setUlicaSzkolenia] = useState("");
+  const [numerBudynkuSzkolenia, setNumerBudynkuSzkolenia] = useState("");
+  const [numerLokaluSzkolenia, setNumerLokaluSzkolenia] = useState("");
   const [medycynaPracy, setMedycynaPracy] = useState("");
   const [badaniaMedycynaPracy, setBadaniaMedycynaPracy] = useState("");
   const [sanepid, setSanepid] = useState("");
@@ -117,7 +120,10 @@ const Traning = () => {
         nazwiskoTrenera,
         imieEgzaminatora,
         nazwiskoEgzaminatora,
-        miejsceSzkolenia,
+        miastoSzkolenia,
+        ulicaSzkolenia,
+        numerBudynkuSzkolenia,
+        numerLokaluSzkolenia,
         medycynaPracy,
         badaniaMedycynaPracy,
         sanepid,
@@ -167,7 +173,10 @@ const Traning = () => {
       setNazwiskoTrenera(szkolenie.nazwiskoTrenera || "");
       setImieEgzaminatora(szkolenie.imieEgzaminatora || "");
       setNazwiskoEgzaminatora(szkolenie.nazwiskoEgzaminatora || "");
-      setMiejsceSzkolenia(szkolenie.miejsceSzkolenia || "");
+      setMiastoSzkolenia(szkolenie.miastoSzkolenia || "");
+      setUlicaSzkolenia(szkolenie.ulicaSzkolenia || "");
+      setNumerBudynkuSzkolenia(szkolenie.numerBudynkuSzkolenia || "");
+      setNumerLokaluSzkolenia(szkolenie.numerLokaluSzkolenia || "");
       setMedycynaPracy(szkolenie.medycynaPracy || "");
       setBadaniaMedycynaPracy(szkolenie.badaniaMedycynaPracy || "");
       setSanepid(szkolenie.sanepid || "");
@@ -304,10 +313,31 @@ const Traning = () => {
         <br />
         <FormHeader>Szkolenie:</FormHeader>
         <FormLabel>
-          Miejsce szkolenia:
+          Miasto:
           <FormInput
-            value={miejsceSzkolenia}
-            onChange={(e) => setMiejsceSzkolenia(e.target.value)}
+            value={miastoSzkolenia}
+            onChange={(e) => setMiastoSzkolenia(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Ulica:
+          <FormInput
+            value={ulicaSzkolenia}
+            onChange={(e) => setUlicaSzkolenia(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Numer budynku:
+          <FormInput
+            value={numerBudynkuSzkolenia}
+            onChange={(e) => setNumerBudynkuSzkolenia(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Numer lokalu:
+          <FormInput
+            value={numerLokaluSzkolenia}
+            onChange={(e) => setNumerLokaluSzkolenia(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>

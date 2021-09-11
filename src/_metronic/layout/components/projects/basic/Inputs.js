@@ -138,7 +138,7 @@ export default function Inputs({ podstawowe }) {
       setUbezpieczenie(podstawowe.ubezpieczenie || "");
       setRodzajUbezpieczenia(podstawowe.rodzajUbezpieczenia || "");
       setNazwaFirmy(podstawowe.nazwaFirmy || "");
-      setMiastoFirmy(podstawowe.adresFirmy || "");
+      setMiastoFirmy(podstawowe.miastoFirmy || "");
       setUlicaFirmy(podstawowe.ulicaFirmy || "");
       setNumerFirmy(podstawowe.numerFirmy || "");
       setKodPocztowyFirmy(podstawowe.kodPocztowyFirmy || "");

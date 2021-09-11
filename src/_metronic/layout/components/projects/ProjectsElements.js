@@ -197,7 +197,8 @@ export const FormLabelMarker = styled.label`
   padding-right: 20px;
   border-radius: 8px;
   padding-left: 5px;
-  width: 70%;
+  width: 67%;
+  max-width: 285px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   @media (max-width: 1000px) {
     width: 90%;

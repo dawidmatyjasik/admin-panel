@@ -7,7 +7,11 @@ import {
   FormFlexContainer,
   FormHeader,
   FormInput,
+  FormInputMarker,
   FormLabel,
+  FormLabelMarker,
+  FormList,
+  FormListItem,
   FormOption,
   FormSelect,
   FormSpan,
@@ -34,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const Employment = () => {
   const [zatrudnienie, setZatrudnienie] = useState([]);
   const [dotyczy, setDotyczy] = useState("");
-  const [kontyunacjaZatrudnienia, setKontyunacjaZatrudnienia] = useState("");
+  const [podjecieZatrudnienia, setPodjecieZatrudnienia] = useState("");
   const [zmianaFormyZatrudnienia, setZmianaFormyZatrudnienia] = useState("");
   const [uwagi, setUwagi] = useState("");
   const [dataOstatniejFormyWsparcia, setDataOstatniejFormyWsparcia] = useState(
@@ -77,7 +81,7 @@ const Employment = () => {
   useEffect(() => {
     if (zatrudnienie) {
       setDotyczy(zatrudnienie.dotyczy);
-      setKontyunacjaZatrudnienia(zatrudnienie.kontyunacjaZatrudnienia || "");
+      setPodjecieZatrudnienia(zatrudnienie.kontyunacjaZatrudnienia || "");
       setZmianaFormyZatrudnienia(zatrudnienie.zmianaFormyZatrudnienia || "");
       setUwagi(zatrudnienie.uwagi || "");
       setDataOstatniejFormyWsparcia(
@@ -110,7 +114,7 @@ const Employment = () => {
       .doc("zatrudnienie")
       .set({
         dotyczy,
-        kontyunacjaZatrudnienia,
+        podjecieZatrudnienia,
         zmianaFormyZatrudnienia,
         uwagi,
         dataOstatniejFormyWsparcia,
@@ -149,56 +153,29 @@ const Employment = () => {
         Nie dotyczy (należy kliknąć zapisz)
       </Button>
       <div style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}>
-        <FormHeader>Podjęcie zatrudnienia:</FormHeader>
+        <FormList>
+          <FormListItem>
+            <FormLabelMarker>
+              Data ostatniej formy wsparcia:
+              <FormInputMarker
+                type="date"
+                value={dataOstatniejFormyWsparcia}
+                onChange={(e) => setDataOstatniejFormyWsparcia(e.target.value)}
+              ></FormInputMarker>
+            </FormLabelMarker>
+          </FormListItem>
+        </FormList>
         <FormLabel>
-          Kontynuacja zatrudnienia u dotychczasowego pracodawcy:
+          Podjęcie zatrudnienia:
           <FormSelect
-            value={kontyunacjaZatrudnienia}
-            onChange={(e) => setKontyunacjaZatrudnienia(e.target.value)}
+            value={podjecieZatrudnienia}
+            onChange={(e) => setPodjecieZatrudnienia(e.target.value)}
           >
             <FormOption>Nie</FormOption>
             <FormOption>Tak</FormOption>
             <FormOption>Nie dotyczny</FormOption>
+            <FormOption>Kontynuacja zatrudnienia</FormOption>
           </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Zmiana formy zatrudnienia:
-          <FormSelect
-            value={zmianaFormyZatrudnienia}
-            onChange={(e) => setZmianaFormyZatrudnienia(e.target.value)}
-          >
-            <FormOption>Zwiększenie stawki (awans finansowy)</FormOption>
-            <FormOption>Awans stanowiskowy</FormOption>
-            <FormOption>
-              Przejście z niepwengo do stabilnego zatrudnienia
-            </FormOption>
-            <FormOption>
-              Przejście z niepełnego do stabilnego zatrudnienia
-            </FormOption>
-            <FormOption>
-              Zmiana pracy na inną wymagająca wyższych kompetencji,
-              umiejętności, kwalifikacji
-            </FormOption>
-            <FormOption>Zmiana pracy na wyżej wynagradzaną</FormOption>
-            <FormOption>Nie dotyczy - outplacment</FormOption>
-          </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Uwagi:
-          <FormInput
-            value={uwagi}
-            onChange={(e) => setUwagi(e.target.value)}
-          ></FormInput>
-        </FormLabel>
-        <FormHeader>Zatrudnienie:</FormHeader>
-        <FormLabel>
-          Data ostatniej formy wsparcia:
-          <FormInput
-            style={{ borderColor: "red" }}
-            value={dataOstatniejFormyWsparcia}
-            onChange={(e) => setDataOstatniejFormyWsparcia(e.target.value)}
-            type="date"
-          ></FormInput>
         </FormLabel>
         <FormLabel>
           Wskaźnik do 4 tygodni
@@ -297,7 +274,8 @@ const Employment = () => {
             <FormOption>Tak</FormOption>
           </FormSelect>
         </FormLabel>
-        {kontyunacjaZatrudnienia === "Tak" ? (
+        {podjecieZatrudnienia === "Tak" ||
+        podjecieZatrudnienia === "Kontynuacja zatrudnienia" ? (
           <>
             <FormHeader>Pracodawca:</FormHeader>
             <FormLabel>
@@ -356,6 +334,39 @@ const Employment = () => {
         ) : (
           <></>
         )}
+        {podjecieZatrudnienia === "Kontynuacja zatrudnienia" ? (
+          <FormLabel>
+            Zmiana formy zatrudnienia:
+            <FormSelect
+              value={zmianaFormyZatrudnienia}
+              onChange={(e) => setZmianaFormyZatrudnienia(e.target.value)}
+            >
+              <FormOption>Zwiększenie stawki (awans finansowy)</FormOption>
+              <FormOption>Awans stanowiskowy</FormOption>
+              <FormOption>
+                Przejście z niepwengo do stabilnego zatrudnienia
+              </FormOption>
+              <FormOption>
+                Przejście z niepełnego do stabilnego zatrudnienia
+              </FormOption>
+              <FormOption>
+                Zmiana pracy na inną wymagająca wyższych kompetencji,
+                umiejętności, kwalifikacji
+              </FormOption>
+              <FormOption>Zmiana pracy na wyżej wynagradzaną</FormOption>
+              <FormOption>Nie dotyczy - outplacment</FormOption>
+            </FormSelect>
+          </FormLabel>
+        ) : (
+          <></>
+        )}
+        <FormLabel>
+          Uwagi:
+          <FormInput
+            value={uwagi}
+            onChange={(e) => setUwagi(e.target.value)}
+          ></FormInput>
+        </FormLabel>
       </div>
       <FormFlexContainer>
         <Button

@@ -197,6 +197,17 @@ export const FormLabelMarker = styled.label`
   padding-right: 20px;
   border-radius: 8px;
   padding-left: 5px;
+  width: 70%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+  @media (max-width: 800px) {
+    width: 90%;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const FormInputMarker = styled.input`
@@ -225,7 +236,10 @@ export const FormListItem = styled.li`
   width: 100%;
   border-radius: 8px;
   @media (max-width: 500px) {
-    width: 40%;
+    width: 48%;
+    &:nth-child(3) {
+      width: 100%;
+    }
   }
 
   /*   &:nth-child(1) {

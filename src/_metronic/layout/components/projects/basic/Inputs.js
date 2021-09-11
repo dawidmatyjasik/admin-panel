@@ -34,6 +34,10 @@ export default function Inputs({ podstawowe }) {
   const [wiek, setWiek] = useState(0);
   const [wyksztalcenie, setWyksztalcenie] = useState("");
   const [niepelnosprawnosc, setNiepelnosprawnosc] = useState("");
+  const [
+    dokuemntPotwierdzajacyNiepelnosprawnosc,
+    setDokuemntPotwierdzajacyNiepelnosprawnosc,
+  ] = useState("");
   const [status, setStatus] = useState("");
   const [osobaPracujaca, setOsobaPracujaca] = useState("");
   const [osobaBezrobotna, setOsobaBezrobotna] = useState("");
@@ -51,7 +55,10 @@ export default function Inputs({ podstawowe }) {
   const [ubezpieczenie, setUbezpieczenie] = useState("");
   const [rodzajUbezpieczenia, setRodzajUbezpieczenia] = useState("");
   const [nazwaFirmy, setNazwaFirmy] = useState("");
-  const [adresFirmy, setAdresFirmy] = useState("");
+  const [miastoFirmy, setMiastoFirmy] = useState("");
+  const [ulicaFirmy, setUlicaFirmy] = useState("");
+  const [numerFirmy, setNumerFirmy] = useState("");
+  const [kodPocztowyFirmy, setKodPocztowyFirmy] = useState("");
   const [stanowisko, setStanowisko] = useState("");
   const [klasyfikacja, setKlasyfikacja] = useState("");
   const [innaKlasyfikacja, setInnaKlasyfikacja] = useState("");
@@ -72,6 +79,7 @@ export default function Inputs({ podstawowe }) {
         wiek,
         wyksztalcenie,
         niepelnosprawnosc,
+        dokuemntPotwierdzajacyNiepelnosprawnosc,
         status,
         osobaPracujaca,
         osobaBezrobotna,
@@ -88,7 +96,10 @@ export default function Inputs({ podstawowe }) {
         ubezpieczenie,
         rodzajUbezpieczenia,
         nazwaFirmy,
-        adresFirmy,
+        miastoFirmy,
+        ulicaFirmy,
+        numerFirmy,
+        kodPocztowyFirmy,
         stanowisko,
         klasyfikacja,
         innaKlasyfikacja,
@@ -108,6 +119,9 @@ export default function Inputs({ podstawowe }) {
       setWiek(podstawowe.wiek || "");
       setWyksztalcenie(podstawowe.wyksztalcenie || "");
       setNiepelnosprawnosc(podstawowe.niepelnosprawnosc || "");
+      setDokuemntPotwierdzajacyNiepelnosprawnosc(
+        podstawowe.dokuemntPotwierdzajacyNiepelnosprawnosc || ""
+      );
       setStatus(podstawowe.status || "");
       setOsobaPracujaca(podstawowe.osobaPracujaca || "");
       setOsobaBezrobotna(podstawowe.osobaBezrobotna || "");
@@ -124,7 +138,10 @@ export default function Inputs({ podstawowe }) {
       setUbezpieczenie(podstawowe.ubezpieczenie || "");
       setRodzajUbezpieczenia(podstawowe.rodzajUbezpieczenia || "");
       setNazwaFirmy(podstawowe.nazwaFirmy || "");
-      setAdresFirmy(podstawowe.adresFirmy || "");
+      setMiastoFirmy(podstawowe.adresFirmy || "");
+      setUlicaFirmy(podstawowe.ulicaFirmy || "");
+      setNumerFirmy(podstawowe.numerFirmy || "");
+      setKodPocztowyFirmy(podstawowe.kodPocztowyFirmy || "");
       setStanowisko(podstawowe.stanowisko || "");
       setKlasyfikacja(podstawowe.klasyfikacja || "");
       setInnaKlasyfikacja(podstawowe.innaKlasyfikacja || "");
@@ -190,6 +207,26 @@ export default function Inputs({ podstawowe }) {
           <FormOption>Odmowa podania informacji</FormOption>
         </FormSelect>
       </FormLabel>
+      {niepelnosprawnosc !== "Brak" ? (
+        <FormLabel>
+          Dokument potwierdzający niepełnosprawność
+          <FormSelect
+            value={dokuemntPotwierdzajacyNiepelnosprawnosc}
+            onChange={(e) =>
+              setDokuemntPotwierdzajacyNiepelnosprawnosc(e.target.value)
+            }
+          >
+            <FormOption>Orzeczenie o niepełnosprawności</FormOption>
+            <FormOption>Orzeczenie lek. ZUS</FormOption>
+            <FormOption>Orzeczenie lek. KRUS</FormOption>
+            <FormOption>
+              Orzeczenie lub opinia o stanie zdrowia psychicznego
+            </FormOption>
+          </FormSelect>
+        </FormLabel>
+      ) : (
+        <></>
+      )}
       <FormLabel>
         Status na rynku pracy:
         <FormSelect value={status} onChange={(e) => setStatus(e.target.value)}>
@@ -268,6 +305,9 @@ export default function Inputs({ podstawowe }) {
           type="number"
           value={bezrobocie}
           onChange={(e) => setBezrobocie(e.target.value)}
+          placeholder="Jeśli osoba ma poniżej 25 lat i nie pracuje 6 m-cy i więcej -  jest długotrwale bezrobotna 
+2.	Jeśli osoba na 25 lat i więcej i nie pracuje 12 miesięcy i więcej – jest długotrwale bezrobotna
+"
         ></FormInput>
       </FormLabel>
       <FormLabel>
@@ -298,6 +338,7 @@ export default function Inputs({ podstawowe }) {
         >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
+          <FormOption>Odmowa podania informacji</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
@@ -308,7 +349,7 @@ export default function Inputs({ podstawowe }) {
         >
           <FormOption>Nie</FormOption>
           <FormOption>Tak</FormOption>
-          <FormOption>Nie dotyczny</FormOption>
+          <FormOption>Odmowa podania informacji</FormOption>
         </FormSelect>
       </FormLabel>
       <FormLabel>
@@ -379,11 +420,35 @@ export default function Inputs({ podstawowe }) {
             ></FormInput>
           </FormLabel>
           <FormLabel>
-            Adres firmy:
+            Miasto:
             <FormInput
               type="text"
-              value={adresFirmy}
-              onChange={(e) => setAdresFirmy(e.target.value)}
+              value={miastoFirmy}
+              onChange={(e) => setMiastoFirmy(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Ulica:
+            <FormInput
+              type="text"
+              value={ulicaFirmy}
+              onChange={(e) => setUlicaFirmy(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Numer:
+            <FormInput
+              type="text"
+              value={numerFirmy}
+              onChange={(e) => setNumerFirmy(e.target.value)}
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Kod pocztowy:
+            <FormInput
+              type="text"
+              value={kodPocztowyFirmy}
+              onChange={(e) => setKodPocztowyFirmy(e.target.value)}
             ></FormInput>
           </FormLabel>
           <FormLabel>
@@ -471,7 +536,7 @@ export default function Inputs({ podstawowe }) {
               <FormOption>Duże przedsiębiorstwo</FormOption>
               <FormOption>MMŚP</FormOption>
               <FormOption>Organizacja pozarządowa</FormOption>
-              <FormOption>Własna</FormOption>
+              <FormOption>Własna działalność</FormOption>
               <FormOption>Inne</FormOption>
             </FormSelect>
           </FormLabel>
@@ -480,7 +545,7 @@ export default function Inputs({ podstawowe }) {
         <></>
       )}
       {(() => {
-        if (rodzajPrzedsiebiorstwa === "Własna") {
+        if (rodzajPrzedsiebiorstwa === "Własna działalność") {
           return (
             <FormLabel>
               NIP:

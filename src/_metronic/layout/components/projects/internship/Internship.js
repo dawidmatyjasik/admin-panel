@@ -60,6 +60,8 @@ const Internship = () => {
   const [miastoStazu, setMiastoStazu] = useState("");
   const [ulicaStazu, setUlicaStazu] = useState("");
   const [numerStazu, setNumerStazu] = useState("");
+  const [miejsceOdbywaniaStazuOd, setMiejsceOdbywaniaStazuOd] = useState("");
+  const [miejsceOdbywaniaStazuDo, setMiejsceOdbywaniaStazuDo] = useState("");
   const [nipStazu, setNipStazu] = useState("");
   const [stanowiskoStazu, setStanowiskoStazu] = useState("");
   const [opiekunStazuOd, setOpiekunStazuOd] = useState("");
@@ -73,6 +75,11 @@ const Internship = () => {
   );
   const [godzinyStazuOd, setGodzinyStazuOd] = useState("");
   const [godzinyStazuDo, setGodzinyStazuDo] = useState("");
+  const [umowaStazowa, setUmowaStazowa] = useState("");
+  const [polisaNnw, setPolisaNnw] = useState("");
+  const [oswiadczeniePolisyNnw, setOswiadczeniePolisyNnw] = useState("");
+  const [badaniaMedycynyPracy, setBadaniaMedycynyPracy] = useState("");
+  const [dokuemntyOpiekunaStazu, setDokuemntyOpiekunaStazu] = useState("");
   const [dodajGodziny, setDodajGodziny] = useState("");
   const [dniUrlopu, setDniUrlopu] = useState("");
   const [pozostaleDniUrlopu, setPozostaleDniUrlopu] = useState("");
@@ -81,12 +88,44 @@ const Internship = () => {
   const [wybraneDniUrlopu, setWybraneDniUrlopu] = useState("");
   const [zgloszenieZus, setZgloszenieZus] = useState("");
   const [wygloszenieZus, setWygloszenieZus] = useState("");
+  const [listaObecnosci, setListaObecnosci] = useState("");
+  const [wniosekUrlopowy, setWniosekUrlopowy] = useState("");
+  const [zwolnienieLekarskie, setZwolnienieLekarskie] = useState("");
+  const [wniosekZwrotKosztowDojazdu, setWniosekZwrotKosztowDojazdu] = useState(
+    ""
+  );
+  const [wniosekZwrotKosztowOpieki, setWniosekZwrotKosztowOpieki] = useState(
+    ""
+  );
   const [stypendiumOd, setStypendiumOd] = useState("");
   const [stypendiumDo, setStypendiumDo] = useState("");
   const [dniPrzepracowane, setDniPrzepracowane] = useState("");
   const [dniWyliczeniaZus, setDniWyliczeniaZus] = useState("");
   const [wyplaconoStypendium, setWyplaconoStypendium] = useState("");
   const [nieobecnoscBezplatna, setNieobecnoscBezplatna] = useState("");
+  const [liczbaDniDoWyliczeniaZus, setLiczbaDniDoWyliczeniaZus] = useState("");
+  const [kwotaWyplaceniaStypendium, setKwotaWyplaceniaStypendium] = useState(
+    ""
+  );
+  const [zwrotKosztowDojazdu, setZwrotKosztowDojazdu] = useState("");
+  const [terminKosztowDojazduOd, setTerminKosztowDojazduOd] = useState("");
+  const [terminKosztowDojazduDo, setTerminKosztowDojazduDo] = useState("");
+  const [kwotaZwrotuKosztowDojazdu, setKwotaZwrotuKosztowDojazdu] = useState(
+    ""
+  );
+  const [zwrotKosztowOpieki, setZwrotKosztowOpieki] = useState("");
+  const [terminKosztowOpiekiOd, setTerminKosztowOpiekiOd] = useState("");
+  const [terminKosztowOpiekiDo, setTerminKosztowOpiekiDo] = useState("");
+  const [kwotaZwrotuKosztowOpieki, setKwotaZwrotuKosztowOpieki] = useState("");
+  const [opiniaPracodawcy, setOpiniaPracodawcy] = useState("");
+  const [ankietaUczestnika, setAnkietaUczestnika] = useState("");
+  const [zaswiadczenieOdbytegoStazu, setZaswiadczenieOdbytegoStazu] = useState(
+    ""
+  );
+  const [
+    zwrotOryginaluBadanLekarskich,
+    setZwrotOryginaluBadanLekarskich,
+  ] = useState("");
   const [uwagi, setUwagi] = useState("");
   useEffect(() => {
     db.collection("users")
@@ -200,6 +239,8 @@ const Internship = () => {
         miastoStazu,
         ulicaStazu,
         numerStazu,
+        miejsceOdbywaniaStazuOd,
+        miejsceOdbywaniaStazuDo,
         nipStazu,
         stanowiskoStazu,
         opiekunStazuOd,
@@ -211,6 +252,11 @@ const Internship = () => {
         wymiarGodzinPracyOpiekuna,
         godzinyStazuOd,
         godzinyStazuDo,
+        umowaStazowa,
+        polisaNnw,
+        oswiadczeniePolisyNnw,
+        badaniaMedycynyPracy,
+        dokuemntyOpiekunaStazu,
         dodajGodziny,
         dniUrlopu,
         pozostaleDniUrlopu,
@@ -219,11 +265,30 @@ const Internship = () => {
         wybraneDniUrlopu,
         zgloszenieZus,
         wygloszenieZus,
+        listaObecnosci,
+        wniosekUrlopowy,
+        zwolnienieLekarskie,
+        wniosekZwrotKosztowDojazdu,
+        wniosekZwrotKosztowOpieki,
         stypendiumOd,
         stypendiumDo,
         dniPrzepracowane,
         dniWyliczeniaZus,
         nieobecnoscBezplatna,
+        liczbaDniDoWyliczeniaZus,
+        kwotaWyplaceniaStypendium,
+        zwrotKosztowDojazdu,
+        terminKosztowDojazduOd,
+        terminKosztowDojazduDo,
+        kwotaZwrotuKosztowDojazdu,
+        zwrotKosztowOpieki,
+        terminKosztowOpiekiOd,
+        terminKosztowOpiekiDo,
+        kwotaZwrotuKosztowOpieki,
+        opiniaPracodawcy,
+        ankietaUczestnika,
+        zaswiadczenieOdbytegoStazu,
+        zwrotOryginaluBadanLekarskich,
         wyplaconoStypendium,
         uwagi,
       });
@@ -250,6 +315,8 @@ const Internship = () => {
       setMiastoStazu(staz.miastoStazu || "");
       setUlicaStazu(staz.ulicaStazu || "");
       setNumerStazu(staz.numerStazu || "");
+      setMiejsceOdbywaniaStazuOd(staz.miejsceOdbywaniaStazuOd || "");
+      setMiejsceOdbywaniaStazuDo(staz.miejsceOdbywaniaStazuDo || "");
       setNipStazu(staz.nipStazu || "");
       setStanowiskoStazu(staz.stanowiskoStazu || "");
       setOpiekunStazuOd(staz.opiekunStazuOd || "");
@@ -261,6 +328,11 @@ const Internship = () => {
       setWymiarGodzinPracyOpiekuna(staz.wymiarGodzinPracyOpiekuna || "");
       setGodzinyStazuOd(staz.godzinyStazuOd || "");
       setGodzinyStazuDo(staz.godzinyStazuDo || "");
+      setUmowaStazowa(staz.umowaStazowa || "");
+      setPolisaNnw(staz.polisaNnw || "");
+      setOswiadczeniePolisyNnw(staz.oswiadczeniePolisyNnw || "");
+      setBadaniaMedycynyPracy(staz.badaniaMedycynyPracy || "");
+      setDokuemntyOpiekunaStazu(staz.dokuemntyOpiekunaStazu || "");
       setDodajGodziny(staz.dodajGodziny || "");
       setDniUrlopu(staz.dniUrlopu || "");
       setPozostaleDniUrlopu(staz.pozostaleDniUrlopu || "");
@@ -269,11 +341,32 @@ const Internship = () => {
       setWybraneDniUrlopu(staz.wybraneDniUrlopu || "");
       setZgloszenieZus(staz.zgloszenieZus || "");
       setWygloszenieZus(staz.wygloszenieZus || "");
+      setListaObecnosci(staz.listaObecnosci || "");
+      setWniosekUrlopowy(staz.wniosekUrlopowy || "");
+      setZwolnienieLekarskie(staz.zwolnienieLekarskie || "");
+      setWniosekZwrotKosztowDojazdu(staz.zwrotKosztowDojazdu || "");
+      setWniosekZwrotKosztowOpieki(staz.zwrotKosztowOpieki || "");
       setStypendiumOd(staz.stypendiumOd || "");
       setStypendiumDo(staz.stypendiumDo || "");
       setDniPrzepracowane(staz.dniPrzepracowane || "");
       setDniWyliczeniaZus(staz.dniWyliczeniaZus || "");
       setNieobecnoscBezplatna(staz.nieobecnoscBezplatna || "");
+      setLiczbaDniDoWyliczeniaZus(staz.liczbaDniDoWyliczeniaZus || "");
+      setKwotaWyplaceniaStypendium(staz.kwotaWyplaceniaStypendium || "");
+      setZwrotKosztowDojazdu(staz.zwrotKosztowDojazdu || "");
+      setTerminKosztowDojazduOd(staz.terminKosztowDojazduOd || "");
+      setTerminKosztowDojazduDo(staz.terminKosztowDojazduDo || "");
+      setKwotaZwrotuKosztowDojazdu(staz.kwotaZwrotuKosztowDojazdu || "");
+      setZwrotKosztowOpieki(staz.zwrotKosztowOpieki || "");
+      setTerminKosztowOpiekiOd(staz.terminKosztowOpiekiOd || "");
+      setTerminKosztowOpiekiDo(staz.terminKosztowOpiekiDo || "");
+      setKwotaZwrotuKosztowOpieki(staz.kwotaZwrotuKosztowOpieki || "");
+      setOpiniaPracodawcy(staz.opiniaPracodawcy || "");
+      setAnkietaUczestnika(staz.setAnkietaUczestnika || "");
+      setZaswiadczenieOdbytegoStazu(staz.zaswiadczenieOdbytegoStazu || "");
+      setZwrotOryginaluBadanLekarskich(
+        staz.zwrotOryginaluBadanLekarskich || ""
+      );
       setWyplaconoStypendium(staz.wyplaconoStypendium || "");
       setUwagi(staz.uwagi || "");
     }
@@ -479,6 +572,27 @@ const Internship = () => {
             type="number"
           ></FormInput>
         </FormLabel>
+        <FormLabel style={{ alignItems: "center" }}>
+          Mijesce odbywania stażu:
+          <FormDateContainer>
+            <FromDateWrapper>
+              <FormSpan>od:</FormSpan>
+              <FormInput
+                value={miejsceOdbywaniaStazuOd}
+                onChange={(e) => setMiejsceOdbywaniaStazuOd(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+            <FromDateWrapper>
+              <FormSpan>do:</FormSpan>
+              <FormInput
+                value={miejsceOdbywaniaStazuDo}
+                onChange={(e) => setMiejsceOdbywaniaStazuDo(e.target.value)}
+                type="date"
+              ></FormInput>
+            </FromDateWrapper>
+          </FormDateContainer>
+        </FormLabel>
         <FormLabel>
           NIP:
           <FormInput
@@ -545,6 +659,7 @@ const Internship = () => {
             type="mail"
           ></FormInput>
         </FormLabel>
+
         <FormLabel>
           Telefon:
           <FormInput
@@ -553,6 +668,15 @@ const Internship = () => {
             type="tel"
           ></FormInput>
         </FormLabel>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={() => alert("będzie dodawało opiekuna stażu")}
+          style={{ marginBottom: "2vh" }}
+        >
+          Dodaj opiekuna stażu
+        </Button>
+
         <FormLabel>
           Wymiar czasu pracy:
           <FormInput
@@ -581,6 +705,57 @@ const Internship = () => {
               ></FormInput>
             </FromDateWrapper>
           </FormDateContainer>
+        </FormLabel>
+        <FormHeader>Dokumenty:</FormHeader>
+        <FormLabel>
+          Umowa stażowa:
+          <FormSelect
+            value={umowaStazowa}
+            onChange={(e) => setUmowaStazowa(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Polisa NNW:
+          <FormSelect
+            value={polisaNnw}
+            onChange={(e) => setPolisaNnw(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Oświadczenie do polisy NNW:
+          <FormSelect
+            value={oswiadczeniePolisyNnw}
+            onChange={(e) => setOswiadczeniePolisyNnw(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Badania medycyny pracy:
+          <FormSelect
+            value={badaniaMedycynyPracy}
+            onChange={(e) => setBadaniaMedycynyPracy(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Dokumenty opiekuna stażu
+          <FormSelect
+            value={dokuemntyOpiekunaStazu}
+            onChange={(e) => setDokuemntyOpiekunaStazu(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
         </FormLabel>
         <FormFlexContainer>
           <Button
@@ -650,6 +825,57 @@ const Internship = () => {
           Dodaj urlop
         </Button>
         <FormHeader>Wypłata stypendium:</FormHeader>
+        <FormSubHeader>Dokumenty:</FormSubHeader>
+        <FormLabel>
+          Lista obecności:
+          <FormSelect
+            value={listaObecnosci}
+            onChange={(e) => setListaObecnosci(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Wniosek urlopowy:
+          <FormSelect
+            value={wniosekUrlopowy}
+            onChange={(e) => setWniosekUrlopowy(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Zwolnienie lekarskie (L4):
+          <FormSelect
+            value={zwolnienieLekarskie}
+            onChange={(e) => setZwolnienieLekarskie(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Wniosek o zwrot kosztów dojazdu:
+          <FormSelect
+            value={wniosekZwrotKosztowDojazdu}
+            onChange={(e) => setWniosekZwrotKosztowDojazdu(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Wniosek o zwrot kosztów opieki
+          <FormSelect
+            value={wniosekZwrotKosztowOpieki}
+            onChange={(e) => setWniosekZwrotKosztowOpieki(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
         <FormSubHeader>Miesiąc 1:</FormSubHeader>
         <FormLabel style={{ alignItems: "center" }}>
           Stypendium:
@@ -673,7 +899,7 @@ const Internship = () => {
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
-          Liczba dni przepracowanych bez L4:
+          Liczba dni przepracowanych (bez L4):
           <FormInput
             value={dniPrzepracowane}
             onChange={(e) => setDniPrzepracowane(e.target.value)}
@@ -697,10 +923,163 @@ const Internship = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
+          Liczba dni do wyliczenia składek ZUS:
+          <FormInput
+            value={liczbaDniDoWyliczeniaZus}
+            onChange={(e) => setLiczbaDniDoWyliczeniaZus(e.target.value)}
+            type="number"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
           Wypłacono stypendium:
           <FormSelect
             value={wyplaconoStypendium}
             onChange={(e) => setWyplaconoStypendium(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        {wyplaconoStypendium === "Tak" ? (
+          <FormLabel>
+            Kwota:
+            <FormInput
+              value={kwotaWyplaceniaStypendium}
+              onChange={(e) => setKwotaWyplaceniaStypendium(e.target.value)}
+              type="number"
+            ></FormInput>
+          </FormLabel>
+        ) : (
+          <></>
+        )}
+        <FormLabel>
+          Zwrot kosztów za dojazd:
+          <FormSelect
+            value={zwrotKosztowDojazdu}
+            onChange={(e) => setZwrotKosztowDojazdu(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        {zwrotKosztowDojazdu === "Tak" ? (
+          <>
+            <FormLabel style={{ alignItems: "center" }}>
+              Termin kosztów za dojazd:
+              <FormDateContainer>
+                <FromDateWrapper>
+                  <FormSpan>od:</FormSpan>
+                  <FormInput
+                    value={terminKosztowDojazduOd}
+                    onChange={(e) => setTerminKosztowDojazduOd(e.target.value)}
+                    type="date"
+                  ></FormInput>
+                </FromDateWrapper>
+                <FromDateWrapper>
+                  <FormSpan>do:</FormSpan>
+                  <FormInput
+                    value={terminKosztowDojazduDo}
+                    onChange={(e) => setTerminKosztowDojazduDo(e.target.value)}
+                    type="date"
+                  ></FormInput>
+                </FromDateWrapper>
+              </FormDateContainer>
+            </FormLabel>
+            <FormLabel>
+              Kwota:
+              <FormInput
+                value={kwotaZwrotuKosztowDojazdu}
+                onChange={(e) => setKwotaZwrotuKosztowDojazdu(e.target.value)}
+                type="number"
+              ></FormInput>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+
+        <FormLabel>
+          Zwrot kosztów za opiekę:
+          <FormSelect
+            value={zwrotKosztowOpieki}
+            onChange={(e) => setZwrotKosztowOpieki(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        {zwrotKosztowOpieki === "Tak" ? (
+          <>
+            <FormLabel style={{ alignItems: "center" }}>
+              Termin zwrotu kosztów opieki:
+              <FormDateContainer>
+                <FromDateWrapper>
+                  <FormSpan>od:</FormSpan>
+                  <FormInput
+                    value={terminKosztowOpiekiOd}
+                    onChange={(e) => setTerminKosztowOpiekiOd(e.target.value)}
+                    type="date"
+                  ></FormInput>
+                </FromDateWrapper>
+                <FromDateWrapper>
+                  <FormSpan>do:</FormSpan>
+                  <FormInput
+                    value={terminKosztowOpiekiDo}
+                    onChange={(e) => setTerminKosztowOpiekiDo(e.target.value)}
+                    type="date"
+                  ></FormInput>
+                </FromDateWrapper>
+              </FormDateContainer>
+            </FormLabel>
+            <FormLabel>
+              Kwota:
+              <FormInput
+                value={kwotaZwrotuKosztowOpieki}
+                onChange={(e) => setKwotaZwrotuKosztowOpieki(e.target.value)}
+                type="number"
+              ></FormInput>
+            </FormLabel>
+          </>
+        ) : (
+          <></>
+        )}
+
+        <FormHeader>Dokumenty:</FormHeader>
+        <FormLabel>
+          Opinia pracodawcy:
+          <FormSelect
+            value={opiniaPracodawcy}
+            onChange={(e) => setOpiniaPracodawcy(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Ankieta uczestnika:
+          <FormSelect
+            value={ankietaUczestnika}
+            onChange={(e) => setAnkietaUczestnika(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Zaświadczenie o odbytym stażu:
+          <FormSelect
+            value={zaswiadczenieOdbytegoStazu}
+            onChange={(e) => setZaswiadczenieOdbytegoStazu(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Zwrot oryginału badań lekarskich:
+          <FormSelect
+            value={zwrotOryginaluBadanLekarskich}
+            onChange={(e) => setZwrotOryginaluBadanLekarskich(e.target.value)}
           >
             <FormOption>Nie</FormOption>
             <FormOption>Tak</FormOption>
@@ -715,6 +1094,14 @@ const Internship = () => {
         </FormLabel>
       </div>
       <FormFlexContainer>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+          onClick={() => alert("będzie kończyło staż")}
+        >
+          Zakończ staż
+        </Button>
         <Button
           variant="outlined"
           className={classes.button}

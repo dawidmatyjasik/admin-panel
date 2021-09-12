@@ -58,6 +58,7 @@ const Mediation = () => {
   const [czasTrwania, setCzasTrwania] = useState("");
   const [dokumenty, setDokumenty] = useState("");
   const [kartaPp, setKartaPp] = useState("");
+  const [liczbaOfert, setLiczbaOfert] = useState("");
   const [uwagi, setUwagi] = useState("");
 
   useEffect(() => {
@@ -98,6 +99,8 @@ const Mediation = () => {
         czasTrwania,
         dokumenty,
         kartaPp,
+        liczbaOfert,
+
         uwagi,
       });
     console.log("dodano");
@@ -118,6 +121,7 @@ const Mediation = () => {
       setCzasTrwania(posrednictwo.czasTrwania || "");
       setDokumenty(posrednictwo.dokumenty || "");
       setKartaPp(posrednictwo.kartaPp || "");
+      setLiczbaOfert(posrednictwo.liczbaOfert || "");
       setUwagi(posrednictwo.uwagi || "");
     }
   }, [posrednictwo]);
@@ -245,9 +249,22 @@ const Mediation = () => {
               value={kartaPp}
               onChange={(e) => setKartaPp(e.target.value)}
             >
-              <FormOption>Dokument 1</FormOption>
-              <FormOption>Dokument 2</FormOption>
-              <FormOption>Dokument 3</FormOption>
+              <FormOption>Nie</FormOption>
+              <FormOption>Tak</FormOption>
+            </FormSelect>
+          </FormLabel>
+        ) : (
+          <></>
+        )}
+        {dokumenty === "Tak" && kartaPp === "Tak" ? (
+          <FormLabel>
+            Liczba ofert:
+            <FormSelect
+              value={liczbaOfert}
+              onChange={(e) => setLiczbaOfert(e.target.value)}
+            >
+              <FormOption>Oferta 1</FormOption>
+              <FormOption>Oferta 2</FormOption>
             </FormSelect>
           </FormLabel>
         ) : (

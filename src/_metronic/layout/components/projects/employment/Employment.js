@@ -208,7 +208,7 @@ const Employment = () => {
           </FormSelect>
         </FormLabel>
         <FormLabel>
-          Data podpisania umowy:
+          Data podpisania umowy / aneksu:
           <FormInput
             value={dataPodpisaniaUmowy}
             onChange={(e) => setDataPodpisaniaUmowy(e.target.value)}
@@ -216,7 +216,7 @@ const Employment = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel style={{ alignItems: "center" }}>
-          Czas trwania umowy:
+          Czas trwania umowy / aneksu:
           <FormDateContainer>
             <FromDateWrapper>
               <FormSpan>od:</FormSpan>
@@ -373,6 +373,7 @@ const Employment = () => {
           variant="outlined"
           className={classes.button}
           style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+          onClick={() => alert("będzie dodawało umowę")}
         >
           Dodaj umowę
         </Button>

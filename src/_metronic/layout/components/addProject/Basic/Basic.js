@@ -71,8 +71,10 @@ const Basic = () => {
   const classes = useStyles();
   const [nazwaProjektu, setNazwaProjektu] = useState("");
   const [numerProjektu, setNumerProjektu] = useState("");
+  const [beneficjent, setBeneficjent] = useState("");
   const [beneficjentOdpowiada, setBeneficjentOdpowiada] = useState("");
   const [partnerOdpowiada, setPartnerOdpowiada] = useState("");
+  const [partner, setPartner] = useState("");
 
   const [okresRealizacjiOd, setOkresRealizacjiOd] = useState("");
   const [okresRealizacjiDo, setOkresRealizacjiDo] = useState("");
@@ -94,7 +96,15 @@ const Basic = () => {
   const [imieKoordynatora, setImieKoordynatora] = useState("");
 
   const [osobaUpowazniona, setOsobaUpowazniona] = useState([]);
+  const [osobaUpowaznionaImie, setOsobaUpowaznionaImie] = useState("");
+  const [osobaUpowaznionaNazwisko, setOsobaUpowaznionaNazwisko] = useState("");
+  const [osobaUpowaznionaData, setOsobaUpowaznionaData] = useState("");
+  const [osobaUpowaznionaStatus, setOsobaUpowaznionaStatus] = useState("");
   const [dostepDoKonta, setDostepDoKonta] = useState([]);
+  const [dostepDoKontaImie, setDostepDoKontaImie] = useState("");
+  const [dostepDoKontaNazwisko, setDostepDoKontaNazwisko] = useState("");
+  const [dostepDoKontaData, setDostepDoKontaData] = useState("");
+  const [dostepDoKontaStatus, setDostepDoKontaStatus] = useState("");
   const [stronaProjektu, setStronaProjektu] = useState("");
   const [emailProjektu, setEmailProjektu] = useState("");
   const [stawkaZus, setStawkaZus] = useState("");
@@ -134,6 +144,8 @@ const Basic = () => {
       setNumerProjektu(podstawowe.numerProjektu || "");
       setBeneficjentOdpowiada(podstawowe.beneficjentOdpowiada || "");
       setPartnerOdpowiada(podstawowe.partnerOdpowiada || "");
+      setBeneficjent(podstawowe.beneficjent || "");
+      setPartner(podstawowe.partner || "");
       setOkresRealizacjiOd(podstawowe.okresRealizacjiOd || "");
       setOkresRealizacjiDo(podstawowe.okresRealizacjiDo || "");
       setPrzedluzenieProjektu(podstawowe.przedluzenieProjektu || "");
@@ -151,7 +163,15 @@ const Basic = () => {
       setNazwiskoKoordynatora(podstawowe.nazwiskoKoordynatora || "");
       setImieKoordynatora(podstawowe.imieKoordynatora || "");
       setOsobaUpowazniona(podstawowe.osobaUpowazniona || "");
+      setOsobaUpowaznionaImie(podstawowe.osobaUpowaznionaImie || "");
+      setOsobaUpowaznionaNazwisko(podstawowe.osobaUpowaznionaNazwisko || "");
+      setOsobaUpowaznionaData(podstawowe.osobaUpowaznionaData || "");
+      setOsobaUpowaznionaStatus(podstawowe.osobaUpowaznionaStatus || "");
       setDostepDoKonta(podstawowe.dostepDoKonta || "");
+      setDostepDoKontaImie(podstawowe.dostepDoKontaImie || "");
+      setDostepDoKontaNazwisko(podstawowe.dostepDoKontaNazwisko || "");
+      setDostepDoKontaData(podstawowe.dostepDoKontaData || "");
+      setDostepDoKontaStatus(podstawowe.dostepDoKontaStatus || "");
       setStronaProjektu(podstawowe.stronaProjektu || "");
       setEmailProjektu(podstawowe.emailProjektu || "");
       setStawkaZus(podstawowe.stawkaZus || "");
@@ -243,6 +263,8 @@ const Basic = () => {
         numerProjektu,
         beneficjentOdpowiada,
         partnerOdpowiada,
+        partner,
+        beneficjent,
 
         okresRealizacjiOd,
         okresRealizacjiDo,
@@ -264,7 +286,15 @@ const Basic = () => {
         imieKoordynatora,
 
         osobaUpowazniona,
+        osobaUpowaznionaImie,
+        osobaUpowaznionaNazwisko,
+        osobaUpowaznionaData,
+        osobaUpowaznionaStatus,
         dostepDoKonta,
+        dostepDoKontaImie,
+        dostepDoKontaNazwisko,
+        dostepDoKontaData,
+        dostepDoKontaStatus,
         stronaProjektu,
         emailProjektu,
         stawkaZus,
@@ -283,7 +313,6 @@ const Basic = () => {
   return (
     <>
       <Form>
-        <FormHeader>Dodaj partnera</FormHeader>
         <FormLabel>
           Nazwa projektu:
           <FormInput
@@ -299,7 +328,14 @@ const Basic = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Beneficjent odpowiada za:
+          Beneficjent:
+          <FormInput
+            value={beneficjent}
+            onChange={(e) => setBeneficjent(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Odpowiada za:
           <FormSelect
             value={beneficjentOdpowiada}
             onChange={(e) => setBeneficjentOdpowiada(e.target.value)}
@@ -309,7 +345,14 @@ const Basic = () => {
           </FormSelect>
         </FormLabel>
         <FormLabel>
-          Partner odpowiada za:
+          Partner:
+          <FormInput
+            value={partner}
+            onChange={(e) => setPartner(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Odpowiada za:
           <FormSelect
             value={partnerOdpowiada}
             onChange={(e) => setPartnerOdpowiada(e.target.value)}
@@ -318,7 +361,13 @@ const Basic = () => {
             <FormOption>Staż</FormOption>
           </FormSelect>
         </FormLabel>
-        <FormHeader>Dodaj opiekuna projektu</FormHeader>
+        <Button
+          onClick={() => alert("będzie dodawało partnera")}
+          variant="outlined"
+          className={classes.button}
+        >
+          Dodaj partnera
+        </Button>
         <FormLabel style={{ alignItems: "center" }}>
           Okres realizacji projektu:
           <FormDateContainer>
@@ -370,22 +419,23 @@ const Basic = () => {
             onChange={(e) => setProgramOperacyjny(e.target.value)}
           ></FormInput>
         </FormLabel>
+        <FormSubHeader>Opiekun projektu w WUP / UM</FormSubHeader>
         <FormLabel>
-          Nazwisko opiekuna:
+          Nazwisko:
           <FormInput
             value={nazwiskoOpiekuna}
             onChange={(e) => setNazwiskoOpiekuna(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Imie opiekuna:
+          Imie:
           <FormInput
             value={imieOpiekuna}
             onChange={(e) => setImieOpiekuna(e.target.value)}
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Telefon opiekuna:
+          Telefon:
           <FormInput
             value={telefonOpiekuna}
             onChange={(e) => setTelefonOpiekuna(e.target.value)}
@@ -393,14 +443,21 @@ const Basic = () => {
           ></FormInput>
         </FormLabel>
         <FormLabel>
-          Mail opiekuna:
+          Mail:
           <FormInput
             value={mailOpiekuna}
             onChange={(e) => setMailOpiekuna(e.target.value)}
             type="mail"
           ></FormInput>
         </FormLabel>
-        <FormHeader>Dodaj menadżera</FormHeader>
+        <Button
+          onClick={() => alert("będzie dodawało opiekuna projektu")}
+          variant="outlined"
+          className={classes.button}
+        >
+          Dodaj opiekuna projektu
+        </Button>
+        <FormHeader>Menadżer projektu:</FormHeader>
         <FormLabel>
           Termin:
           <FormInput
@@ -423,7 +480,14 @@ const Basic = () => {
             onChange={(e) => setImieMenadzera(e.target.value)}
           ></FormInput>
         </FormLabel>
-        <FormHeader>Dodaj koordynatora:</FormHeader>
+        <Button
+          onClick={() => alert("będzie dodawało menadżera projektu")}
+          variant="outlined"
+          className={classes.button}
+        >
+          Dodaj menadżera projektu
+        </Button>
+        <FormHeader>Koordynator:</FormHeader>
         <FormLabel>
           Termin:
           <FormInput
@@ -445,6 +509,79 @@ const Basic = () => {
             value={imieKoordynatora}
             onChange={(e) => setImieKoordynatora(e.target.value)}
           ></FormInput>
+        </FormLabel>
+        <Button
+          onClick={() => alert("będzie dodawało menadżera projektu")}
+          variant="outlined"
+          className={classes.button}
+        >
+          Dodaj koordynatora
+        </Button>
+        <FormHeader>Osoby upoważnione do LSI / SL</FormHeader>
+        <FormLabel>
+          Imię:
+          <FormInput
+            value={osobaUpowaznionaImie}
+            onChange={(e) => setOsobaUpowaznionaImie(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Nazwisko:
+          <FormInput
+            value={osobaUpowaznionaNazwisko}
+            onChange={(e) => setOsobaUpowaznionaNazwisko(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Data od:
+          <FormInput
+            value={osobaUpowaznionaData}
+            onChange={(e) => setOsobaUpowaznionaData(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Status:
+          <FormSelect
+            value={osobaUpowaznionaStatus}
+            onChange={(e) => setOsobaUpowaznionaStatus(e.target.value)}
+          >
+            <FormOption>Aktywny</FormOption>
+            <FormOption>Zablokowany</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormHeader>Dostęp do konta bankowego</FormHeader>
+        <FormLabel>
+          Imię:
+          <FormInput
+            value={dostepDoKontaImie}
+            onChange={(e) => setDostepDoKontaImie(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Nazwisko:
+          <FormInput
+            value={dostepDoKontaNazwisko}
+            onChange={(e) => setDostepDoKontaNazwisko(e.target.value)}
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Data od:
+          <FormInput
+            value={dostepDoKontaData}
+            onChange={(e) => setDostepDoKontaData(e.target.value)}
+            type="date"
+          ></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Status:
+          <FormSelect
+            value={dostepDoKontaStatus}
+            onChange={(e) => setDostepDoKontaStatus(e.target.value)}
+          >
+            <FormOption>Aktywny</FormOption>
+            <FormOption>Zablokowany</FormOption>
+          </FormSelect>
         </FormLabel>
         <FormHeader>Informacje</FormHeader>
         {/*  <FormLabel>

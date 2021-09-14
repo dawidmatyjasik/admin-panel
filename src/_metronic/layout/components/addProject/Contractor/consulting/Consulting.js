@@ -279,7 +279,7 @@ const Consulting = () => {
         variant="outlined"
         className={classes.button}
       >
-        Dodaj projekt
+        Zapisz
       </Button>
     </Form>
   );

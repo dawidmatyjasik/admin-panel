@@ -171,7 +171,7 @@ const Catering = () => {
         variant="outlined"
         className={classes.button}
       >
-        Dodaj catering
+        Zapisz
       </Button>
     </Form>
   );

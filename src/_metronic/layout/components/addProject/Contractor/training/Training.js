@@ -13,6 +13,7 @@ import {
   FormSelect,
   FormSpan,
   FromDateWrapper,
+  FormSubHeader,
 } from "../../../projects/ProjectsElements";
 
 const useStyles = makeStyles((theme) => ({
@@ -65,9 +66,14 @@ const Training = () => {
   ] = useState("");
 
   const [trener, setTrener] = useState("");
+  const [imieTrenera, setImieTrenera] = useState("");
+  const [nazwiskoTrenera, setNazwiskoTrenera] = useState("");
   const [egzaminator, setEgzaminator] = useState("");
+  const [imieEgzaminatora, setImieEgzaminatora] = useState("");
+  const [nazwiskoEgzaminatora, setNazwiskoEgzaminatora] = useState("");
   const [terminSzkoleniaOd, setTerminSzkoleniaOd] = useState("");
   const [terminSzkoleniaDo, setTerminSzkoleniaDo] = useState("");
+  const [liczbaGodzinSzkolenia, setLiczbaGodzinSzkolenia] = useState("");
   const [rekomendacje, setRekomendacje] = useState("");
 
   useEffect(() => {
@@ -113,9 +119,14 @@ const Training = () => {
         ulicaPodwykonawcy,
         numerMieszkaniaPodwykonawcy,
         trener,
+        imieTrenera,
+        nazwiskoTrenera,
         egzaminator,
+        imieEgzaminatora,
+        nazwiskoEgzaminatora,
         terminSzkoleniaOd,
         terminSzkoleniaDo,
+        liczbaGodzinSzkolenia,
         rekomendacje,
       });
     console.log("dodano");
@@ -143,15 +154,28 @@ const Training = () => {
         szkolenie.numerMieszkaniaPodwykonawcy || ""
       );
       setTrener(szkolenie.trener || "");
+      setImieTrenera(szkolenie.imieTrenera || "");
+      setNazwiskoTrenera(szkolenie.nazwiskoTrenera || "");
       setEgzaminator(szkolenie.egzaminator || "");
+      setImieEgzaminatora(szkolenie.imieEgzaminatora || "");
+      setNazwiskoEgzaminatora(szkolenie.nazwiskoEgzaminatora || "");
       setTerminSzkoleniaOd(szkolenie.terminSzkoleniaOd || "");
       setTerminSzkoleniaDo(szkolenie.terminSzkoleniaDo || "");
+      setLiczbaGodzinSzkolenia(szkolenie.liczbaGodzinSzkolenia || "");
       setRekomendacje(szkolenie.rekomendacje || "");
     }
   }, [szkolenie]);
 
   return (
     <Form>
+      <Button
+        type="submit"
+        onClick={() => alert("będzie dodawało szkolenie")}
+        variant="outlined"
+        className={classes.button}
+      >
+        Dodaj szkolenie
+      </Button>
       <FormLabel>
         Nazwa szkolenia:
         <FormInput
@@ -197,7 +221,7 @@ const Training = () => {
         ></FormInput>
       </FormLabel>
       <FormLabel>
-        Numer mieszkania:
+        Numer:
         <FormInput
           value={numerMieszkaniaSzkolenia}
           onChange={(e) => setNumerMieszkaniaSzkolenia(e.target.value)}
@@ -280,33 +304,44 @@ const Training = () => {
         ></FormInput>
       </FormLabel>
       <FormLabel>
-        Numer mieszkania:
+        Numer:
         <FormInput
           value={numerMieszkaniaPodwykonawcy}
           onChange={(e) => setNumerMieszkaniaPodwykonawcy(e.target.value)}
           type="number"
         ></FormInput>
       </FormLabel>
+      <FormSubHeader>Trener:</FormSubHeader>
+      <FormLabel>
+        Imię:
+        <FormInput
+          value={imieTrenera}
+          onChange={(e) => setImieTrenera(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko:
+        <FormInput
+          value={nazwiskoTrenera}
+          onChange={(e) => setNazwiskoTrenera(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormSubHeader>Egzaminator:</FormSubHeader>
+      <FormLabel>
+        Imię:
+        <FormInput
+          value={imieEgzaminatora}
+          onChange={(e) => setImieEgzaminatora(e.target.value)}
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko:
+        <FormInput
+          value={nazwiskoEgzaminatora}
+          onChange={(e) => setNazwiskoEgzaminatora(e.target.value)}
+        ></FormInput>
+      </FormLabel>
       <br />
-      <FormLabel>
-        Dodaj trenera:
-        <FormSelect value={trener} onChange={(e) => setTrener(e.target.value)}>
-          {data.trener.map((item) => (
-            <FormOption key={item}>{item}</FormOption>
-          ))}
-        </FormSelect>
-      </FormLabel>
-      <FormLabel>
-        Dodaj egzaminatora:
-        <FormSelect
-          value={egzaminator}
-          onChange={(e) => setEgzaminator(e.target.value)}
-        >
-          {data.egzaminator.map((item) => (
-            <FormOption key={item}>{item}</FormOption>
-          ))}
-        </FormSelect>
-      </FormLabel>
       <FormLabel style={{ alignItems: "center" }}>
         Termin szkolenia:
         <FormDateContainer>
@@ -329,6 +364,14 @@ const Training = () => {
         </FormDateContainer>
       </FormLabel>
       <FormLabel>
+        Liczba godzin szkolenia:
+        <FormInput
+          value={liczbaGodzinSzkolenia}
+          onChange={(e) => setLiczbaGodzinSzkolenia(e.target.value)}
+          type="number"
+        ></FormInput>
+      </FormLabel>
+      <FormLabel>
         Rekomendacje:
         <FormSelect
           value={rekomendacje}
@@ -339,9 +382,6 @@ const Training = () => {
         </FormSelect>
       </FormLabel>
       <FormFlexContainer>
-        <Button variant="outlined" className={classes.button}>
-          Zakończ szkolenie
-        </Button>
         <Button
           onClick={handleSubmit}
           type="submit"
@@ -349,6 +389,9 @@ const Training = () => {
           className={classes.button}
         >
           Zapisz
+        </Button>
+        <Button variant="outlined" className={classes.button}>
+          Zakończ szkolenie
         </Button>
       </FormFlexContainer>
     </Form>

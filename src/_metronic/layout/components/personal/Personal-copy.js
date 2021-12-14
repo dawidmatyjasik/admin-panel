@@ -79,13 +79,11 @@ export default function Personal() {
   const [powiat, setPowiat] = useState("");
   const [gmina, setGmina] = useState("");
   const [wojewodztwo, setWojewodztwo] = useState("");
-  const [adresKorespondecyjny, setAdresKorespondecyjny] = useState("");
   const [czarnaLista, setCzarnaLista] = useState(false);
   const [czarnaListaPowod, setCzarnaListaPowod] = useState("");
   const [zgodaMarketingowa, setZgodaMarketingowa] = useState(false);
   const [zgodaZus, setZgodaZus] = useState(false);
   const [projekt, setProjekt] = useState("");
-  const [miastoSrednie, setMiastoSrednie] = useState("");
 
   const [users, setUsers] = useState([]);
   const [osobowe, setOsobowe] = useState([]);
@@ -327,95 +325,15 @@ export default function Personal() {
         value={wojewodztwo}
         onChange={(e) => setWojewodztwo(e.target.value)}
       />
-      <TextField
-        id="adresKorespondecyjny"
-        select
-        label="Adres korespondecyjny"
-        className={classes.textField}
-        SelectProps={{
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        margin="normal"
-        value={adresKorespondecyjny}
-        onChange={(e) => setAdresKorespondecyjny(e.target.value)}
-      >
-        <MenuItem value="Jak zamieszkania">Jak zamieszkania</MenuItem>
-        <MenuItem value="Inny">Inny</MenuItem>
-      </TextField>
-      {adresKorespondecyjny === "Inny" ? (
-        <>
-          <TextField
-            id="ulica"
-            label="Ulica"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="dom"
-            label="Numer domu"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="lokal"
-            label="Numer lokalu"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="miejscowosc"
-            label="Miejscowość"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="kod"
-            label="Kod pocztowy"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="powiat"
-            label="Powiat"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="gmina"
-            label="Gmina"
-            className={classes.textField}
-            margin="normal"
-          />
-          <TextField
-            id="wojewodztwo"
-            label="Województwo"
-            className={classes.textField}
-            margin="normal"
-          />
-        </>
-      ) : (
-        <></>
-      )}
-      <TextField
-        id="czarnaLista"
-        select
-        label="Czarna lsita"
-        className={classes.textField}
-        SelectProps={{
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        margin="normal"
-        value={czarnaLista}
-        onChange={(e) => setCzarnaLista(e.target.value)}
-      >
-        <MenuItem value="Nie">Nie</MenuItem>
-        <MenuItem value="Tak">Tak</MenuItem>
-      </TextField>
-      {czarnaLista === "Tak" ? (
+      <FormControlLabel
+        control={<Switch color="primary" />}
+        label="Czarna lista"
+        labelPlacement="start"
+        className={classes.switch}
+        onChange={(e) => setCzarnaLista(e.target.checked)}
+        checked={czarnaLista}
+      />
+      {czarnaLista ? (
         <TextField
           id="czarna lista"
           label="Powód wpisania na czarną listę"
@@ -427,39 +345,22 @@ export default function Personal() {
       ) : (
         <></>
       )}
-      <TextField
-        id="zgodaZus"
-        select
-        label="Zgoda na elektroniczną wysyłkę ZUS RMUA"
-        className={classes.textField}
-        SelectProps={{
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        margin="normal"
-        value={zgodaZus}
-        onChange={(e) => setZgodaZus(e.target.value)}
-      >
-        <MenuItem value="Nie">Nie</MenuItem>
-        <MenuItem value="Tak">Tak</MenuItem>
-      </TextField>
-      {/*  <FormControlLabel
+      <FormControlLabel
         control={<Switch color="primary" />}
         label="Zgoda marketingowa"
         labelPlacement="start"
         className={classes.switch}
         onChange={(e) => setZgodaMarketingowa(e.target.checked)}
         checked={zgodaMarketingowa}
-      /> */}
-      {/* <FormControlLabel
+      />
+      <FormControlLabel
         control={<Switch color="primary" />}
         label="Zgoda na elektroniczną wysyłkę ZUS RMUA"
         labelPlacement="start"
         className={classes.switch}
         onChange={(e) => setZgodaZus(e.target.checked)}
         checked={zgodaZus}
-      /> */}
+      />
       <TextField
         id="project"
         select
@@ -480,30 +381,6 @@ export default function Personal() {
           </MenuItem>
         ))}
       </TextField>
-      <TextField
-        label="Subregion"
-        className={classes.textField}
-        margin="normal"
-      />
-      <TextField label="OSI" className={classes.textField} margin="normal" />
-      <TextField label="ZIT" className={classes.textField} margin="normal" />
-      <TextField
-        select
-        label="Miasto średnie"
-        className={classes.textField}
-        SelectProps={{
-          MenuProps: {
-            className: classes.menu,
-          },
-        }}
-        margin="normal"
-        value={miastoSrednie}
-        onChange={(e) => setMiastoSrednie(e.target.value)}
-      >
-        <MenuItem value="Nie">Nie</MenuItem>
-        <MenuItem value="Tak">Tak</MenuItem>
-      </TextField>
-
       <Button
         variant="contained"
         type="submit"
@@ -516,3 +393,7 @@ export default function Personal() {
     </form>
   );
 }
+
+/* 
+
+*/

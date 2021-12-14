@@ -91,6 +91,28 @@ export default function MediaCard() {
           </CardContent>
         </Link>
       </CardActionArea>
+      <CardActionArea
+        className={classes.card}
+        style={{
+          gridColumnStart: "1",
+          gridColumnEnd: "3",
+          display: "grid",
+          placeItems: "center",
+        }}
+      >
+        <Link to="/panel/pracodawca">
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              PRACODAWCA
+            </Typography>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+            ></Typography>
+          </CardContent>
+        </Link>
+      </CardActionArea>
     </div>
   );
 }

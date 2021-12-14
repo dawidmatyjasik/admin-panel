@@ -31,9 +31,7 @@ export function LanguageSelectorDropdown() {
       >
         <OverlayTrigger
           placement="bottom"
-          overlay={
-            <Tooltip id="language-panel-tooltip">Select Language</Tooltip>
-          }
+          overlay={<Tooltip id="language-panel-tooltip">Wybierz język</Tooltip>}
         >
           <div className="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
             <img
@@ -53,16 +51,15 @@ export function LanguageSelectorDropdown() {
                 active: language.lang === currentLanguage.lang,
               })}
             >
-              <a
-                href="#"
+              <div
                 onClick={() => setLanguage(language.lang)}
-                className="navi-link"
+                className="navi-link disabled-link"
               >
                 <span className="symbol symbol-20 mr-3">
                   <img src={language.flag} alt={language.name} />
                 </span>
                 <span className="navi-text">{language.name}</span>
-              </a>
+              </div>
             </li>
           ))}
         </ul>

@@ -64,9 +64,8 @@ export function SubHeader() {
       >
         {/* Info */}
         <div className="d-flex align-items-center">
-          <a
-            href="#"
-            className="btn btn-light btn-sm font-weight-bold"
+          <div
+            className="btn btn-light btn-sm font-weight-bold disabled-link"
             id="kt_dashboard_daterangepicker"
             data-toggle="tooltip"
             title="Select dashboard daterange"
@@ -78,14 +77,13 @@ export function SubHeader() {
             >
               Panel administratora
             </span>
-          </a>
+          </div>
         </div>
 
         {/* Toolbar */}
         <div className="d-flex align-items-center">
-          <a
-            href="#"
-            className="btn btn-light btn-sm font-weight-bold"
+          <div
+            className="btn btn-light btn-sm font-weight-bold disabled-link"
             id="kt_dashboard_daterangepicker"
             data-toggle="tooltip"
             title="Select dashboard daterange"
@@ -103,7 +101,7 @@ export function SubHeader() {
             >
               {now}
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </div>

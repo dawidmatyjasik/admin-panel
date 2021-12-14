@@ -22,9 +22,10 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
-    "&:nth-child(1)": {
+    marginRight: "2%",
+    /*     "&:nth-child(1)": {
       marginRight: "2%",
-    },
+    }, */
     "@media (max-width: 1000px)": {
       width: "30%",
     },
@@ -221,7 +222,7 @@ const Training = () => {
         ></FormInput>
       </FormLabel>
       <FormLabel>
-        Numer:
+        Numer budynku/lokalu:
         <FormInput
           value={numerMieszkaniaSzkolenia}
           onChange={(e) => setNumerMieszkaniaSzkolenia(e.target.value)}
@@ -304,7 +305,7 @@ const Training = () => {
         ></FormInput>
       </FormLabel>
       <FormLabel>
-        Numer:
+        Numer budynku/lokalu:
         <FormInput
           value={numerMieszkaniaPodwykonawcy}
           onChange={(e) => setNumerMieszkaniaPodwykonawcy(e.target.value)}
@@ -326,6 +327,9 @@ const Training = () => {
           onChange={(e) => setNazwiskoTrenera(e.target.value)}
         ></FormInput>
       </FormLabel>
+      <Button variant="outlined" className={classes.button}>
+        Dodaj trenera
+      </Button>
       <FormSubHeader>Egzaminator:</FormSubHeader>
       <FormLabel>
         Imię:
@@ -341,7 +345,11 @@ const Training = () => {
           onChange={(e) => setNazwiskoEgzaminatora(e.target.value)}
         ></FormInput>
       </FormLabel>
+      <Button variant="outlined" className={classes.button}>
+        Dodaj egzaminatora
+      </Button>
       <br />
+      <FormSubHeader>Miejsce szkolenia:</FormSubHeader>
       <FormLabel style={{ alignItems: "center" }}>
         Termin szkolenia:
         <FormDateContainer>
@@ -364,6 +372,22 @@ const Training = () => {
         </FormDateContainer>
       </FormLabel>
       <FormLabel>
+        Miasto:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Ulica:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Numer budynku/lokalu:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Kod pocztowy:
+        <FormInput type="number"></FormInput>
+      </FormLabel>
+      <FormLabel>
         Liczba godzin szkolenia:
         <FormInput
           value={liczbaGodzinSzkolenia}
@@ -381,7 +405,48 @@ const Training = () => {
           <FormOption>Tak</FormOption>
         </FormSelect>
       </FormLabel>
+      <FormHeader>Harmonogram szkolenia:</FormHeader>
+      <FormLabel>
+        1. dzień:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Miasto:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Ulica:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Numer budynku/lokalu:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Imię prowadzącego:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko prowadzącego:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel style={{ alignItems: "center" }}>
+        Godziny
+        <FormDateContainer>
+          <FromDateWrapper>
+            <FormSpan>od:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
+          <FromDateWrapper>
+            <FormSpan>do:</FormSpan>
+            <FormInput type="time"></FormInput>
+          </FromDateWrapper>
+        </FormDateContainer>
+      </FormLabel>
       <FormFlexContainer>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj dzień
+        </Button>
         <Button
           onClick={handleSubmit}
           type="submit"
@@ -391,7 +456,84 @@ const Training = () => {
           Zapisz
         </Button>
         <Button variant="outlined" className={classes.button}>
+          Pobierz harmonogram w pdf
+        </Button>
+        <Button variant="outlined" className={classes.button}>
           Zakończ szkolenie
+        </Button>
+      </FormFlexContainer>
+      <FormHeader>Zaplanuj kontrolę stażu:</FormHeader>
+      <FormLabel>
+        Data:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko kontrolującego:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Imię kontrolującego
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Godzina planowanej kontroli:
+        <FormSelect>
+          <FormOption>W godzinach pracy</FormOption>
+          <FormOption>Poza godzinami pracy</FormOption>
+          <FormOption>W weekend</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormSubHeader>Wynik kontroli:</FormSubHeader>
+      <FormLabel>
+        Data kontroli:
+        <FormInput type="date"></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Obecny opiekun stażu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Nazwisko opiekuna:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Imię opiekuna:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormLabel>
+        Obecność stażysty w czasie kontroli
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Plakat projektowy w widocznym miejscu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Ankieta z kontroli stażu:
+        <FormSelect>
+          <FormOption>Nie</FormOption>
+          <FormOption>Tak</FormOption>
+        </FormSelect>
+      </FormLabel>
+      <FormLabel>
+        Uwagi / wynik ankiety:
+        <FormInput></FormInput>
+      </FormLabel>
+      <FormFlexContainer>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj kontrolę
+        </Button>
+        <Button variant="outlined" className={classes.button}>
+          Zakończ kontrolę
         </Button>
       </FormFlexContainer>
     </Form>

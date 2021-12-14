@@ -20,9 +20,8 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
-    "&:nth-child(1)": {
-      marginRight: "2%",
-    },
+    marginRight: "2%",
+    "&:nth-child(1)": {},
   },
 }));
 
@@ -302,6 +301,9 @@ const Traning = () => {
             onChange={(e) => setNazwiskoTrenera(e.target.value)}
           ></FormInput>
         </FormLabel>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj trenera
+        </Button>
         <FormHeader>Egzaminator:</FormHeader>
         <FormLabel>
           Imię:
@@ -382,7 +384,7 @@ const Traning = () => {
           </FormSelect>
         </FormLabel>
         <FormLabel>
-          Badania medycyna pracy:
+          Badania psychologiczne:
           <FormSelect
             value={badaniaPsychologiczne}
             onChange={(e) => setBadaniaPsychologiczne(e.target.value)}
@@ -528,27 +530,45 @@ const Traning = () => {
             </FormSelect>
           </FormLabel>
           {stypendium === "Tak" ? (
-            <FormLabel style={{ alignItems: "center" }}>
-              Okres stypendium:
-              <FormDateContainer>
-                <FromDateWrapper>
-                  <FormSpan>od:</FormSpan>
-                  <FormInput
-                    value={stypendiumOd}
-                    onChange={(e) => setStypendiumOd(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-                <FromDateWrapper>
-                  <FormSpan>do:</FormSpan>
-                  <FormInput
-                    value={stypendiumDo}
-                    onChange={(e) => setStypendiumDo(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-              </FormDateContainer>
-            </FormLabel>
+            <>
+              <FormLabel style={{ alignItems: "center" }}>
+                Okres stypendium:
+                <FormDateContainer>
+                  <FromDateWrapper>
+                    <FormSpan>od:</FormSpan>
+                    <FormInput
+                      value={stypendiumOd}
+                      onChange={(e) => setStypendiumOd(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                  <FromDateWrapper>
+                    <FormSpan>do:</FormSpan>
+                    <FormInput
+                      value={stypendiumDo}
+                      onChange={(e) => setStypendiumDo(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                </FormDateContainer>
+              </FormLabel>
+              <FormLabel>
+                Kwota:
+                <FormInput type="number"></FormInput>
+              </FormLabel>
+              <FormLabel>
+                Wypłacono:
+                <FormSelect>
+                  <FormOption>Nie</FormOption>
+                  <FormOption>Tak</FormOption>
+                </FormSelect>
+              </FormLabel>
+              <FormLabel>
+                Data:
+                <FormInput type="date"></FormInput>
+              </FormLabel>
+              <br />
+            </>
           ) : (
             <></>
           )}
@@ -563,27 +583,45 @@ const Traning = () => {
             </FormSelect>
           </FormLabel>
           {zwrotKosztowDojazdu === "Tak" ? (
-            <FormLabel style={{ alignItems: "center" }}>
-              Zwrot za okres:
-              <FormDateContainer>
-                <FromDateWrapper>
-                  <FormSpan>od:</FormSpan>
-                  <FormInput
-                    value={zwrotKosztowDojazduOd}
-                    onChange={(e) => setZwrotKosztowDojazduOd(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-                <FromDateWrapper>
-                  <FormSpan>do:</FormSpan>
-                  <FormInput
-                    value={zwrotKosztowDojazduDo}
-                    onChange={(e) => setZwrotKosztowDojazduDo(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-              </FormDateContainer>
-            </FormLabel>
+            <>
+              <FormLabel style={{ alignItems: "center" }}>
+                Zwrot za okres:
+                <FormDateContainer>
+                  <FromDateWrapper>
+                    <FormSpan>od:</FormSpan>
+                    <FormInput
+                      value={zwrotKosztowDojazduOd}
+                      onChange={(e) => setZwrotKosztowDojazduOd(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                  <FromDateWrapper>
+                    <FormSpan>do:</FormSpan>
+                    <FormInput
+                      value={zwrotKosztowDojazduDo}
+                      onChange={(e) => setZwrotKosztowDojazduDo(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                </FormDateContainer>
+              </FormLabel>
+              <FormLabel>
+                Kwota:
+                <FormInput type="number"></FormInput>
+              </FormLabel>
+              <FormLabel>
+                Wypłacono:
+                <FormSelect>
+                  <FormOption>Nie</FormOption>
+                  <FormOption>Tak</FormOption>
+                </FormSelect>
+              </FormLabel>
+              <FormLabel>
+                Data:
+                <FormInput type="date"></FormInput>
+              </FormLabel>
+              <br />
+            </>
           ) : (
             <></>
           )}
@@ -598,27 +636,45 @@ const Traning = () => {
             </FormSelect>
           </FormLabel>
           {zwrotKosztowOpieki === "Tak" ? (
-            <FormLabel style={{ alignItems: "center" }}>
-              Zwrot za okres:
-              <FormDateContainer>
-                <FromDateWrapper>
-                  <FormSpan>od:</FormSpan>
-                  <FormInput
-                    value={zwrotKosztowOpiekiOd}
-                    onChange={(e) => setZwrotKosztowOpiekiOd(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-                <FromDateWrapper>
-                  <FormSpan>do:</FormSpan>
-                  <FormInput
-                    value={zwrotKosztowOpiekiDo}
-                    onChange={(e) => setZwrotKosztowOpiekiDo(e.target.value)}
-                    type="date"
-                  ></FormInput>
-                </FromDateWrapper>
-              </FormDateContainer>
-            </FormLabel>
+            <>
+              <FormLabel style={{ alignItems: "center" }}>
+                Zwrot za okres:
+                <FormDateContainer>
+                  <FromDateWrapper>
+                    <FormSpan>od:</FormSpan>
+                    <FormInput
+                      value={zwrotKosztowOpiekiOd}
+                      onChange={(e) => setZwrotKosztowOpiekiOd(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                  <FromDateWrapper>
+                    <FormSpan>do:</FormSpan>
+                    <FormInput
+                      value={zwrotKosztowOpiekiDo}
+                      onChange={(e) => setZwrotKosztowOpiekiDo(e.target.value)}
+                      type="date"
+                    ></FormInput>
+                  </FromDateWrapper>
+                </FormDateContainer>
+              </FormLabel>
+              <FormLabel>
+                Kwota:
+                <FormInput type="number"></FormInput>
+              </FormLabel>
+              <FormLabel>
+                Wypłacono:
+                <FormSelect>
+                  <FormOption>Nie</FormOption>
+                  <FormOption>Tak</FormOption>
+                </FormSelect>
+              </FormLabel>
+              <FormLabel>
+                Data:
+                <FormInput type="date"></FormInput>
+              </FormLabel>
+              <br />
+            </>
           ) : (
             <></>
           )}
@@ -723,6 +779,13 @@ const Traning = () => {
           }
         >
           Dodaj szkolenie
+        </Button>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          style={dotyczy ? { opacity: "1" } : { opacity: "0.7" }}
+        >
+          Dodaj kolejne rozliczenie
         </Button>
         <Button
           type="submit"

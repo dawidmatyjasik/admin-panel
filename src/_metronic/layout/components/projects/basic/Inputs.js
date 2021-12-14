@@ -172,13 +172,18 @@ export default function Inputs({ podstawowe }) {
           onChange={(e) => setDataPodpisania(e.target.value)}
         ></FormInput>
       </FormLabel>
-      <FormLabel>
-        Wiek w momencie przystąpienia:
-        <FormInput
-          type="number"
-          value={wiek}
-          onChange={(e) => setWiek(e.target.value)}
-        ></FormInput>
+      <FormLabel style={{ alignItems: "center" }}>
+        Wiek w momencie przystąpienia
+        <FormDateContainer>
+          <FromDateWrapper>
+            <FormSpan>lat:</FormSpan>
+            <FormInput type="number"></FormInput>
+          </FromDateWrapper>
+          <FromDateWrapper>
+            <FormSpan>mieś:</FormSpan>
+            <FormInput type="number"></FormInput>
+          </FromDateWrapper>
+        </FormDateContainer>
       </FormLabel>
       <FormLabel>
         Wykształecnie deklarowane w projekcie:

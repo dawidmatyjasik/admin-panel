@@ -183,7 +183,9 @@ const Consulting = () => {
             value="Zakończenie IPD"
           />
         </RadioGroup>
-        <FormHeader>Sesja I</FormHeader>
+        <Button variant="outlined" className={classes.button}>
+          Sesja
+        </Button>
         <FormLabel>
           Miasto:
           <FormInput

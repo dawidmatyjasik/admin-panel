@@ -25,9 +25,7 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
-    "&:nth-child(1)": {
-      marginRight: "2%",
-    },
+    marginRight: "2%",
     "@media (max-width: 1000px)": {
       width: "30%",
     },
@@ -49,6 +47,7 @@ const Internship = () => {
   const [dataPodpisaniaUmowy, setDataPodpisaniaUmowy] = useState("");
   const [stazOd, setStazOd] = useState("");
   const [stazDo, setStazDo] = useState("");
+  const [przedluzenieStazu, setPrzedluzenieStazu] = useState("");
   const [przedluzenieStazuDo, setPrzedluzenieStazuDo] = useState("");
   const [medycynaPracy, setMedycynaPracy] = useState("");
   const [nazwaPracodawcy, setNazwaPracodawcy] = useState("");
@@ -487,13 +486,28 @@ const Internship = () => {
           </FormDateContainer>
         </FormLabel>
         <FormLabel>
-          Przedłużenie stażu do:
-          <FormInput
-            value={przedluzenieStazuDo}
-            onChange={(e) => setPrzedluzenieStazuDo(e.target.value)}
-            type="date"
-          ></FormInput>
+          Przedłużenie stażu:
+          <FormSelect
+            value={przedluzenieStazu}
+            onChange={(e) => setPrzedluzenieStazu(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
         </FormLabel>
+        {przedluzenieStazu === "Tak" ? (
+          <FormLabel>
+            Przedłużenie stażu do:
+            <FormInput
+              value={przedluzenieStazuDo}
+              onChange={(e) => setPrzedluzenieStazuDo(e.target.value)}
+              type="date"
+            ></FormInput>
+          </FormLabel>
+        ) : (
+          <></>
+        )}
+
         <FormLabel>
           Badania medycyna pracy:
           <FormInput
@@ -706,6 +720,9 @@ const Internship = () => {
             </FromDateWrapper>
           </FormDateContainer>
         </FormLabel>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj godziny stażu
+        </Button>
         <FormHeader>Dokumenty:</FormHeader>
         <FormLabel>
           Umowa stażowa:

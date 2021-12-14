@@ -352,6 +352,23 @@ export function AsideMenuList({ layoutProps }) {
           </NavLink>
         </li>
         <li className="menu-section ">
+          <h4 className="menu-text">Pracodawca</h4>
+          <i className="menu-icon flaticon-more-v2"></i>
+        </li>
+        <li
+          className={`menu-item ${getMenuItemActive("/panel/pracodawca")}`}
+          aria-haspopup="true"
+        >
+          <NavLink className="menu-link" to="/panel/pracodawca">
+            <span className="svg-icon menu-icon">
+              <SVG
+                src={toAbsoluteUrl("/media/svg/icons/Design/Color-profile.svg")}
+              />
+            </span>
+            <span className="menu-text">Pracodawca</span>
+          </NavLink>
+        </li>
+        <li className="menu-section ">
           <h4 className="menu-text">Wypłaty</h4>
           <i className="menu-icon flaticon-more-v2"></i>
         </li>

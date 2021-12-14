@@ -68,11 +68,11 @@ export const EditPage = () => {
         {
           <Redirect
             exact
-            from="/panel/edytuj/kontrola"
-            to="/panel/edytuj/kontrola/szkolenie"
+            from="/panel/edytuj/kontrole"
+            to="/panel/edytuj/kontrole/szkolenie"
           />
         }
-        <ContentRoute path="/panel/edytuj/kontrola" component={Checks} />
+        <ContentRoute path="/panel/edytuj/kontrole" component={Checks} />
       </Switch>
     </>
   );

@@ -22,10 +22,10 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/panel/edytuj/kontrola"
+          to="/panel/edytuj/kontrole"
           activeStyle={{ color: "#3699FF", fontWeight: "bold" }}
         >
-          Kontrole
+          Kontrole szkoleń i stażu
         </NavLink>
       </ListElement>
     </List>

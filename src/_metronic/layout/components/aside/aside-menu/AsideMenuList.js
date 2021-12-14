@@ -306,13 +306,13 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/panel/edytuj/kontrola/szkolenia"
+                  "/panel/edytuj/kontrole/szkolenia"
                 )}`}
                 aria-haspopup="true"
               >
                 <NavLink
                   className="menu-link"
-                  to="/panel/edytuj/kontrola/szkolenie"
+                  to="/panel/edytuj/kontrole/szkolenie"
                 >
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
@@ -322,11 +322,11 @@ export function AsideMenuList({ layoutProps }) {
               </li>
               <li
                 className={`menu-item ${getMenuItemActive(
-                  "/panel/edytuj/kontrola/szkolenia"
+                  "/panel/edytuj/kontrole/szkolenia"
                 )}`}
                 aria-haspopup="true"
               >
-                <NavLink className="menu-link" to="/panel/edytuj/kontrola/staz">
+                <NavLink className="menu-link" to="/panel/edytuj/kontrole/staz">
                   <i className="menu-bullet menu-bullet-dot">
                     <span />
                   </i>

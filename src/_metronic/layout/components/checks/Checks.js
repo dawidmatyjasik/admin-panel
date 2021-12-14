@@ -11,11 +11,27 @@ const Checks = () => {
       <Nav />
       <Switch>
         <ContentRoute
-          path="/panel/edytuj/kontrola/szkolenie"
+          path="/panel/edytuj/kontrole/szkolenie"
           component={Training}
         />
         <ContentRoute
-          path="/panel/edytuj/kontrola/staz"
+          path="/panel/edytuj/kontrole/staz"
+          component={Internship}
+        />
+        <ContentRoute
+          path="/panel/edytuj/kontrole/szkolenie-dojazd"
+          component={Internship}
+        />
+        <ContentRoute
+          path="/panel/edytuj/kontrole/staz-dojazd"
+          component={Internship}
+        />
+        <ContentRoute
+          path="/panel/edytuj/kontrole/szkolenie-opieka"
+          component={Internship}
+        />
+        <ContentRoute
+          path="/panel/edytuj/kontrole/staz-opieka"
           component={Internship}
         />
       </Switch>

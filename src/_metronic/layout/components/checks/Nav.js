@@ -6,7 +6,7 @@ const Nav = () => {
     <List style={{ justifyContent: "space-evenly" }}>
       <ListElement>
         <NavLink
-          to="/panel/edytuj/kontrola/szkolenie"
+          to="/panel/edytuj/kontrole/szkolenie"
           activeStyle={{ fontWeight: "bold" }}
         >
           Kontrola szkolenia
@@ -14,10 +14,42 @@ const Nav = () => {
       </ListElement>
       <ListElement>
         <NavLink
-          to="/panel/edytuj/kontrola/staz"
+          to="/panel/edytuj/kontrole/staz"
           activeStyle={{ fontWeight: "bold" }}
         >
           Kontrole stażu
+        </NavLink>
+      </ListElement>
+      <ListElement>
+        <NavLink
+          to="/panel/edytuj/kontrole/szkolenie-dojazd"
+          activeStyle={{ fontWeight: "bold" }}
+        >
+          Zwrot kosztów za dojazd - szkolenie
+        </NavLink>
+      </ListElement>
+      <ListElement>
+        <NavLink
+          to="/panel/edytuj/kontrole/staz-dojazd"
+          activeStyle={{ fontWeight: "bold" }}
+        >
+          Zwrot kosztów za dojazd - staż
+        </NavLink>
+      </ListElement>
+      <ListElement>
+        <NavLink
+          to="/panel/edytuj/kontrole/szkolenie-opieka"
+          activeStyle={{ fontWeight: "bold" }}
+        >
+          Zwrot kosztów za opieki - szkolenie
+        </NavLink>
+      </ListElement>
+      <ListElement>
+        <NavLink
+          to="/panel/edytuj/kontrole/staz-opieka"
+          activeStyle={{ fontWeight: "bold" }}
+        >
+          Zwrot kosztów za opieki - staż
         </NavLink>
       </ListElement>
     </List>

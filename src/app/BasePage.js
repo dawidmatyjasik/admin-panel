@@ -7,6 +7,7 @@ import { DashboardPage } from "./pages/DashboardPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import PayoutsPage from "./pages/PayoutsPage";
 import CadrePage from "./pages/CadrePage";
+import EmployerPage from "./pages/EmployerPage";
 
 export default function BasePage() {
   return (
@@ -40,6 +41,7 @@ export default function BasePage() {
         }
         <ContentRoute path="/panel/wyplaty/" component={PayoutsPage} />
         <ContentRoute path="/panel/kadra" component={CadrePage} />
+        <ContentRoute path="/panel/pracodawca" component={EmployerPage} />
       </Switch>
     </Suspense>
   );

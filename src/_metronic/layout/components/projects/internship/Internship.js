@@ -765,14 +765,80 @@ const Internship = () => {
           >
             Dodaj pracodawcę
           </Button>
-          <Button
-            variant="outlined"
-            className={classes.button}
-            onClick={() => alert("będzie planowało kontrolę stażu")}
-          >
-            Zaplanuj kontrolę stażu
-          </Button>
         </FormFlexContainer>
+        <FormHeader>Zaplanuj kontrolę stażu:</FormHeader>
+        <FormLabel>
+          Data:
+          <FormInput type="date"></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Nazwisko kontrolującego:
+          <FormInput></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Imię kontrolującego
+          <FormInput></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Godzina planowanej kontroli:
+          <FormSelect>
+            <FormOption>W godzinach pracy</FormOption>
+            <FormOption>Poza godzinami pracy</FormOption>
+            <FormOption>W weekend</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormSubHeader>Wynik kontroli:</FormSubHeader>
+        <FormLabel>
+          Data kontroli:
+          <FormInput type="date"></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Obecny opiekun stażu:
+          <FormSelect>
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Nazwisko opiekuna:
+          <FormInput></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Imię opiekuna:
+          <FormInput></FormInput>
+        </FormLabel>
+        <FormLabel>
+          Obecność stażysty w czasie kontroli
+          <FormSelect>
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Plakat projektowy w widocznym miejscu:
+          <FormSelect>
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Ankieta z kontroli stażu:
+          <FormSelect>
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Uwagi / wynik ankiety:
+          <FormInput></FormInput>
+        </FormLabel>
+        <Button
+          variant="outlined"
+          className={classes.button}
+          onClick={() => alert("będzie planowało kontrolę stażu")}
+        >
+          Zaplanuj kontrolę
+        </Button>
         <FormHeader>Rozliczenie stażu:</FormHeader>
 
         <FormLabel>

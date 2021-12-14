@@ -452,22 +452,6 @@ const Traning = () => {
           </FormSelect>
         </FormLabel>
         <FormLabel>
-          Liczba godzin obecności na szkoleniu (włącznie z L4):
-          <FormInput
-            value={godzinyObecnosciL4}
-            onChange={(e) => setGodzinyObecnosciL4(e.target.value)}
-            type="number"
-          ></FormInput>
-        </FormLabel>
-        <FormLabel>
-          Liczba godzin obecności na szkoleniu (bez z L4):
-          <FormInput
-            value={godzinyObecnosci}
-            onChange={(e) => setGodzinyObecnosci(e.target.value)}
-            type="number"
-          ></FormInput>
-        </FormLabel>
-        <FormLabel>
           Czy UP ukończył szkolenie:
           <FormSelect
             value={ukonczylSzkolenie}
@@ -514,6 +498,22 @@ const Traning = () => {
             <FormInput
               value={godzinyZus}
               onChange={(e) => setGodzinyZus(e.target.value)}
+              type="number"
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Liczba godzin obecności na szkoleniu (włącznie z L4):
+            <FormInput
+              value={godzinyObecnosciL4}
+              onChange={(e) => setGodzinyObecnosciL4(e.target.value)}
+              type="number"
+            ></FormInput>
+          </FormLabel>
+          <FormLabel>
+            Liczba godzin obecności na szkoleniu (bez L4):
+            <FormInput
+              value={godzinyObecnosci}
+              onChange={(e) => setGodzinyObecnosci(e.target.value)}
               type="number"
             ></FormInput>
           </FormLabel>

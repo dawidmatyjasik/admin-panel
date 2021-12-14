@@ -177,36 +177,7 @@ const Employment = () => {
             <FormOption>Kontynuacja zatrudnienia</FormOption>
           </FormSelect>
         </FormLabel>
-        <FormLabel>
-          Wskaźnik do 4 tygodni
-          <FormSelect
-            value={wskaznik4tygodni}
-            onChange={(e) => setWskaznik4tygodni(e.target.value)}
-          >
-            <FormOption>Nie</FormOption>
-            <FormOption>Tak</FormOption>
-          </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Wskaźnik do 3 miesięcy:
-          <FormSelect
-            value={wskaznik3miesiecy}
-            onChange={(e) => setWskaznik3miesiecy(e.target.value)}
-          >
-            <FormOption>Nie</FormOption>
-            <FormOption>Tak</FormOption>
-          </FormSelect>
-        </FormLabel>
-        <FormLabel>
-          Wskaźnik do 6 miesięcy:
-          <FormSelect
-            value={wskaznik6miesiecy}
-            onChange={(e) => setWskaznik6miesiecy(e.target.value)}
-          >
-            <FormOption>Nie</FormOption>
-            <FormOption>Tak</FormOption>
-          </FormSelect>
-        </FormLabel>
+
         <FormLabel>
           Data podpisania umowy / aneksu:
           <FormInput
@@ -264,6 +235,36 @@ const Employment = () => {
         ) : (
           <></>
         )}
+        <FormLabel>
+          Wskaźnik do 4 tygodni
+          <FormSelect
+            value={wskaznik4tygodni}
+            onChange={(e) => setWskaznik4tygodni(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Wskaźnik do 3 miesięcy:
+          <FormSelect
+            value={wskaznik3miesiecy}
+            onChange={(e) => setWskaznik3miesiecy(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
+        <FormLabel>
+          Wskaźnik do 6 miesięcy:
+          <FormSelect
+            value={wskaznik6miesiecy}
+            onChange={(e) => setWskaznik6miesiecy(e.target.value)}
+          >
+            <FormOption>Nie</FormOption>
+            <FormOption>Tak</FormOption>
+          </FormSelect>
+        </FormLabel>
         <FormLabel>
           Umowa wskaźnikowa:
           <FormSelect

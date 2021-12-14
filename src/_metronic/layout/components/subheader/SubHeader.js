@@ -10,6 +10,7 @@ import {
 } from "../../_core/MetronicSubheader";
 import { useHtmlClassService } from "../../_core/MetronicLayout";
 import date from "date-and-time";
+import pl from "date-and-time/locale/pl";
 import { useState } from "react";
 
 export function SubHeader() {
@@ -45,7 +46,7 @@ export function SubHeader() {
         ? aside.title
         : header.title
     );
-
+    date.locale(pl);
     setNow(date.format(new Date(), "ddd DD"));
     // eslint-disable-next-line
   }, [location.pathname]);
@@ -62,24 +63,22 @@ export function SubHeader() {
         className={`${layoutProps.subheaderContainerCssClasses} d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap`}
       >
         {/* Info */}
-        <div className="d-flex align-items-center flex-wrap mr-1">
-          {layoutProps.subheaderMobileToggle && (
-            <button
-              className="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none"
-              id="kt_subheader_mobile_toggle"
+        <div className="d-flex align-items-center">
+          <a
+            href="#"
+            className="btn btn-light btn-sm font-weight-bold"
+            id="kt_dashboard_daterangepicker"
+            data-toggle="tooltip"
+            title="Select dashboard daterange"
+            data-placement="left"
+          >
+            <span
+              className="text-muted font-weight-bold mr-2"
+              id="kt_dashboard_daterangepicker_title"
             >
-              <span />
-            </button>
-          )}
-
-          <div className="d-flex align-items-baseline mr-5">
-            <h5 className="text-dark font-weight-bold my-2 mr-5">
-              <>{subheader.title}</>
-              {/*<small></small>*/}
-            </h5>
-          </div>
-
-          <BreadCrumbs items={subheader.breadcrumbs} />
+              Panel administratora
+            </span>
+          </a>
         </div>
 
         {/* Toolbar */}
@@ -96,7 +95,7 @@ export function SubHeader() {
               className="text-muted font-weight-bold mr-2"
               id="kt_dashboard_daterangepicker_title"
             >
-              Today
+              Dzisiaj
             </span>
             <span
               className="text-primary font-weight-bold"

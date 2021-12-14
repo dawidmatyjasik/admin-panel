@@ -337,6 +337,21 @@ export function AsideMenuList({ layoutProps }) {
           </div>
         </li>
         <li className="menu-section ">
+          <h4 className="menu-text">Kadra</h4>
+          <i className="menu-icon flaticon-more-v2"></i>
+        </li>
+        <li
+          className={`menu-item ${getMenuItemActive("/panel/kadra")}`}
+          aria-haspopup="true"
+        >
+          <NavLink className="menu-link" to="/panel/kadra">
+            <span className="svg-icon menu-icon">
+              <SVG src={toAbsoluteUrl("/media/svg/icons/Design/Mask.svg")} />
+            </span>
+            <span className="menu-text">Kadra</span>
+          </NavLink>
+        </li>
+        <li className="menu-section ">
           <h4 className="menu-text">Wypłaty</h4>
           <i className="menu-icon flaticon-more-v2"></i>
         </li>

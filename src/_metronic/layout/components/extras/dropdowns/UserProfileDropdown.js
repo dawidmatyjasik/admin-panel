@@ -159,7 +159,14 @@ export function UserProfileDropdown() {
         </div>
       </Dropdown.Menu>
     </Dropdown> */
-    <div className="navi-footer  px-8 py-5">
+    <div
+      className="navi-footer"
+      style={{
+        display: "grid",
+        placeItems: "center",
+        paddingLeft: "1.25em",
+      }}
+    >
       <Link to="/logout" className="btn btn-light-primary font-weight-bold">
         Wyloguj się
       </Link>

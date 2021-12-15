@@ -88,7 +88,6 @@ const Search = () => {
       <Button variant="outlined" className={classes.button}>
         Szukaj
       </Button>
-      <FormHeader>Wyniki wyszukiwania:</FormHeader>
     </Form>
   );
 };

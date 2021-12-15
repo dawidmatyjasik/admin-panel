@@ -6,13 +6,14 @@ import Training from "./training/Training";
 import Internship from "./internship/Internship";
 import Content from "./Content";
 import Search from "./Search";
+import Results from "./Results";
 
 const Checks = () => {
   return (
     <>
       <Nav />
       <Search />
-
+      <Results />
       <Switch>
         <ContentRoute
           path="/panel/edytuj/kontrole/szkolenie"

@@ -1,8 +1,29 @@
 import React from "react";
 import { FormHeader } from "../projects/ProjectsElements";
 import { useTable } from "react-table";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    marginTop: "1%",
+    width: "20%",
+    fontWeight: 700,
+    border: "1px solid rgba(0,0,0,.8)",
+    marginRight: "2%",
+
+    "&:nth-child(1)": {},
+    "@media (max-width: 1000px)": {
+      width: "30%",
+    },
+    "@media (max-width: 500px)": {
+      width: "35%",
+    },
+  },
+}));
 
 const Results = () => {
+  const classes = useStyles();
   const data = React.useMemo(
     () => [
       {
@@ -127,6 +148,13 @@ const Results = () => {
           })}
         </tbody>
       </table>
+      <Button
+        variant="outlined"
+        className={classes.button}
+        onClick={() => window.print()}
+      >
+        Pobierz wydruk (Excell)
+      </Button>
     </>
   );
 };

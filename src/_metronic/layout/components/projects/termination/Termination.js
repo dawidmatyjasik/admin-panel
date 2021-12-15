@@ -16,9 +16,9 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
-    "&:nth-child(1)": {
-      marginRight: "2%",
-    },
+    marginRight: "2%",
+
+    "&:nth-child(1)": {},
   },
 }));
 

@@ -16,7 +16,7 @@
 //@import "./_metronic/_assets/sass/themes/layout/header/base/light.scss";
 // Dark
 // @import "./_metronic/_assets/sass/themes/layout/header/base/dark.scss";
-  
+
 // Header Menu themes
 // Light
 //@import "./_metronic/_assets/sass/themes/layout/header/menu/light.scss";
@@ -45,20 +45,19 @@
 .example-highlight > pre {
   background: none transparent !important;
   margin: 0 !important;
-  padding-top: 0.5rem; 
-  code { 
-      overflow-y: auto;
-      display: block;
+  padding-top: 0.5rem;
+  code {
+    overflow-y: auto;
+    display: block;
 
-      span {
-        background: none transparent !important;
-      }
+    span {
+      background: none transparent !important;
+    }
   }
 }
 
 .json > pre {
   background: none #fff !important;
-
 }
 
 .example-code > .json {
@@ -78,12 +77,12 @@
 .react-bootstrap-table {
   th {
     outline: none;
-   
-    &.sortable {  
+
+    &.sortable {
       .svg-icon-sort {
         opacity: 0;
       }
-  
+
       &:hover {
         cursor: pointer;
 
@@ -91,12 +90,12 @@
           opacity: 1;
         }
       }
-    }    
+    }
   }
 
   .table.table-head-custom thead tr {
     .sortable-active {
-        color: $primary !important;
+      color: $primary !important;
     }
   }
 }
@@ -107,4 +106,82 @@
 
 .display-block {
   display: block;
+}
+
+.info {
+  padding: 0.55rem 0.75rem;
+  font-size: 0.925rem;
+  line-height: 1.35;
+  border-radius: 0.42rem;
+  background-color: #f3f6f9;
+  border-color: #f3f6f9;
+  cursor: pointer;
+  &:hover {
+    .info__span {
+      color: #3f4254 !important;
+    }
+    .info__list {
+      display: block;
+      color: #3f4254 !important;
+      // display: block;
+    }
+  }
+
+  /*   &:hover {
+    transition: color 0.15s ease, background-color 0.15s ease,
+      border-color 0.15s ease, box-shadow 0.15s ease;
+    color: #7e8299;
+    background-color: #e4e6ef;
+    border-color: #e4e6ef;
+  } */
+  &__container {
+    position: relative;
+  }
+  &__list {
+    display: none;
+    // background-color: red;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    // transform: translateX(50%);
+    padding: 7.15px 9.75px;
+    margin-left: -9.75px;
+    list-style-type: none;
+    background-color: #f3f6f9 !important;
+    z-index: 96;
+    border-color: #f3f6f9;
+    width: 270px;
+    font-size: 0.925rem;
+    line-height: 1.35;
+    border-radius: 0.42rem;
+    transition: 0.3s ease-in-out opacity;
+    opacity: 0;
+    letter-spacing: 0.1px;
+    color: #b5b5c3 !important;
+    &--active {
+      display: block;
+      opacity: 1;
+    }
+    & > li {
+      padding: 2px 0;
+      & > span {
+        font-weight: bold;
+        color: #595961;
+      }
+    }
+  }
+  &__icon {
+    height: 15px;
+    width: 15px;
+    color: #3699ff !important;
+    transition: ease-in-out 0.3s transform;
+    transform: rotate(90deg);
+    margin-left: 5px;
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+  &__span {
+    color: #b5b5c3 !important;
+  }
 }

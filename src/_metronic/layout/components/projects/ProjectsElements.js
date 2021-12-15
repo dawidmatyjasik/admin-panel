@@ -260,3 +260,16 @@ export const FormListItem = styled.li`
   }
   */
 `;
+export const FormCheckboxContainer = styled.div`
+  display: flex;
+`;
+export const FormCheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  margin-right: 2vw;
+`;
+export const FormCheckboxInput = styled.input`
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+`;

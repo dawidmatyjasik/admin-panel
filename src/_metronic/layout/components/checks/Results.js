@@ -3,6 +3,7 @@ import { FormHeader } from "../projects/ProjectsElements";
 import { useTable } from "react-table";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
+import PHE from "print-html-element";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -103,7 +104,11 @@ const Results = () => {
   return (
     <>
       <FormHeader>Wyniki wyszukiwania:</FormHeader>
-      <table {...getTableProps()} style={{ border: "solid 1px #707070" }}>
+      <table
+        {...getTableProps()}
+        style={{ border: "solid 1px #707070" }}
+        id="print"
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -151,7 +156,8 @@ const Results = () => {
       <Button
         variant="outlined"
         className={classes.button}
-        onClick={() => window.print()}
+        // onClick={() => window.print()}
+        onClick={() => PHE.printElement(document.getElementById("print"))}
       >
         Pobierz wydruk (Excell)
       </Button>

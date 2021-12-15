@@ -273,3 +273,10 @@ export const FormCheckboxInput = styled.input`
   align-items: center;
   margin-left: 5px;
 `;
+export const Print = styled.div`
+  @media print {
+    & div {
+      display: none;
+    }
+  }
+`;

@@ -33,7 +33,7 @@ export function HeaderMobile() {
           <img
             src={toAbsoluteUrl("/media/logos/letowski-logo.png")}
             alt="Łętowski logo"
-            style={{ objectFit: "contain", width: "80px", height: "100px" }}
+            style={{ objectFit: "contain", width: "80px", height: "55px" }}
           />
         </Link>
         {/*end::Logo*/}

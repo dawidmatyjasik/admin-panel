@@ -13,6 +13,9 @@ import React, { useEffect, useState } from "react";
 import db from "../../../../../firebase";
 import {
   Form,
+  FormCheckboxContainer,
+  FormCheckboxInput,
+  FormCheckboxLabel,
   FormDateContainer,
   FormHeader,
   FormInput,
@@ -30,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
     width: "20%",
     fontWeight: 700,
     border: "1px solid rgba(0,0,0,.8)",
-    "&:nth-child(1)": {
-      marginRight: "2%",
-    },
+    marginRight: "2%",
+
+    "&:nth-child(1)": {},
     "@media (max-width: 1000px)": {
       width: "30%",
     },
@@ -550,6 +553,9 @@ const Basic = () => {
             <FormOption>Zablokowany</FormOption>
           </FormSelect>
         </FormLabel>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj upoważnienie
+        </Button>
         <FormHeader>Dostęp do konta bankowego</FormHeader>
         <FormLabel>
           Imię:
@@ -583,6 +589,9 @@ const Basic = () => {
             <FormOption>Zablokowany</FormOption>
           </FormSelect>
         </FormLabel>
+        <Button variant="outlined" className={classes.button}>
+          Dodaj dostęp
+        </Button>
         <FormHeader>Informacje</FormHeader>
         {/*  <FormLabel>
           Osoby upoważnione do LSI / SL:
@@ -681,8 +690,12 @@ const Basic = () => {
             value={statusRynkuPracy}
             onChange={(e) => setStatusRynkuPracy(e.target.value)}
           >
-            <FormOption>Tak</FormOption>
-            <FormOption>Nie</FormOption>
+            <FormOption>Osoba bezrobotna zarejestrowana</FormOption>
+            <FormOption>Osoba bezrobotna niezarejestrowana</FormOption>
+            <FormOption>Osoba bierna zawodowo</FormOption>
+            <FormOption>Osoba ubogo pracująca</FormOption>
+            <FormOption>Outplacement</FormOption>
+            <FormOption>Działalność gospodarcza</FormOption>
           </FormSelect>
         </FormLabel>
         <FormLabel>
